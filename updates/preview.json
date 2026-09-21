@@ -1,0 +1,12 @@
+{
+    "schemaVersion":  1,
+    "packageName":  "com.totb.drivedeck",
+    "channel":  "preview",
+    "versionCode":  39,
+    "versionName":  "1.0.0-rc7",
+    "minSdk":  33,
+    "size":  5657616,
+    "sha256":  "23e062e0e4ec0f400709781a8ecaf7b1fe773710da304b5e668b5b1834db8e9a",
+    "apkUrl":  "https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.0.0-rc7/DriveDeck-1.0.0-rc7.apk",
+    "notes":  "설정과 안전 모드에 업데이트 메뉴를 추가했습니다. 새 버전 확인, 다운로드, 파일 검증 후 Android 설치 화면으로 이동합니다. 안정판과 시험판은 따로 선택할 수 있습니다.\n\n앱 선택·화면 배치·즐겨찾기는 유지됩니다. 차량에서는 이번 APK를 기존 버전 위에 처음 한 번 설치해야 앱 내 업데이트를 사용할 수 있습니다.\n\n아직 시험 버전입니다. 기존 차량 연결 문제와 반복 단독 실행 시 입력 지연은 해결 확인 전이며, 정식 1.0.0으로 판정하지 않았습니다.\n\n업데이트 기능 검사 8개는 통과했지만, 저장소를 연결한 빌드의 에뮬레이터 검사에서는 화면 종료 중 약 6.8초의 UI 지연이 기록됐습니다. 안정성 검사는 미통과이며 차량에서의 안정성을 보장하는 배포가 아닙니다.\n"
+}
