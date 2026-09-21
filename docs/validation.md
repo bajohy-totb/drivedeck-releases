@@ -2,6 +2,33 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.0.1-rc5 뒤로가기·구역 크기 복구 / Back and pane geometry recovery
+
+사이드바 뒤로가기의 중복 요청·지연 입력을 제한하고, 앱 생성 중 바뀐 구역 크기와 배율을 실행 전에 적용합니다. 실행 중 실제 디스플레이 크기가 현재 구역과 다르면 주기적으로 다시 맞춥니다. 렌더링 크기는 실제 구역 픽셀에 맞추며, 글자 배율 기본값 160dpi와 저장한 배율은 유지합니다.
+
+비디버그 release APK, versionCode 46, 기존 서명입니다. SHA-256: `c2642cc3b1d2745030d086927adfb645d1869f238fa07df3ab9337383ef1f104` (20,678,200 bytes). 단위 검사 39개 통과, Release Lint 오류 0개·경고 43개입니다. **아래 17개 검사는 동일한 최종 APK에서 기능과 시스템 상태가 모두 통과했습니다.**
+
+| 최종 APK 검사 / Exact-APK checks | 개수 / Count | 결과 / Result |
+|---|---:|---|
+| 자체 연결: 사이드바 30회 연타, 입력 대기열 1.3초 지연 후 오래된 Back 폐기와 새 Back 전달, 생성 중 크기·배율 변경, 실행 중 원격 크기 변경의 자동 복구·실제 터치 / Built-in connection: 30 sidebar taps, delayed-input expiry and fresh Back delivery, creation-time size/scale changes, automatic repair and touch after remote geometry drift | 4 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 분할·전체화면·비율·바 위치·테마·즐겨찾기 조합 144개 및 120–240dpi의 13단계 터치·입력·Back으로 키보드 닫기 / 144 layout combinations and 13 scale steps with touch, typing and Back to dismiss the IME | 2 | 통과 / Pass |
+| 가상 USB 키보드: 내비·음소거 후 입력, 바 터치 후 입력, 설정·앱 목록 복귀 / Virtual USB keyboard: navigation/mute, bar touches, settings/picker return | 3 | 통과 / Pass |
+| 앱 교체 후 이전 세대 입력 거부, Settings·Clock 실제 터치, 단독 실행 후 복귀, release 설정, 내비 전체화면 Back 대상 / Stale input after app replacement, actual Settings/Clock interaction, standalone return, release configuration, fullscreen navigation Back target | 5 | 통과 / Pass |
+| 루트 실행 어댑터: 사이드바 30회 연타 후 구역 사용 / Root launch adapter: pane remains usable after 30 sidebar Back taps | 1 | 통과 / Pass |
+| 공식 Shizuku: 생성 중 크기·배율 변경과 지연 Back 폐기 / Official Shizuku: creation-time geometry changes and delayed Back expiry | 2 | 통과 / Pass |
+
+기존 rc4에서는 생성 중 크기·배율을 바꾸면 오래된 크기가 남는 오류를 재현했습니다. 입력 대기열을 1.3초 막은 뒤에는 지난 Back 12회가 24개 DOWN/UP 이벤트로 뒤늦게 전달됐습니다. 단순 30회 연타만으로 차량의 오류 창 자체를 재현하지는 못했습니다. 첫 rc5 후보의 화면 크기는 맞았지만, 새 앱의 로딩 카드가 닫히기 전 터치를 보내 실패한 검사는 앱 준비 완료를 확인한 뒤 터치하도록 수정했습니다. 실패 자료는 보존하며 최종 결과에 포함하지 않습니다. 복구 뒤 앱이 이미 보이면 임시 복구 카드도 닫도록 보완했습니다.
+
+LGPL 자료의 앱 클래스 105개(생성 리소스 포함 139개)와 런타임 파일 30개는 최종 빌드 입력과 바이트 단위로 일치합니다. 자료만으로 APK를 재구성·서명·설치한 뒤 생성 중 크기·배율 변경과 터치 검사 1개도 기능·시스템 상태 모두 통과했습니다. 재구성 APK 검사는 위 원본 17개와 별도입니다. 자료는 `DriveDeck-1.0.1-rc5-relink.zip`에 제공합니다.
+
+검증 환경은 전용 Android 13 에뮬레이터 1600×900, density 160입니다. 자체 연결은 공식 무선 디버깅·셸 UID 2000·Shizuku 중지 상태, Shizuku는 공식 서버, 루트는 AOSP 실행 어댑터를 사용했습니다. 키보드는 Linux uinput 가상 USB 장치입니다. 실제 차량·물리 키보드·한국어 입력기·다른 OEM·장시간 주행은 확인하지 않았습니다. `ro.adb.secure=0`인 AOSP 이미지라 실제 폰의 인증 정책도 별도 확인이 필요합니다. 앞선 버전에서 관찰한 간헐적 시작 렌더링 지연이 해결됐다고 주장하지 않습니다. Android ANR과 6,000ms 감시 기준은 유지했습니다. 정식 채널은 1.0.0, 시험 채널은 1.0.1-rc5입니다.
+
+This non-debuggable versionCode 46 preview limits duplicate and expired sidebar Back input, applies current size and density before launching an app, and repairs running display geometry without reapplying the layout. Rendering follows the actual pane pixel dimensions; the default 160dpi and saved scale are unchanged. All 39 unit tests and the 17 exact-APK checks above passed, including system health. Release Lint reports 0 errors and 43 warnings.
+
+On published rc4, changing geometry during display creation reproduced stale dimensions. Blocking the input queue for 1.3 seconds delivered all 12 old Back taps later as 24 DOWN/UP events. A simple 30-tap burst did not reproduce the vehicle's error dialog. The first rc5 candidate corrected dimensions but a touch check ran before the new app's loading card closed; the final check waits for launch readiness before tapping. Those failed results are retained and excluded from final passes. Healthy visible apps now also dismiss a temporary Back-recovery card.
+
+All relink object inputs match the final build byte for byte. A reconstructed APK separately passed one creation-time size/scale and touch check with system health. Tests use Android 13 at 1600×900, actual wireless debugging with Shizuku stopped, the official Shizuku server, an AOSP root launch adapter and a virtual USB keyboard. These do not establish actual vehicle, physical-keyboard, Korean-IME, OEM or prolonged-driving compatibility. AOSP uses `ro.adb.secure=0`. Previously observed intermittent startup renderer stalls remain unverified; Android ANR and the 6,000ms watchdog threshold were not relaxed. Stable remains 1.0.0.
+
 ## 1.0.1-rc4 바의 키보드 포커스 차단 / Control-bar keyboard focus
 
 **사이드바와 즐겨찾기 바는 메뉴가 열려 있어도 키보드 포커스를 받지 않습니다.** 터치·길게 누르기는 유지합니다. 보조 키 연결이 끊긴 경우의 입력 경로와 음소거·볼륨 직후 첫 글자 순서, 메뉴 입력 분리도 보완했습니다. 정식 채널은 1.0.0, 시험 채널은 1.0.1-rc4입니다.

@@ -6,7 +6,7 @@
 
 The stable 1.0.0 release requires Android 13 or newer with root access. Install the APK, open DriveDeck, and allow the root connection. Select an installed app for navigation and another for App 1. The same app cannot be assigned to both panes.
 
-### Built-in connection preview (1.0.1-rc4)
+### Built-in connection preview (1.0.1-rc5)
 
 Connect directly through Android wireless debugging. This is the default for a new installation; upgrades retain the existing connection method.
 
@@ -22,9 +22,9 @@ Pairing stays on this device and is excluded from layout backups. Wireless debug
 
 For an incorrect code, dismiss Android's failure dialog, open a new code screen and retry. If discovery fails, manual code and pairing-port entry is available while keeping the system code screen open. The pairing port is the number after the colon on that screen.
 
-See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.0.1-rc4).
+See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.0.1-rc5).
 
-### Physical keyboards (1.0.1-rc4)
+### Physical keyboards (1.0.1-rc5)
 
 Connect a USB or Bluetooth keyboard, then tap a **text field in App 1**. Navigation touches preserve App 1 as the typing destination. Input works in App 1 fullscreen and split layouts. Settings and the app picker receive input while open; closing them returns input to App 1.
 
@@ -64,6 +64,8 @@ Choose **Settings → Device → Set as default launcher** to use DriveDeck as A
 Use App 1 for typing and the keyboard. You can pan and zoom the navigation pane by touch, but it is not a keyboard input target. Expanding one pane stops display output from the hidden pane; it does not force-stop the other app's background work, such as a music service.
 
 Tap the divider for ratio choices, or hold and drag it sideways. A guide previews the split; releasing applies it. Navigation can occupy 30–70% of the split area.
+
+Version 1.0.1-rc5 discards expired Back taps instead of delivering a delayed burst. Layout changes during app creation and later geometry mismatches are corrected to the current pane dimensions. Increase **App and keyboard scale** for larger text and controls; density scaling is separate from the pane’s physical pixel dimensions.
 
 ## 3. Favorites and app options
 
