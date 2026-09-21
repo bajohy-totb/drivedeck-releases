@@ -2,6 +2,50 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.0.1-rc3 물리 키보드 시험판 / Physical keyboard preview
+
+앱 1의 물리 키보드 입력 경로, 내비 터치 뒤 입력 대상 유지, 설정·앱 목록 복귀 시 첫 글자와 메뉴 입력 분리를 수정했습니다. 자체 무선 디버깅·루트·Shizuku 연결을 유지합니다. 정식 채널은 1.0.0, 시험 채널은 1.0.1-rc3입니다.
+
+APK는 versionCode 44, 기존 서명, 비디버그 release 빌드입니다. SHA-256: `9ecd731724df199ecac2f5485b3a42cf508e912193ed0892542812bfe51e0c12` (20,678,200 bytes). 단위 검사 39개 통과, Release Lint 오류 0개·경고 43개입니다. 아래 통합 검사 17개는 같은 APK에서 기능·시스템 상태가 모두 통과했습니다.
+
+| 동일 APK에서 확인한 검사 / Checks on this exact APK | 개수 / Count | 결과 / Result |
+|---|---:|---|
+| 가상 USB 키보드: 분할·전체화면·복귀, 방향키·Home/End·삭제, Ctrl+A·Shift 선택, 내비·음소거 직후 입력, 설정·앱 목록 복귀 / Virtual USB keyboard: split/fullscreen/return, cursor/Home/End/deletion, Ctrl+A/Shift selection, navigation/mute then typing, settings/picker return | 5 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 메뉴 입력 분리, 런처 UI 일시 정지 중 별도 입력 전달, 음소거·볼륨 입력 180회 사이 글자 순서 / Overlay isolation, forwarding while launcher UI is paused, text order between 180 mute/volume inputs | 3 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 한 구역·두 구역 음소거 / Mute input with one and two panes | 2 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 실제 Settings 화면 조작·Clock 스톱워치 시작/정지 / Actual Settings interaction and Clock stopwatch start/pause | 1 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 배포 설정·테스트 진입 차단 / Release configuration and disabled test entry | 1 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 미선택·선택 앱 단독 실행과 구역 복귀 / Assigned and unassigned standalone apps and pane return | 1 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 가상 Bluetooth 키보드와 화면 키보드 함께 사용: 메뉴 복귀·커서·삭제 / Virtual Bluetooth keyboard with on-screen IME enabled: menu return, cursor and deletion | 2 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 루트 경로: 실제 메뉴 버튼 터치·물리 키보드 복귀 / Root path: actual menu-button touches and physical keyboard return | 1 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 공식 Shizuku 경로: 실제 메뉴 버튼 터치·물리 키보드 복귀 / Official Shizuku path: actual menu-button touches and physical keyboard return | 1 | 기능·시스템 상태 통과 / Functional and system-health pass |
+
+별도로 제공 재링크 자료의 애플리케이션 클래스 103개와 런타임 파일 30개를 빌드 입력과 대조했습니다. 자료만으로 APK를 재구성·서명·설치하고 자체 연결에서 메뉴 터치 후 물리 키보드 복귀 검사 1개가 기능·시스템 상태 모두 통과했습니다. 이 재구성 APK 검사는 위 원본 APK 17개 검사 수에 포함하지 않습니다.
+
+Separately, all 103 application classes and 30 runtime inputs in the relink materials were compared with the build inputs. An APK rebuilt from those materials was signed and installed; one built-in-connection physical keyboard/menu-touch check passed functionality and system health. This rebuilt-APK check is separate from the 17 original-APK checks above.
+
+대상은 전용 Android 13 에뮬레이터(1600×900, density 160)입니다. 물리 입력 검사는 Linux uinput에 가상 키보드를 등록하고 InputReader를 거쳐 입력하며, 앱이 실제 해당 장치 ID의 키를 받는지 확인합니다. 테스트용 장치 등록에만 에뮬레이터의 루트 권한을 사용합니다. 자체 연결 검사는 공식 Shizuku 서버를 중지한 상태에서 실제 무선 디버깅 연결과 셸 UID 2000을 확인합니다. 실제 USB 하드웨어나 Bluetooth 무선 통신을 검사한 것은 아닙니다.
+
+개발 중 첫 글자 순서, 메뉴 입력 지연 전달, 입력 대기 실패를 재현한 기록을 보존합니다. 최종 후보의 초기 반복 검사 한 건은 매 글자를 display 0에 강제 지정해 Android가 매번 입력 화면을 바꾸도록 만들었고, 외부 편집기 ANR을 일으켰습니다. Android 13 소스의 해당 정책을 확인한 뒤 일반 키보드와 같이 화면을 지정하지 않는 방식으로 검사 입력을 수정했습니다. 단일 display-0 입력 전달 검사는 유지합니다. 제조사가 특정 화면에 묶은 키보드의 연속 입력은 이 결과로 검증되지 않습니다.
+
+루트 회귀 검사는 실제 Magisk 승인을 대신하는 AOSP 실행 어댑터를 사용합니다. 메뉴를 내부 메서드로 직접 연 직후 입력 정책 값만 보고 타이핑한 검사에서는 첫 글자 하나가 앱 1에 남았습니다. 실제 사용자의 메뉴 버튼 터치가 수행하는 Android 포커스 전환을 포함하도록 검사를 바꾸었고 위 표의 루트 검사는 이 경로를 사용합니다. 코드로 메뉴가 열리는 순간의 입력 경합까지 해결됐다는 의미는 아닙니다.
+
+최종 후보에서 화면 키보드를 함께 켠 메뉴 복귀 검사는 기능상 통과했으나, 시작 시 `HardwareRenderer.nSetStopped`에서 6,005ms 지연을 기록해 전체 통과로 세지 않았습니다. 초기 개발 후보에서도 렌더링 지연이 관찰됐습니다. 실패 자료와 6,000ms 시스템 상태 기준을 그대로 유지하며, 이후 통과 기록만으로 이 지연이 해결됐다고 단정하지 않습니다.
+
+사용자 폰·실제 차량, 실제 USB/Bluetooth 키보드, 한국어 입력기·한영 전환 조합, 다른 Android·제조사, 장치 재연결·시동 전원 차단·장시간 주행은 확인 전입니다. 이 AOSP 이미지의 `ro.adb.secure=0` 때문에 실제 폰의 ADB 인증 정책도 별도 확인이 필요합니다. 이 버전의 LGPL 소스·애플리케이션 오브젝트·교체 절차는 `DriveDeck-1.0.1-rc3-relink.zip`에 제공합니다.
+
+This preview changes App 1 physical-keyboard forwarding, preserves its input destination during navigation touches, and restores input after settings/picker transitions without delivering old menu keystrokes to the editor. Built-in wireless debugging, root and Shizuku remain available. Stable stays on 1.0.0. The APK uses versionCode 44, the existing certificate and a non-debuggable release build. All 39 unit tests pass; Release Lint reports 0 errors and 43 warnings. The table lists checks that passed both functional assertions and system health on this exact APK.
+
+The dedicated Android 13 emulator runs at 1600×900, density 160. Physical-input tests register a virtual Linux uinput keyboard, send events through InputReader, and verify the keyboard's device ID in the receiving app. Emulator root is used only to create the test input device. Built-in connection tests stop the official Shizuku server and verify the real wireless-debugging connection at shell UID 2000. These are not physical USB or Bluetooth-radio tests.
+
+Development failures remain recorded. An early repeated-input test on the final candidate forced every letter to display 0; Android then repeatedly moved that display to the front, competing with forwarded editor events and causing an external-editor ANR. After checking Android 13's policy source, the overlay test was changed to unassigned-display input, matching a normal keyboard. The single-key display-0 forwarding test remains. These results do not validate continuous typing from manufacturer keyboards explicitly bound to one display.
+
+Root regression uses an AOSP launch adapter, not actual Magisk approval. Directly invoking a private menu method and immediately typing after the routing-policy flag changed left one letter in App 1. The test now includes the Android focus change caused by an actual user touching the menu button; the table's root result uses that path. It does not establish that every race during programmatic menu opening is resolved.
+
+A final-candidate menu-return run with the on-screen keyboard also enabled passed its text assertions but recorded a 6,005 ms startup stall in `HardwareRenderer.nSetStopped`, so it is not counted as an overall pass. Earlier candidates also recorded renderer stalls. The failure records and 6,000 ms health threshold remain; later passing runs do not establish that these delays are fixed.
+
+The user's phone, actual vehicles, physical USB/Bluetooth devices, Korean IMEs and language-switch combinations, other Android/OEM versions, hotplugging, ignition power loss and prolonged driving remain unverified. This AOSP image has `ro.adb.secure=0`, so actual-phone ADB authentication policy is also outside the tested scope. The companion relink ZIP contains the corresponding LGPL source, application objects and replacement procedure.
+
 ## 1.0.1-rc2 자체 연결 시험판 / Built-in connection preview
 
 Shizuku 설치 없이 Android 무선 디버깅에 직접 연결하는 기능을 추가합니다. Android 13 이상이며 처음에는 시스템이 보여 주는 6자리 코드로 페어링해야 합니다. 루트·Shizuku 선택은 유지하고 기존 설치의 연결 방식도 보존합니다. 정식 채널은 1.0.0, 시험 채널은 1.0.1-rc2입니다.
