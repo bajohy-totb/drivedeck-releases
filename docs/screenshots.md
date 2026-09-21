@@ -45,3 +45,13 @@ Entries labeled ‘테스트’ or ‘검증’ are fixture apps installed on th
 | 한국어 | English |
 |---|---|
 | ![업데이트](../images/ko-updates.png) | ![Updates](../images/en-updates.png) |
+
+## Shizuku 연결 / Shizuku connection (1.0.1-rc1)
+
+아래 두 화면은 1.0.1-rc1 시험 버전에서 직접 캡처합니다. 위의 기존 12개 이미지는 RC8 기록입니다.
+
+These two screenshots were captured from the 1.0.1-rc1 release APK at 1600?900. They show connection settings; the pane apps behind the dialog are still opening. The twelve images above remain RC8 captures.
+
+| 한국어 | English |
+|---|---|
+| ![Shizuku 연결](../images/ko-shizuku.png) | ![Shizuku connection](../images/en-shizuku.png) |

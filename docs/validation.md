@@ -2,6 +2,40 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.0.1-rc1 Shizuku 시험판 / Shizuku preview
+
+루팅하지 않은 기기에서 사용할 Shizuku 연결을 추가했습니다. **Android 13 이상**, 별도로 설치·시작한 공식 **Shizuku 13 이상**이 필요합니다. 정식 채널은 1.0.0을 유지하며 1.0.1-rc1은 시험 채널에서 제공합니다. APK는 versionCode 42, 기존 서명, 디버깅이 꺼진 배포용 빌드입니다. SHA-256: `0b9e62f1463fa7dacbadb7fd8e1c58515ce00ddb43c47cf3a3fc806ded1f3eb7` (4,799,510 bytes).
+
+최종 APK에서 **기능 검사 10개와 각 묶음의 시스템 상태 검사가 모두 통과**했습니다. 단위 검사 33개 통과, Release Lint 오류 0개·경고 37개입니다. 대상은 Android 13 전용 에뮬레이터, 1600×900·density 160입니다. 공식 Shizuku 13.6.0을 ADB 방식으로 실행했고 서버와 화면 프로세스의 UID 2000을 확인했습니다. 아래 Shizuku 검사에는 루트 실행 어댑터나 가짜 승인 응답을 사용하지 않았습니다.
+
+| 최종 APK 검사 / Final APK checks | 개수 / Count | 결과 / Result |
+|---|---:|---|
+| 배포 설정·테스트 진입 차단 / Release configuration and disabled test entry | 1 | 통과 / Pass |
+| 실제 Shizuku 좌우 실행·터치, 서버 종료 후 자동 복구, 연결 방식·한영 전환 및 설정 보존 / Real Shizuku panes and touch, server restart recovery, method/language switching and saved settings | 3 | 통과 / Pass |
+| Settings·Clock 좌우 실행, 첫 알림 권한 창, 실제 터치·스톱워치 / Settings and Clock, first notification prompt, physical taps and stopwatch | 1 | 통과 / Pass |
+| 닫히는 앱 목록과 테마 갱신 / Theme refresh while closing the picker | 1 | 통과 / Pass |
+| 미선택·선택 앱 단독 실행, 터치, 구역 복귀 / Assigned and unassigned standalone apps, touch and pane return | 1 | 통과 / Pass |
+| 키보드 입력 대상 유지 / Keyboard input routing | 1 | 통과 / Pass |
+| 한 구역·두 구역에서 음소거 입력 / Mute input with one and two panes | 2 | 통과 / Pass |
+
+개발 중 실제 Shizuku 승인창에서 거부→재승인을 확인했습니다. 최종 실행은 승인된 상태에서 시작했습니다. 처음에는 앱 내부 로그 파일을 셸로 넘기는 방식이 SELinux에 거부돼, 익명 파이프로 로그를 전달하도록 수정했습니다. 시스템 보안 정책을 바꾸지 않았습니다.
+
+기존 루트 경로도 별도 2개 검사에서 루트 거부 시 설정 조작과 연결 종료 후 복구가 기능·시스템 상태 모두 통과했습니다. 복구 검사는 에뮬레이터의 AOSP 실행 어댑터를 사용하므로 실제 기기의 Magisk 승인 검증을 대신하지 않습니다. 위 10개와 합쳐 최종 APK의 통합 검사 12개가 통과했습니다.
+
+Clock 첫 권한 창이 실행 대기 안내에 가려지는 실패도 발견했습니다. 해당 구역의 시스템 권한 창이 준비되면 대기 안내를 해제하도록 수정했고, 최종 APK에서는 권한 상태를 초기화해 실제 창부터 다시 확인했습니다. 오전 7시 테마 전환이 앱 목록 닫기와 겹쳐 목록을 다시 여는 문제도 수정하고 별도 재현 검사를 통과했습니다.
+
+초기 후보 검사에서는 기능 성공과 별개로 약 6초의 화면 렌더링 지연을 기록했습니다. 재시작 후 이전 후보의 800×480 검사 5개와 최종 APK의 위 1600×900 검사 모두 통과했지만, 이 사실로 초기 실패 기록을 지우거나 지연 원인이 해결됐다고 단정하지 않습니다. 판정 기준은 완화하지 않았습니다. 사용자 폰·실제 차량, 다른 Android 버전과 제조사, 시동 전원 차단, 장시간 주행은 아직 확인 전입니다. 기기 재부팅 후에는 Shizuku를 다시 시작해야 합니다.
+
+This preview adds a Shizuku connection for unrooted devices. It requires **Android 13+** and official **Shizuku 13+**, installed and started separately. Stable stays on 1.0.0; 1.0.1-rc1 is preview-only. The APK uses versionCode 42, the existing certificate, and a non-debuggable release build; its hash and size appear above.
+
+All **10 functional checks on the final APK and every group's system-health check passed**, as listed above. All 33 unit tests passed; Release Lint reported 0 errors and 37 warnings. Checks used a dedicated Android 13 emulator at 1600×900, density 160. Official Shizuku 13.6.0 ran through ADB with server/bridge UID 2000. These Shizuku checks used neither a root-launch adapter nor a fake permission response. Denial followed by approval was exercised through the real Shizuku dialog during development; the final run started authorized.
+
+An initial attempt to pass an app-private log file to the shell was blocked by SELinux. Logs now travel through an anonymous pipe without changing system security policy. A separate failure left Clock's first notification prompt behind the launch overlay. The overlay now clears when the system permission activity is ready; the final check reset notification permission and answered the actual prompt before interacting with both apps. Theme refresh could also reopen a closing picker; a dedicated regression check now passes.
+
+Two separate checks of the existing root path also passed functionality and system health: usable settings after root denial, and recovery after a dropped connection. Recovery used the emulator's AOSP launch adapter and does not validate actual Magisk approval. This brings the final APK's passing integration checks to 12.
+
+Initial candidates recorded roughly six-second rendering delays despite some passing functional assertions. Five checks on an earlier candidate at 800×480 after restart and the final 1600×900 checks passed, but this does not erase those failures or establish that their cause is resolved. Health thresholds were not relaxed. The user's phone, an actual vehicle, other Android versions/manufacturers, ignition power loss and prolonged driving remain unverified. Start Shizuku again after rebooting the device.
+
 ## 1.0.0 출시 검증 / Release validation
 
 1.0.0은 GitHub 정식 배포이며, 아래 RC8 기록은 과거 시험 결과로 보존합니다. 배포용 APK는 디버깅이 꺼져 있고 테스트 전용 연결 진입점을 거부합니다. 기존 RC와 같은 서명으로 업데이트 호환성을 유지합니다. 단위 검사 33개 통과, Release Lint 오류 0개·경고 37개입니다.
@@ -20,7 +54,7 @@ The first release candidate reproduced a standalone-launch failure twice: the ex
 
 All **seven core checks on the final release APK passed both functional and system-health checks**: release configuration (1), mute input (2), automatic reconnection (1), standalone launch/touch/pane return for assigned and unassigned apps (1), actual side-by-side Settings/Clock interaction (1), and Korean/English switching with settings preservation (1). Standalone launching also passed the preceding fix-verification run. No new Android ANR or watchdog delay was observed during the final suite.
 
-After publication, RC8 downloaded and verified 1.0.0 through the stable channel. A new process recovered the file and opened Android's installation confirmation. Both instrumented phases passed functional and system-health checks. Installation completed with versionCode 41, the matching APK hash, and the entire launcher settings XML preserved. Stable and preview channels point to the same APK.
+After publication, RC8 downloaded and verified 1.0.0 through the stable channel. A new process recovered the file and opened Android's installation confirmation. Both instrumented phases passed functional and system-health checks. Installation completed with versionCode 41, the matching APK hash, and the entire launcher settings XML preserved. At 1.0.0 publication, stable and preview pointed to the same APK. The Shizuku preview is now provided separately on the preview channel.
 
 Checks run against the actual non-debuggable release APK on a dedicated Android 13 emulator. The AOSP root-launch adapter exists only in the instrumentation app; these checks do not validate the vehicle's Magisk approval flow. Vehicle mute/disconnection resolution, prolonged driving, and every app/manufacturer combination remain unverified.
 

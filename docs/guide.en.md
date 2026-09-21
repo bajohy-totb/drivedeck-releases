@@ -4,7 +4,20 @@
 
 ## 1. Getting started
 
-Use Android 13 or newer with root access. Install the APK, open DriveDeck, and allow the root connection. Select an installed app for navigation and another for App 1. The same app cannot be assigned to both panes.
+The stable 1.0.0 release requires Android 13 or newer with root access. Install the APK, open DriveDeck, and allow the root connection. Select an installed app for navigation and another for App 1. The same app cannot be assigned to both panes.
+
+### Shizuku preview (1.0.1-rc1)
+
+Unrooted Android 13+ devices can select Shizuku in 1.0.1-rc1.
+
+1. Install [official Shizuku](https://shizuku.rikka.app/download/) 13 or newer, pair using wireless debugging, and start it.
+2. In DriveDeck, select **Settings → Device → Connection method → Shizuku**.
+3. Tap **Authorize / open Shizuku**, then allow DriveDeck access.
+4. Choose different apps for the two panes. If Shizuku stops, start it again to reconnect automatically.
+
+![Shizuku connection settings](../images/en-shizuku.png)
+
+Start Shizuku again after a device reboot. DriveDeck explains missing startup or authorization and does not repeatedly open permission prompts during automatic retries. The connection choice stays on this device and is excluded from layout backups. APK installation permission is separate from Shizuku authorization. Manufacturer display/input compatibility remains subject to the [validation scope](validation.md).
 
 Choose **Settings → Device → Set as default launcher** to use DriveDeck as Android's Home app. When it opens automatically depends on the device's boot and Home behavior. To return to another launcher, change the default Home app in Android settings.
 
@@ -65,7 +78,7 @@ If your navigation app supplies an ongoing guidance notification, DriveDeck can 
 
 ## 7. Updates
 
-Use **Settings → Device → Updates** to check, download, and install. Turn **Receive preview versions** off to receive stable releases. Version 1.0.0 is offered on both channels. RC7 already includes this menu; earlier versions need one manual APK installation first.
+Use **Settings → Device → Updates** to check, download, and install. Turn **Receive preview versions** off for stable 1.0.0, or on for Shizuku preview 1.0.1-rc1. RC7 already includes this menu; earlier versions need one manual APK installation first. Switching back to stable after installing a preview does not automatically downgrade the app.
 
 A download continues after leaving its screen while the app process remains alive. Incomplete downloads are discarded after process termination and must be restarted. Completed files are verified again and restored after a restart. The updater checks size, SHA-256, package, version, Android compatibility, and signature. Reinstalls, downgrades, and files signed with another key are rejected.
 
@@ -83,11 +96,11 @@ After repeated startup failures or a detected previous crash, **Safe mode** offe
 
 | Symptom | What to check |
 |---|---|
-| Lost connection / empty panes | Check root authorization and try Reconnect device or Reopen. Manufacturer compatibility and previously reported issues remain under investigation. |
+| Lost connection / empty panes | Depending on the selected connection method, check root authorization or that Shizuku is running and DriveDeck is authorized, then reconnect. Manufacturer compatibility and previously reported issues remain under investigation. |
 | Black screen or app closes | Try Open separately. The app may restrict external displays or protected content. |
 | No keyboard | Use App 1 and check that an Android keyboard is installed and enabled. |
 | No media controls | Check notification access and an active playback session in the music app. |
-| No update available | Select Check for updates and check the installed version. Version 1.0.0 is on both channels; the same version is not offered as an update. |
+| No update available | Select Check for updates and check the installed version and channel. Shizuku support is on preview; the same or an older version is not offered as an update. |
 | Installation blocked | Check install permission for DriveDeck, storage, Android version, and matching signatures. |
 | Freeze when muting in the vehicle | This has not been confirmed resolved. See [validation and limitations](validation.md). |
 

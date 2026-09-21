@@ -8,6 +8,8 @@ DriveDeck is an Android launcher for in-car devices. It runs your installed navi
 
 [**Download 1.0.0 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.0.0/DriveDeck-1.0.0.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete user guide](docs/guide.en.md)
 
+**Shizuku preview:** [1.0.1-rc1 APK](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.0.1-rc1/DriveDeck-1.0.1-rc1.apk) adds a Root / Shizuku connection selector. This preview is designed for unrooted Android 13+ phones; manufacturer compatibility still needs verification. [Setup instructions](docs/guide.en.md#shizuku-preview-101-rc1)
+
 > **1.0.0 is the official GitHub release.** This release APK disables debugging and can update existing RC installations. Resolution of reported vehicle mute freezes, lost connections, and repeated standalone-launch delays has not been confirmed in a vehicle. Read the [validation scope and known limitations](docs/validation.md).
 
 ![DriveDeck's English settings over the two-app workspace in a real Android emulator](images/en-settings.png)
@@ -45,15 +47,15 @@ Open **Settings → Device → Language / 언어** and choose Follow device sett
 
 ## Installation and updates
 
-1. Use an **Android 13 or newer device with root access**. Compatibility depends on the manufacturer's display and input implementation.
+1. Use an **Android 13 or newer device**. Stable 1.0.0 uses root; preview 1.0.1-rc1 also supports Shizuku. Compatibility depends on the manufacturer's display and input implementation.
 2. Install the APK over your existing DriveDeck. You do not need to uninstall the app or clear its settings to update.
-3. Allow the root connection to run apps inside the panes. Optionally set DriveDeck as the default launcher in Settings.
+3. Allow the root connection or configure Shizuku as described above to run apps inside the panes. Optionally set DriveDeck as the default launcher in Settings.
 4. Open **Settings → Device → Updates**, then check for updates. Stable versions are available with **Receive preview versions** turned off. In-app updates are available from RC7 onward.
 5. Download an update and tap Install update. If Android asks you to allow installations from DriveDeck, allow it, return, and tap Install update again.
 
 ![English update screen](images/en-updates.png)
 
-Automatic checks run when the launcher starts or resumes, skipping checks within six hours of the last one. Downloads and Android installation confirmation remain manual. Version 1.0.0 is offered on both channels, so existing RC users do not need to change their channel selection. Park before installing.
+Automatic checks run when the launcher starts or resumes, skipping checks within six hours of the last one. Downloads and Android installation confirmation remain manual. The stable channel stays on 1.0.0. Enable **Receive preview versions** for Shizuku support in 1.0.1-rc1. Park before installing.
 
 ## Learn more
 
