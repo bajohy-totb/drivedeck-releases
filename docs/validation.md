@@ -2,6 +2,42 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.0.1-rc4 바의 키보드 포커스 차단 / Control-bar keyboard focus
+
+**사이드바와 즐겨찾기 바는 메뉴가 열려 있어도 키보드 포커스를 받지 않습니다.** 터치·길게 누르기는 유지합니다. 보조 키 연결이 끊긴 경우의 입력 경로와 음소거·볼륨 직후 첫 글자 순서, 메뉴 입력 분리도 보완했습니다. 정식 채널은 1.0.0, 시험 채널은 1.0.1-rc4입니다.
+
+APK는 versionCode 45, 기존 서명, 비디버그 release 빌드입니다. SHA-256: `19b431b771f09fa5ed1d86334a2be5cd0302578959f96cbe2eae104bba268360` (20,678,200 bytes). 단위 검사 39개 통과, Release Lint 오류 0개·경고 43개입니다. 아래 통합 검사 **15개는 같은 최종 APK에서 기능·시스템 상태가 모두 통과**했습니다.
+
+| 동일 APK 검사 / Checks on this exact APK | 개수 / Count | 결과 / Result |
+|---|---:|---|
+| 자체 연결·가상 USB 키보드: 분할/전체화면 복귀, 커서/삭제/단축키, 내비·음소거 후 입력, 메뉴 복귀, 바 터치 후 입력, 메뉴에서 Tab 32회씩, 보조 키 연결 중단 후 음소거·볼륨 직후 타이핑 및 메뉴 입력 분리 / Built-in connection and virtual USB keyboard: layouts, cursor/deletion/shortcuts, navigation/mute then typing, menu return, bar touches, 32 Tabs per menu, helper failure with immediate audio-key/typing and menu isolation | 8 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 배포 설정·테스트 진입 차단 / Release configuration and disabled test entry | 1 | 통과 / Pass |
+| 앱 길게 누르기 메뉴·즐겨찾기 추가/삭제 / App long-press actions and explicit favorite add/remove | 1 | 통과 / Pass |
+| Settings·Clock 좌우 실행 및 실제 터치·스톱워치 시작/정지 / Settings and Clock side by side, actual touches and stopwatch start/pause | 1 | 통과 / Pass |
+| 선택·미선택 앱 단독 열기와 구역 복귀 / Assigned and unassigned standalone apps and pane return | 1 | 통과 / Pass |
+| 루트 실행 어댑터: 설정·앱 목록에서 보조 입력 창 포커스 해제와 키보드 복귀 / Root launch adapter: key helper yields focus to settings/picker and restores editor input | 1 | 통과 / Pass |
+| 공식 Shizuku·가상 Bluetooth 키보드·화면 키보드 동시 활성화: 메뉴 포커스 및 복귀, 보조 연결 중단 뒤 입력·음소거·볼륨 직후 타이핑·메뉴 입력 분리 / Official Shizuku, virtual Bluetooth keyboard and on-screen IME: menu focus/return, fallback typing, mute, immediate volume/typing and menu isolation | 2 | 통과 / Pass |
+
+재링크 자료의 애플리케이션 클래스 105개(자동 생성 리소스 포함 139개), 런타임 파일 30개를 최종 빌드 입력과 바이트 단위로 대조했습니다. 자료로 APK를 재구성·서명·설치한 뒤 바 터치 후 물리 키보드 입력 검사 1개도 기능·시스템 상태 모두 통과했습니다. 재구성 APK 검사는 위 원본 APK 15개와 별도입니다. 자료는 `DriveDeck-1.0.1-rc4-relink.zip`에 제공합니다.
+
+전용 Android 13 에뮬레이터(1600×900, density 160)에서 검증했습니다. 키보드는 Linux uinput 가상 장치이며 InputReader를 거치는 입력과 수신 장치 ID를 확인합니다. 실제 USB 장치나 Bluetooth 무선 통신 검사가 아닙니다. 자체 연결은 Shizuku 서버를 중지하고 실제 무선 디버깅 연결·셸 UID 2000을 확인했습니다. Shizuku 검사는 공식 서버를 사용했습니다. 루트 검사는 AOSP 실행 어댑터를 사용하며 실제 Magisk 승인 검사는 아닙니다.
+
+개발 중 재현한 첫 글자 누락·순서 뒤바뀜·메뉴 입력 유입과 실패 자료는 보존합니다. 한 후보에서는 설정 닫기 터치 중 보조 입력 창이 포커스를 가져와 메뉴가 남았습니다. 최종 후보는 메뉴가 열린 동안 보조 입력 창의 포커스 가능 여부와 주기적 포커스 요청을 함께 끄며, 세 연결 방식에서 실제 해제를 검사합니다. 다른 후보에서는 창이 포커스를 받자마자 앱 1로 복원해 음소거 키를 놓쳤습니다. 자동 창 포커스 콜백의 복원을 제거하고 실제 키 처리 후 복원하도록 정리했습니다. 앞선 후보에서 시작 시 `HardwareRenderer.nSetStopped`의 6,000ms 이상 지연도 관찰했습니다. **최종 검사 통과가 이 간헐적 시작 지연의 해결을 입증하지는 않습니다.** 시스템 ANR과 6,000ms 상태 판정 기준을 완화하지 않았습니다.
+
+일반 보조 창은 해당 화면이 최상위가 아닐 때 시스템 포커스 목록에서 제외될 수 있어, display 0 포커스 목록의 단일 스냅샷 대신 실제 음소거 DOWN/UP 수신·6.5초 대기·정확한 후속 입력을 확인합니다. 보조 프로세스 실행을 지연시키는 검사는 해당 실행 어댑터가 있는 루트 경로에만 적용했습니다. 최종 후보 이전의 반복 음량 검사 등은 위 15개에 포함하지 않습니다.
+
+사용자 폰·실제 차량, 물리 USB/Bluetooth 키보드, 한국어 입력기·한영 전환, 다른 Android/OEM, 장치 재연결·시동 전원 차단·장시간 주행은 확인 전입니다. 이 AOSP 이미지의 `ro.adb.secure=0` 때문에 실제 폰의 ADB 인증 정책도 별도 확인이 필요합니다.
+
+**Neither the sidebar nor favorites bar accepts keyboard focus, including while menus are open.** Touch and long-press actions remain available. This preview also changes fallback input after the optional key helper fails, preserves letter order immediately after mute/volume, and isolates menu input. Stable remains 1.0.0. This non-debuggable versionCode 45 APK retains the existing certificate. All 39 unit tests and the 15 exact-APK integration checks above passed; Release Lint reports 0 errors and 43 warnings.
+
+All 105 application classes (139 including generated resources) and 30 runtime files in the LGPL relink materials match the final build inputs byte for byte. A reconstructed, signed and installed APK separately passed one bar-touch/physical-keyboard check with system health. That check is excluded from the 15 original-APK checks.
+
+Tests use a dedicated Android 13 emulator at 1600×900, density 160. Virtual USB/Bluetooth keyboards send Linux uinput events through InputReader, with receiving-device IDs checked. These do not test physical USB devices or Bluetooth radio. Built-in connection checks use actual wireless debugging at shell UID 2000 with Shizuku stopped; Shizuku checks use the official server. Root checks use an AOSP launch adapter, not actual Magisk approval.
+
+Development failures remain recorded, including lost/reordered first letters, menu input leakage and startup renderer stalls of at least 6,000 ms. An earlier candidate also left settings open when the key helper reclaimed focus during the close-button touch. The final candidate disables both that window's focus eligibility and periodic focus requests during menus; actual focus release is checked on all three connection paths. Another candidate restored the editor from a window-focus callback before receiving a mute key. That callback restoration was removed, retaining restoration after actual key handling. Passing final checks does not establish that the intermittent startup stall is fixed. System ANR and the 6,000 ms health threshold remain unchanged. A single display-0 focus snapshot was replaced with actual mute DOWN/UP receipt, a 6.5-second wait and exact subsequent text, since an ordinary window's focus eligibility depends on the top display. The delayed-launch adapter test runs only on its applicable root path. Earlier-candidate stress and recovery tests are not counted in the final 15.
+
+The user's phone/car, physical keyboards, Korean IMEs and language switching, other Android/OEM versions, hotplugging, ignition power loss and prolonged driving remain unverified. Actual-phone ADB authentication also remains outside this AOSP image's `ro.adb.secure=0` scope.
+
 ## 1.0.1-rc3 물리 키보드 시험판 / Physical keyboard preview
 
 앱 1의 물리 키보드 입력 경로, 내비 터치 뒤 입력 대상 유지, 설정·앱 목록 복귀 시 첫 글자와 메뉴 입력 분리를 수정했습니다. 자체 무선 디버깅·루트·Shizuku 연결을 유지합니다. 정식 채널은 1.0.0, 시험 채널은 1.0.1-rc3입니다.
