@@ -10,6 +10,8 @@
 
 최종 배포 APK의 **핵심 검사 7개가 기능·시스템 상태 모두 통과**했습니다. 배포 설정 1개, 음소거 입력 2개, 자동 재연결 1개, 미선택/선택 앱의 단독 실행·실제 터치·구역 복귀 1개, 실제 Settings/Clock 좌우 실행·터치 1개, 한국어↔영어 전환·설정 보존 1개입니다. 단독 실행 검사는 앞선 수정 확인 실행에서도 통과했습니다. 최종 검사 중 새 Android ANR이나 watchdog 지연은 관찰되지 않았습니다.
 
+게시 후 RC8에서 정식 채널을 통해 1.0.0을 실제 다운로드·검증하고, 새 프로세스에서 설치 파일을 복구해 Android 확인창으로 설치했습니다. 두 단계의 기능·시스템 상태가 통과했고, 설치된 versionCode 41·APK 해시·기존 설정 XML 전체 보존을 확인했습니다. 정식·시험 채널 모두 같은 APK를 가리킵니다.
+
 검사는 실제 비디버그 release APK를 설치한 Android 13 전용 에뮬레이터에서 수행합니다. 에뮬레이터의 AOSP root 실행 어댑터는 계측 앱에만 들어 있으며, 실제 차량의 Magisk 승인 절차를 대신 검증한 것은 아닙니다. 실차 음소거·연결 끊김의 해결, 장시간 주행, 모든 앱·제조사 조합은 확인 완료가 아닙니다.
 
 Version 1.0.0 is the official GitHub release; the RC8 results below are retained as historical evidence. The release APK disables debugging and rejects its test-only connection entry point. It retains the existing certificate for RC upgrade compatibility. All 33 unit tests passed; Release Lint reported 0 errors and 37 warnings.
@@ -17,6 +19,8 @@ Version 1.0.0 is the official GitHub release; the RC8 results below are retained
 The first release candidate reproduced a standalone-launch failure twice: the external app was in front, but input remained on an off virtual display. The revised candidate cancels input restoration and hides the panes before opening the external app. Queued focus requests also recheck the current screen state. Failure evidence is retained.
 
 All **seven core checks on the final release APK passed both functional and system-health checks**: release configuration (1), mute input (2), automatic reconnection (1), standalone launch/touch/pane return for assigned and unassigned apps (1), actual side-by-side Settings/Clock interaction (1), and Korean/English switching with settings preservation (1). Standalone launching also passed the preceding fix-verification run. No new Android ANR or watchdog delay was observed during the final suite.
+
+After publication, RC8 downloaded and verified 1.0.0 through the stable channel. A new process recovered the file and opened Android's installation confirmation. Both instrumented phases passed functional and system-health checks. Installation completed with versionCode 41, the matching APK hash, and the entire launcher settings XML preserved. Stable and preview channels point to the same APK.
 
 Checks run against the actual non-debuggable release APK on a dedicated Android 13 emulator. The AOSP root-launch adapter exists only in the instrumentation app; these checks do not validate the vehicle's Magisk approval flow. Vehicle mute/disconnection resolution, prolonged driving, and every app/manufacturer combination remain unverified.
 
