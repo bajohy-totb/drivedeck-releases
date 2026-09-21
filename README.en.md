@@ -6,9 +6,9 @@
 
 DriveDeck is an Android launcher for in-car devices. It runs your installed navigation app and another app in separate panes, with quick layout controls, favorites, a saved Home combination, and day/night themes.
 
-[**Download RC8 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.0.0-rc8/DriveDeck-1.0.0-rc8.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete user guide](docs/guide.en.md)
+[**Download 1.0.0 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.0.0/DriveDeck-1.0.0.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete user guide](docs/guide.en.md)
 
-> **1.0.0-rc8 is a preview.** Vehicle mute freezes, lost connections, and delays after repeated standalone launches have not been confirmed resolved. This is not stable 1.0.0. Earlier RC7 testing also recorded a roughly 6.8-second stall while a screen was stopping.
+> **1.0.0 is the official GitHub release.** This release APK disables debugging and can update existing RC installations. Resolution of reported vehicle mute freezes, lost connections, and repeated standalone-launch delays has not been confirmed in a vehicle. Read the [validation scope and known limitations](docs/validation.md).
 
 ![DriveDeck's English settings over the two-app workspace in a real Android emulator](images/en-settings.png)
 
@@ -27,7 +27,7 @@ DriveDeck is an Android launcher for in-car devices. It runs your installed navi
 | Display settings | Set theme, control-bar side, favorites bar, and app/keyboard scale. |
 | Media and guidance | Show supported playback controls and navigation notifications with permission. |
 | Korean and English | Follow the device language or choose a language for DriveDeck only. |
-| In-app updates | Download previews and confirm installation in Android. |
+| In-app updates | Download from stable or preview channels and confirm installation in Android. |
 | Settings backup | Export app choices, Home preset, layout, favorites, and theme. |
 | Diagnostics and recovery | Retry connections, reopen panes, save diagnostics, and recover from startup failures. |
 
@@ -48,12 +48,12 @@ Open **Settings → Device → Language / 언어** and choose Follow device sett
 1. Use an **Android 13 or newer device with root access**. Compatibility depends on the manufacturer's display and input implementation.
 2. Install the APK over your existing DriveDeck. You do not need to uninstall the app or clear its settings to update.
 3. Allow the root connection to run apps inside the panes. Optionally set DriveDeck as the default launcher in Settings.
-4. Open **Settings → Device → Updates → Receive preview versions**, then check for updates. In-app updates are available from RC7 onward.
+4. Open **Settings → Device → Updates**, then check for updates. Stable versions are available with **Receive preview versions** turned off. In-app updates are available from RC7 onward.
 5. Download an update and tap Install update. If Android asks you to allow installations from DriveDeck, allow it, return, and tap Install update again.
 
 ![English update screen](images/en-updates.png)
 
-Automatic checks run when the launcher starts or resumes, skipping checks within six hours of the last one. Downloads and Android installation confirmation remain manual. Only previews are available now, so the stable channel may have no update. Park before installing.
+Automatic checks run when the launcher starts or resumes, skipping checks within six hours of the last one. Downloads and Android installation confirmation remain manual. Version 1.0.0 is offered on both channels, so existing RC users do not need to change their channel selection. Park before installing.
 
 ## Learn more
 

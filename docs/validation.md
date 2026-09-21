@@ -2,7 +2,25 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
-## 한국어
+## 1.0.0 출시 검증 / Release validation
+
+1.0.0은 GitHub 정식 배포이며, 아래 RC8 기록은 과거 시험 결과로 보존합니다. 배포용 APK는 디버깅이 꺼져 있고 테스트 전용 연결 진입점을 거부합니다. 기존 RC와 같은 서명으로 업데이트 호환성을 유지합니다. 단위 검사 33개 통과, Release Lint 오류 0개·경고 37개입니다.
+
+첫 release 후보에서 단독 실행 앱이 전면에 떠도 입력이 꺼진 가상 디스플레이에 남는 실패를 두 번 재현했습니다. 수정본은 단독 실행 전에 입력 복원을 취소하고 분할 화면을 숨긴 뒤 외부 앱을 열도록 순서를 정리했습니다. 큐에 남은 focus 요청도 실행 시 현재 화면 상태를 다시 확인합니다. 실패 이력은 보존합니다.
+
+최종 배포 APK의 **핵심 검사 7개가 기능·시스템 상태 모두 통과**했습니다. 배포 설정 1개, 음소거 입력 2개, 자동 재연결 1개, 미선택/선택 앱의 단독 실행·실제 터치·구역 복귀 1개, 실제 Settings/Clock 좌우 실행·터치 1개, 한국어↔영어 전환·설정 보존 1개입니다. 단독 실행 검사는 앞선 수정 확인 실행에서도 통과했습니다. 최종 검사 중 새 Android ANR이나 watchdog 지연은 관찰되지 않았습니다.
+
+검사는 실제 비디버그 release APK를 설치한 Android 13 전용 에뮬레이터에서 수행합니다. 에뮬레이터의 AOSP root 실행 어댑터는 계측 앱에만 들어 있으며, 실제 차량의 Magisk 승인 절차를 대신 검증한 것은 아닙니다. 실차 음소거·연결 끊김의 해결, 장시간 주행, 모든 앱·제조사 조합은 확인 완료가 아닙니다.
+
+Version 1.0.0 is the official GitHub release; the RC8 results below are retained as historical evidence. The release APK disables debugging and rejects its test-only connection entry point. It retains the existing certificate for RC upgrade compatibility. All 33 unit tests passed; Release Lint reported 0 errors and 37 warnings.
+
+The first release candidate reproduced a standalone-launch failure twice: the external app was in front, but input remained on an off virtual display. The revised candidate cancels input restoration and hides the panes before opening the external app. Queued focus requests also recheck the current screen state. Failure evidence is retained.
+
+All **seven core checks on the final release APK passed both functional and system-health checks**: release configuration (1), mute input (2), automatic reconnection (1), standalone launch/touch/pane return for assigned and unassigned apps (1), actual side-by-side Settings/Clock interaction (1), and Korean/English switching with settings preservation (1). Standalone launching also passed the preceding fix-verification run. No new Android ANR or watchdog delay was observed during the final suite.
+
+Checks run against the actual non-debuggable release APK on a dedicated Android 13 emulator. The AOSP root-launch adapter exists only in the instrumentation app; these checks do not validate the vehicle's Magisk approval flow. Vehicle mute/disconnection resolution, prolonged driving, and every app/manufacturer combination remain unverified.
+
+## RC8 기록 · 한국어
 
 **RC8은 시험판이며 정식 1.0.0 출시 판정은 미완료입니다.** 이 페이지는 기능 성공과 응답성 문제를 함께 기록합니다.
 
@@ -30,7 +48,7 @@
 
 차량 음소거 버튼, Bluetooth·후방카메라 복귀, 시동 전원 차단, 제조사별 루트·입력 처리, 장시간 반복 단독 실행을 포함한 모든 차량 조합은 검증 완료가 아닙니다. 차량의 기존 멈춤·연결 끊김이 해결됐다고 주장하지 않습니다.
 
-## English
+## RC8 history · English
 
 **RC8 is a preview, not a stable 1.0.0 release.** This page records both functional results and responsiveness issues.
 
