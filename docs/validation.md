@@ -2,6 +2,38 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.0.1-rc2 자체 연결 시험판 / Built-in connection preview
+
+Shizuku 설치 없이 Android 무선 디버깅에 직접 연결하는 기능을 추가합니다. Android 13 이상이며 처음에는 시스템이 보여 주는 6자리 코드로 페어링해야 합니다. 루트·Shizuku 선택은 유지하고 기존 설치의 연결 방식도 보존합니다. 정식 채널은 1.0.0, 시험 채널은 1.0.1-rc2입니다.
+
+APK는 versionCode 43, 기존 서명, 비디버그 release 빌드입니다. SHA-256: `7ffda0f21af6d82024c304d038f774a241c0e479aacd0a7cc7b750a93d594600` (20,629,048 bytes). 단위 검사 39개 통과, Release Lint 오류 0개·경고 44개입니다. 아래 15개 검사는 동일 APK에서 기능·시스템 상태가 모두 통과했습니다.
+
+| 검사 / Check | 개수 / Count | 결과 / Result |
+|---|---:|---|
+| 배포 설정·테스트 진입 차단 / Release configuration and disabled test entry | 1 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 잘못된 코드·취소, 실제 알림 페어링, 저장된 연결, 자동 복구, 한영 설정 화면 / Incorrect code and cancellation, real notification pairing, saved connection, bridge recovery, Korean/English setup | 5 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 실제 Settings·Clock 좌우 실행 / Actual Settings and Clock side by side | 1 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 한 구역·두 구역 음소거 / Mute input with one and two panes | 2 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 키보드 입력 대상 유지 / Keyboard input routing | 1 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 미선택·선택 앱 단독 실행과 복귀 / Assigned and unassigned standalone apps and return | 1 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 실제 Settings 화면 조작·Clock 스톱워치 시작/정지 / Physical touches in Settings and Clock stopwatch start/pause | 1 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 기존 루트 거부 처리·재연결 / Existing root denial and reconnect paths | 2 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 공식 Shizuku 좌우 앱 실행·터치 / Official Shizuku panes and touch | 1 | 기능·시스템 상태 통과 / Functional and system-health pass |
+
+전용 Android 13 에뮬레이터(1600×900, density 160)에서 Shizuku 서버를 중지한 상태로 자체 연결과 관련 기능을 검증했습니다. 실제 Android 코드와 알림의 RemoteInput/PendingIntent 경로를 사용하며, 루트 실행 어댑터로 자체 연결을 대신하지 않았습니다. 셸 UID 2000을 확인했습니다. 별도 루트 복구 검사는 AOSP 실행 어댑터, Shizuku 회귀 검사는 공식 서버를 사용했습니다. 실제 Magisk 승인을 검증한 것은 아닙니다. 이 AOSP 이미지의 `ro.adb.secure=0` 설정 때문에 실제 폰의 ADB 인증 정책까지 확인한 것도 아닙니다.
+
+초기 구현에서는 mDNS 전환과 이전 ADB 스트림의 늦은 종료 응답을 처리하지 못해 연결이 실패했습니다. 수정 후 자체 연결 검사 5개가 모두 통과했습니다. 초기 개발 검사에서 6,101ms 렌더링 지연도 관찰됐으며 그 기록을 보존합니다. 최종 APK의 앞선 검사에서는 Settings를 강제 종료해 남긴 페어링 스레드·실패 창과 재시작 직후 설정 항목 탐색 실패 때문에 후속 검사가 실패했습니다. 정상적인 코드 창 취소 순서로 시험을 고치고 같은 APK에서 다시 검증했습니다. 실패 기록을 삭제하거나 시스템 상태 판정 기준을 완화하지 않았습니다.
+
+사용자 폰·실제 차량, 다른 Android 버전·제조사, Wi-Fi 변경·기기 재부팅 후 복구, 시동 전원 차단과 장시간 주행은 확인 전입니다. 연결 재시도 시 무선 디버깅이 켜져 있어야 합니다. LGPL 라이브러리 소스·애플리케이션 오브젝트·교체 절차는 같은 배포의 `DriveDeck-1.0.1-rc2-relink.zip`에 제공합니다.
+
+This preview adds direct wireless-debugging pairing without installing Shizuku. It requires Android 13+ and the six-digit code from Android Settings. Root and Shizuku remain available; upgrades retain the previous connection method. Stable stays on 1.0.0. The APK uses versionCode 43, the existing certificate and a non-debuggable release build. All 39 unit tests pass; Release Lint reports 0 errors and 44 warnings. All 15 checks in the table passed functionality and system health on this exact APK.
+
+Built-in connection and related feature checks used a dedicated Android 13 emulator at 1600×900, density 160, with the Shizuku server stopped. They exercised real Android pairing and the notification's RemoteInput/PendingIntent route, then verified shell UID 2000 without a root-launch adapter. Separate root recovery used an AOSP launch adapter; the Shizuku regression used the official server. Actual Magisk approval was not tested. This AOSP image has `ro.adb.secure=0`, so the results do not validate a real phone's ADB authentication policy.
+
+Early connection failures exposed mDNS handoff and late ADB stream-close handling; those were fixed. An early 6,101ms renderer stall remains in the records. Earlier checks of the final APK also failed after force-stopping Settings left pairing state behind, and when a settings row was not found immediately after an emulator restart. The test now cancels the code dialog normally, and the same APK was tested again. Failures remain recorded and health thresholds were not relaxed.
+
+The user's phone, actual vehicles, other Android versions/manufacturers, Wi-Fi changes, device-reboot recovery, ignition power loss and prolonged driving remain unverified. Wireless debugging must be enabled when reconnecting. The companion relink ZIP supplies LGPL source, application object code and replacement instructions.
+
 ## 1.0.1-rc1 Shizuku 시험판 / Shizuku preview
 
 루팅하지 않은 기기에서 사용할 Shizuku 연결을 추가했습니다. **Android 13 이상**, 별도로 설치·시작한 공식 **Shizuku 13 이상**이 필요합니다. 정식 채널은 1.0.0을 유지하며 1.0.1-rc1은 시험 채널에서 제공합니다. APK는 versionCode 42, 기존 서명, 디버깅이 꺼진 배포용 빌드입니다. SHA-256: `0b9e62f1463fa7dacbadb7fd8e1c58515ce00ddb43c47cf3a3fc806ded1f3eb7` (4,799,510 bytes).

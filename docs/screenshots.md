@@ -50,8 +50,16 @@ Entries labeled ‘테스트’ or ‘검증’ are fixture apps installed on th
 
 아래 두 화면은 1.0.1-rc1 시험 버전에서 직접 캡처합니다. 위의 기존 12개 이미지는 RC8 기록입니다.
 
-These two screenshots were captured from the 1.0.1-rc1 release APK at 1600?900. They show connection settings; the pane apps behind the dialog are still opening. The twelve images above remain RC8 captures.
+These two screenshots were captured from the 1.0.1-rc1 release APK at 1600×900. They show connection settings; the pane apps behind the dialog are still opening. The twelve images above remain RC8 captures.
 
 | 한국어 | English |
 |---|---|
 | ![Shizuku 연결](../images/ko-shizuku.png) | ![Shizuku connection](../images/en-shizuku.png) |
+
+## 자체 연결 / Built-in connection (1.0.1-rc2)
+
+1.0.1-rc2 배포용 APK의 실제 Android 13 에뮬레이터 설정 화면입니다. / Actual Android 13 emulator captures of setup in the 1.0.1-rc2 release APK.
+
+| 한국어 | English |
+|---|---|
+| ![자체 연결](../images/ko-native-adb.png) | ![Built-in connection](../images/en-native-adb.png) |

@@ -6,6 +6,24 @@
 
 The stable 1.0.0 release requires Android 13 or newer with root access. Install the APK, open DriveDeck, and allow the root connection. Select an installed app for navigation and another for App 1. The same app cannot be assigned to both panes.
 
+### Built-in connection preview (1.0.1-rc2)
+
+Connect directly through Android wireless debugging. This is the default for a new installation; upgrades retain the existing connection method.
+
+1. Connect to Wi-Fi and open **Settings → Device → Connection method → Built-in connection → Built-in connection setup** in DriveDeck.
+2. Tap **Start setup · Enable code-entry notification** and allow notifications.
+3. In Android Developer options, enable **Wireless debugging** and open **Pair device with pairing code**. If Developer options is missing, tap Build number seven times in About device. Menu names vary by manufacturer.
+4. Keep the code screen open, pull down notifications, and enter its six digits using DriveDeck's **Enter code** action. Leaving Android Settings may expire the code.
+5. After the completion notification, return to DriveDeck and choose apps for both panes.
+
+![Built-in connection setup](../images/en-native-adb.png)
+
+Pairing stays on this device and is excluded from layout backups. Wireless debugging must be enabled when reconnecting the app. After a reboot, Wi-Fi change or deleting the pairing in Android, you may need to enable wireless debugging or pair again. If your device lacks wireless debugging, use Root or Shizuku.
+
+For an incorrect code, dismiss Android's failure dialog, open a new code screen and retry. If discovery fails, manual code and pairing-port entry is available while keeping the system code screen open. The pairing port is the number after the colon on that screen.
+
+See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.0.1-rc2).
+
 ### Shizuku preview (1.0.1-rc1)
 
 Unrooted Android 13+ devices can select Shizuku in 1.0.1-rc1.
