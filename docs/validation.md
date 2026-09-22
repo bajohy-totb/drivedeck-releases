@@ -2,6 +2,80 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.1.0 정식 새 디자인 / Stable interface redesign
+
+기존 서명을 유지한 비디버그 APK, versionCode 48입니다. SHA-256: `fa7b831a428df33b930c78b4dfbca27e4f99252a95962caf593e8c668f3e5fde` (20,751,928 bytes). **단위 검사 42개와 동일한 최종 APK의 통합 검사 31개가 통과했습니다.** Release Lint 오류 0개, 경고 43개입니다. 기능 확인뿐 아니라 새 Android ANR·충돌과 6,000ms 감시 기준도 통과한 경우만 집계합니다.
+
+This non-debuggable versionCode 48 APK retains the existing certificate. **42 unit tests and 31 exact-APK integration checks passed.** Release Lint: 0 errors, 43 warnings. Integration passes require functional assertions and system health, including new ANRs/crashes and the unchanged 6,000ms watchdog threshold.
+
+동일 APK의 별도 실패 검사 기록: 5묶음. / Additional failed runs of this exact APK: 5. 아래 표는 성공한 경로의 범위이며 모든 기기·상황의 검증을 뜻하지 않습니다. / The table describes successful coverage, not exhaustive device or scenario testing.
+
+**최종 APK의 두 앱 조작 검사 한 실행에서 화면 그리기(`HardwareRenderer.nSyncAndDrawFrame`)가 6,115ms 지연됐습니다.** 조작 기능은 성공했지만 시스템 상태는 미통과이며, 이 실행은 아래 성공 수에서 제외합니다. 새 Android ANR은 없었습니다. 지연이 해결됐다고 주장하지 않습니다.
+
+**One two-app interaction run of the final APK recorded a 6,115ms draw stall in `HardwareRenderer.nSyncAndDrawFrame`.** Functional assertions passed, but system health failed; that run is excluded from the successful count. No new Android ANR was recorded. The stall remains unresolved.
+
+Shizuku 최초 두 검사는 테스트 기기에서 DriveDeck 사용 권한이 꺼져 있어 연결 전제조건에서 실패했습니다. 공식 Shizuku 앱의 애플리케이션 관리 화면에서 DriveDeck만 허용한 뒤 검사를 진행했습니다. 최초 실패는 보존합니다.
+
+The first two Shizuku checks failed their authorization precondition because DriveDeck was not allowed on the test device. Only DriveDeck was then authorized through the official manager's application-management screen. Initial failed records are retained.
+
+에뮬레이터 프로그램 재시작 직후의 두 앱 검사도 무선 디버깅 서버가 준비되지 않아 연결 단계에서 실패했습니다. 동시에 Android 잠금 화면 서비스의 부팅 ANR 파일이 생성돼 시스템 상태도 미통과입니다. 시스템 부팅과 실제 무선 디버깅 서버의 수신 상태를 확인한 뒤 따로 검사했으며, 원본 실패 기록을 보존합니다.
+
+An immediate post-restart two-app check failed before opening its apps because the wireless-debugging server was not ready. A new Android keyguard-service boot ANR file also failed system health. A separate check followed after boot and the real wireless-debugging listener were ready. The earlier failure remains recorded.
+
+다음 검사에서는 잠금 해제용으로 보내던 MENU 키가 전면 시계 앱의 옵션 메뉴를 열어 스톱워치 선택을 가렸습니다. 시스템 상태는 통과했지만 기능 검사는 실패했습니다. 검사 스크립트를 `wm dismiss-keyguard`로 수정하고 시계를 멈춘 초기 상태로 맞췄습니다. APK는 변경하지 않았으며 이 실패도 보존합니다.
+
+The next check failed to select Stopwatch because the test runner's unlock MENU key opened the foreground Clock app's overflow menu. System health passed, but the functional check failed. The runner now uses `wm dismiss-keyguard`, and the stopwatch was paused before the next run. The APK was unchanged; the failed record is retained.
+
+화면 촬영 중 시계 숫자와 지도 일부가 표시되지 않는 현상은 DriveDeck 밖에서 단독 실행한 앱에서도 관찰됐습니다. 전용 에뮬레이터 프로그램 재시작 후 정상 표시됐지만 후속 영문 촬영에서 다시 나타났습니다. 원인과 해결은 확인하지 못했습니다. 자동 검사는 이러한 픽셀 누락을 검출하지 않습니다. 문서에는 같은 APK가 정상 표시된 실제 캡처를 사용합니다.
+
+Missing clock digits and incomplete map rendering were also observed when those apps ran standalone outside DriveDeck. Rendering returned after restarting the dedicated emulator but the issue recurred in a later English capture. Cause and resolution remain unconfirmed. Automated checks do not detect these missing pixels. Documentation uses actual captures where the same APK rendered normally.
+
+영문 촬영 한 실행은 기능 검사를 통과한 뒤 PC의 결과 파일 읽기·쓰기가 겹쳐 최종 보고서 저장이 중단됐습니다. 완료되지 않은 기록은 보존하되 성공 수에 포함하지 않고, 별도 영문 촬영 검사로 확인했습니다.
+
+One English capture completed its functional assertions, but concurrent host file access interrupted the final report write. The incomplete record is retained and excluded from successful coverage; a separate English capture check was run.
+
+| 최종 APK 검사 / Exact-APK checks | 개수 / Count |
+|---|---:|
+| 실제 세로 480×900: 설정·앱 목록, 메뉴 반복 전환, 분할·순서·확대·헤더, 실행 중 방향 고정 / Actual portrait: menus/library, repeated input handoff, arrangement/fullscreen/headers, orientation lock | 4 |
+| 차량 비율 1676×680, density 255: 새 디자인, 드래그·누락된 MOVE 처리·조합 복원·백업 검증·배포 설정 / Car-shaped display: design, short/coalesced swipes, combinations, backup and release configuration | 9 |
+| 작은 가로 800×480: 설정·앱 페이지·검색 / Small landscape: settings, app pages and search | 1 |
+| 자체 연결: Back·크기 복구 4개, 가상 USB 키보드 4개, 터치 중 복구 요청 1개, Settings/Clock 조작, 앱 옵션, 언어·설정 보존 / Built-in connection: Back/geometry, virtual USB typing, recovery during touch, two apps, app options and language preservation | 12 |
+| 공식 Shizuku·가상 Bluetooth: 메뉴 복귀·보조 입력 경로·음량/음소거 후 입력 / Official Shizuku and virtual Bluetooth: menu return and fallback typing after volume/mute | 2 |
+| 공개 1.0.1 위 설치·설정 유지·앱 터치 / Upgrade from published 1.0.1, settings and app interaction | 1 |
+| 실제 지도·시계 앱으로 한국어·영어 촬영 / Korean and English captures with actual map/clock apps | 2 |
+
+### 구현 중 발견한 실패와 처리
+
+- 앱 격자 배치와 빠른 드래그의 마지막 위치 처리를 수정했습니다. 작은 화면의 메뉴 전환에서 입력 창이 준비되기 전에 복구용 키가 전달돼 시험용 입력 앱의 포커스 없음 ANR이 발생했습니다. 메뉴 작업을 앞으로 가져오고 창 변경을 동기화한 뒤 입력을 넘깁니다.
+- 확대에서 분할로 돌아올 때 키보드 포커스가 빠지는 문제를 실제 사이드바 터치로도 재현했습니다. 크기 복구는 키를 보내지 않고 작업 선택·창 동기화·취소 터치를 사용하며, 이전 Activity의 첫 프레임 뒤에 나타나는 새 창 프레임까지 관찰합니다. 최종 검사는 실제 확대·분할 버튼을 세 번 왕복하며 창 포커스·입력·장치 ID를 확인합니다.
+- 후속 후보에서는 자동 복구 터치가 사용자의 첫 터치를 취소하는 경우가 재현됐습니다. 사용자가 터치하면 해당 크기 변경의 자동 복구를 중지합니다. 별도 검사는 버튼을 누르고 있는 사이 복구를 요청해도 손을 뗄 때 클릭이 완료되는지 확인합니다.
+- 그다음 후보의 차량 비율 검사에서는 기능 8개가 통과했지만 전체화면 전환 중 시험 앱의 포커스 없음 ANR이 기록됐습니다. 입력 허용을 복원할 때 보내던 보조 키를 제거했습니다. 창이 없는 동안 키가 대기하며 ANR 타이머를 시작하는 경로를 줄였으며, 기존 실패 결과는 성공으로 바꾸지 않습니다.
+- 이전 후보의 연속 회전 복귀가 Android의 `mDisplayFrozen=true`, `waitingForConfig=true`에서 멈췄습니다. 재부팅 후 동시 컴파일 없이도 재현됐습니다. **정식 버전은 시작할 때의 화면 방향을 고정합니다.** 가로·세로 기기에서 시작할 수 있고 분할 방향은 설정할 수 있지만 실행 중 기기 회전은 지원하지 않습니다. 최종 검사는 방향 변경 요청에도 방향·검색어·두 앱이 유지되고 디스플레이가 멈추지 않는지 확인합니다. 회전 문제 자체를 해결했다고 주장하지 않습니다.
+- 이전 후보는 `HardwareRenderer.nSetStopped`에서 **6,164ms**, 글자 그리기에서 **6,868ms** 지연을 기록했습니다. 후자는 PC의 재링크 빌드와 겹쳤습니다. 재부팅 후 같은 후보는 시스템 상태 기준을 통과했지만 회전 복귀에는 실패했습니다. 원인을 단정하거나 모든 환경의 렌더링 지연이 해결됐다고 주장하지 않습니다. 실패 원본을 보존하며 최종 후보 성공 수에는 포함하지 않습니다.
+
+### Failures found during implementation
+
+- The app grid and short-swipe release position were corrected. An early small-screen menu transition sent a restoration key before its target window existed, causing a no-focused-window ANR in the editor fixture. Menu handoff now raises the target task and synchronizes window changes.
+- Losing keyboard focus after returning from fullscreen reproduced with actual sidebar touches. Layout recovery now selects the task, synchronizes windows and uses cancelled touch events without restoration keys. It observes replacement-window frames beyond the old Activity's first resized frame. The final check performs three actual expand/split cycles and verifies window focus, typing and device IDs.
+- A later candidate's automatic recovery touch cancelled the user's first tap. User touch now supersedes that resize's automatic restoration. A separate check requests restoration between a button DOWN and UP and verifies that the click completes.
+- The following candidate passed eight car-shaped feature checks but recorded a no-focused-window ANR in the editor fixture during fullscreen transitions. Restoring editor routing no longer injects a synthetic key that could wait for a missing window and start Android's ANR timer. The earlier failed result remains a failure.
+- Earlier candidates froze during return rotation with `mDisplayFrozen=true` and `waitingForConfig=true`, including after reboot without concurrent compilation. **The release holds its starting orientation.** Landscape/portrait devices and manual split directions remain supported; live device rotation is not. Final tests assert that rotation requests preserve orientation, search and both displays without freezing. This avoids the failing path; it does not establish a live-rotation fix.
+- Earlier candidates recorded **6,164ms** in `HardwareRenderer.nSetStopped` and a **6,868ms** text-rendering stall. The latter overlapped a host relink build. After reboot, that same earlier candidate passed system health but still failed return rotation. Causes and resolution across environments remain unconfirmed. Failed evidence is retained and excluded from final-candidate pass counts.
+
+LGPL 재링크 자료는 최종 빌드의 애플리케이션 클래스 115개(생성 리소스 포함 149개), 런타임 파일 30개 및 원본 APK와 바이트 단위로 일치합니다. 자료로 재구성·서명·설치한 APK의 앱 목록·설정·두 앱 유지 검사 1개도 기능과 시스템 상태를 통과했습니다. 원본 APK 검사 수와 별도입니다.
+
+Relink inputs match the final build and original APK byte for byte. A reconstructed, signed and installed APK separately passed one app-library/settings/two-pane check with system health.
+
+공개 후 실제 1.0.1 업데이터로 정식 채널 다운로드·해시/서명 검사·프로세스 재시작 후 파일 복구·Android 설치 확인을 거쳐 1.1.0으로 업데이트했습니다. 설치된 APK 해시와 기존 설정 보존을 확인했습니다. 아래 최종 APK 검사 수와 별도입니다.
+
+After publication, the actual 1.0.1 updater downloaded and verified the stable release, restored the verified file after a process restart, and completed Android's installation confirmation. The installed 1.1.0 hash and settings preservation were checked. This is separate from the exact-APK count.
+
+전용 Android 13 에뮬레이터를 사용했습니다. 기본 가로 환경은 1600×900, density 160입니다. 자체 연결은 실제 Android 무선 디버깅·셸 UID 2000·Shizuku 중지 상태, Shizuku는 공식 서버를 사용했습니다. Root는 AOSP 실행 어댑터이며 실제 Magisk 승인 시험은 아닙니다. 키보드는 Linux uinput 가상 USB/Bluetooth 장치로 수신 장치 ID를 확인합니다. 실제 하드웨어나 Bluetooth 무선 통신 검사는 아닙니다.
+
+**실제 차량·물리 키보드·한국어 입력기·한영 전환·다른 OEM/Android·시동 전원 차단·장시간 주행은 확인하지 않았습니다.** 간헐적 음소거 오류나 이전 후보의 렌더링 지연이 모두 해결됐다고 주장하지 않습니다. 이 AOSP 이미지의 `ro.adb.secure=0` 때문에 실제 폰의 ADB 인증 정책도 별도 확인이 필요합니다.
+
+Tests use a dedicated Android 13 emulator, real built-in wireless debugging at shell UID 2000, the official Shizuku server and an AOSP Root launch adapter. Linux uinput USB/Bluetooth events verify received device IDs; they do not test physical hardware or radio transport. **Actual vehicles, physical keyboards, Korean IMEs, other OEM/Android versions, ignition power loss and prolonged driving remain unverified.** Passing checks does not establish resolution of every intermittent mute or renderer failure. Actual-phone ADB authentication remains outside this AOSP image's `ro.adb.secure=0` scope.
+
 ## 1.0.1 정식 연결·업데이트 튜닝 / Stable connection and update tuning
 
 초기 연결 응답을 화면 스레드 밖에서 기다리고, 종료한 앱의 대기 중인 연결을 취소합니다. 수동 재시도는 이전 예약을 취소하며 자동 재시도 간격은 최대 30초입니다. 업데이트 확인 실패는 성공으로 기록하지 않고, 5분 뒤 다음 시작·복귀 시 다시 확인할 수 있습니다. 정상 확인은 6시간 간격이며 수동 확인은 즉시 가능합니다. 시각·날짜·온도·미디어 문구가 같으면 반복해서 설정하지 않습니다. 아래 RC의 물리 키보드 포커스, Back 제한, 분할 크기 복구도 포함합니다.
