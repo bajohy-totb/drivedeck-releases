@@ -8,9 +8,9 @@ DriveDeck is an Android launcher for in-car devices. Display two installed apps 
 
 The launcher holds its starting screen orientation while running. Split direction and control-bar position remain adjustable in Settings.
 
-[**Download 1.1.0 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.1.0/DriveDeck-1.1.0.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete guide](docs/guide.en.md)
+[**Download 1.1.1 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.1.1/DriveDeck-1.1.1.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete guide](docs/guide.en.md)
 
-**Stable 1.1.0:** A new sage and orange interface, sidebar app library and settings, horizontal/vertical splits, a favorites popup, and named app combinations. Install over the existing app to retain settings. Requires Android 13 or newer and built-in wireless debugging, Root, or Shizuku.
+**Stable 1.1.1:** Tap Home to return to default home; hold Home to open Settings. Includes per-app 120–640dpi, a scrolling app library and editable app combinations. Install over the existing app to retain settings. Requires Android 13 or newer and built-in wireless debugging, Root, or Shizuku.
 
 ![DriveDeck 1.1.0 with two installed apps](images/en-workspace.png)
 
@@ -18,7 +18,7 @@ The launcher holds its starting screen orientation while running. Split directio
 
 ## Features
 
-The table and screenshots below describe stable 1.1.0. **[Preview 1.1.1-rc2](docs/preview.en.md)** adds per-app 120–640dpi, a scrolling app grid and an editor for apps, order and split ratio. Tap Home pairs to open the list; hold it to run default home. Enable **Receive preview versions** in the updater to get it.
+The features below describe stable 1.1.1. See the [scaling, library and pair guide](docs/preview.en.md). Images on this page were captured in 1.1.0; use the Home gestures described above.
 
 | Feature | What it does |
 |---|---|
@@ -26,10 +26,10 @@ The table and screenshots below describe stable 1.1.0. **[Preview 1.1.1-rc2](doc
 | Flexible arrangement | Automatic, horizontal or vertical splits; reverse pane order; left, right or bottom controls. |
 | Expand either app | Buttons show actual app names, with a separate return-to-split button. |
 | Drag the divider | Preview a ratio while dragging, then release to apply it. Range: 30–70%. Tap for ratio choices. |
-| App library | All, Favorites, Recent, Navigation, Music/video and Other filters, name search, responsive grid and paging. |
+| App library | Category filters, search, a responsive grid and vertical scrolling. |
 | App options | Long press or tap ⋯ for favorites, standalone launch, pane assignment, app info or uninstall. |
 | Quick favorites | The star opens up to three shortcuts and the full list. Choose automatic classification or the selected pane as the destination. |
-| Saved combinations | A Home preset plus up to eight named app pairs. Hold Home to open the list. |
+| Saved combinations | Edit up to eight pairs in Settings → Apps → App combinations. Tap Home for default home; hold for Settings. |
 | Settings | Display, Controls, Apps, Connection and Updates sections. Choose a drawer, centered dialog or bottom sheet. |
 | Input and recovery | Physical-keyboard routing to the secondary app, non-focusable control bars, connection retry and pane geometry recovery. |
 | Korean and English | Follow the device or select DriveDeck's language. |
@@ -52,7 +52,7 @@ Open **Settings → Controls → Language / 언어** to choose Follow device set
 3. Open **Settings → Updates → Updates** to check and download.
 4. Tap Install update and confirm in Android. If asked, allow installations from DriveDeck, return and tap Install update again.
 
-Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Stable offers 1.1.0; preview offers 1.1.1-rc2. Park before installing.
+Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Both stable and preview channels offer stable 1.1.1. Park before installing.
 
 ## Learn more
 

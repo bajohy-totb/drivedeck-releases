@@ -2,11 +2,11 @@
 
 [Home](../README.en.md) · [한국어](guide.ko.md) · **English**
 
-Screenshots and basic controls in this guide describe **stable 1.1.0**. See the [1.1.1-rc2 preview guide](preview.en.md) for per-app scaling, the scrolling library and pair editing. In the preview, tap Home pairs to open the list and hold it to run default home.
+This guide describes **stable 1.1.1**. **Tap Home for default home; hold Home for Settings.** See also [per-app scaling, scrolling library and pair editing](preview.en.md). Existing screenshots below were captured in 1.1.0 or the older version indicated.
 
 ## 1. Getting started
 
-Stable 1.1.0 supports Android 13 or newer with built-in wireless debugging, Root or Shizuku. Install the APK and configure the connection supported by your device. Select an installed app for navigation and another for the secondary pane. The same app cannot be assigned to both panes.
+Stable 1.1.1 supports Android 13 or newer with built-in wireless debugging, Root or Shizuku. Install the APK and configure the connection supported by your device. Select an installed app for navigation and another for the secondary pane. The same app cannot be assigned to both panes.
 
 ### Built-in connection (1.0.1)
 
@@ -24,7 +24,7 @@ Pairing stays on this device and is excluded from layout backups. Wireless debug
 
 For an incorrect code, dismiss Android's failure dialog, open a new code screen and retry. If discovery fails, manual code and pairing-port entry is available while keeping the system code screen open. The pairing port is the number after the colon on that screen.
 
-See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.1.0).
+See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.1.1).
 
 ### Physical keyboards (1.0.1)
 
@@ -53,9 +53,9 @@ Choose **Settings → Controls → Set as default launcher** to use DriveDeck as
 
 | Control | Action |
 |---|---|
-| Home | Return to the split layout. Restore the saved app combination if a Home preset exists. |
+| Home | Tap to run default home, or return to the current split if no default exists. Hold to open Settings. |
 | Back | Close the chooser or menu first; otherwise send Back to the selected pane's app. |
-| App chooser | Select a destination pane, then find an app using filters, search and pages. |
+| App chooser | Select a destination pane, then find an app using filters, search and scrolling. |
 | Expand button labeled with the navigation app's name | Fill the area beside the controls with navigation. |
 | Split screen | Show both apps along the selected split direction. |
 | Expand button labeled with the secondary app's name | Fill the area beside the controls with the secondary app. |
@@ -84,13 +84,13 @@ Hold an icon in the app chooser or favorites popup.
 
 **Settings → Connection → Help for the app** also provides Change app, Reopen, Reconnect display, Open separately, Save/Copy diagnostics, and Clear this pane. Clearing a pane removes its selection, not the installed app. Some video or protected-content apps can show black screens or close in a pane; try opening them separately.
 
-## 4. Make the layout yours (1.1.0)
+## 4. Make the layout yours (1.1.1)
 
 ![English settings](../images/en-settings.png)
 
 Use **Display, Controls, Apps, Connection and Updates** in the settings sidebar. The content area scrolls independently on smaller displays.
 
-- **Display:** Automatic/horizontal/vertical splits, a 30–70% ratio, reversed order, automatic/left/right/bottom controls and 120–240dpi app/keyboard scale. Automatic choices follow the starting screen shape. Device rotation is locked while running; split direction and bar position remain adjustable.
+- **Display:** Automatic/horizontal/vertical splits, a 30–70% ratio, reversed order, automatic/left/right/bottom controls and 120–640dpi app/keyboard scale. Automatic choices follow the starting screen shape. Device rotation is locked while running; split direction and bar position remain adjustable.
 - **Controls:** Automatic/manual day and night themes, optional app headers, selected-pane outline, status information, drawer/dialog/bottom-sheet presentation, language and default launcher. App headers are hidden by default. Device temperature appears only when a readable sensor is available.
 - **Apps:** App selection, favorites and launch destination, saved combinations, Home preset, media controls and backup/restore.
 - **Connection:** Connection method, reconnect, reopen/help for each app, diagnostics save/copy.
@@ -98,9 +98,9 @@ Use **Display, Controls, Apps, Connection and Updates** in the settings sidebar.
 
 The star opens up to three favorites plus the full list. By default, apps classified as navigation open in the navigation pane; other apps open in the secondary pane. Enable **Quick launch in selected pane** to use the current selection. The same app cannot occupy both panes.
 
-Hold Home or open **Settings → Apps → App combinations** to save up to eight named pairs. They restore the two apps, ratio, split direction and order. Reusing a name replaces it; saving beyond eight removes the oldest. Hold a saved entry to confirm removal. The Home button's default pair is saved separately.
+Open **Settings → Apps → App combinations → Create a pair** to choose apps, direction, order, a 30–70% ratio and a name. Saving does not launch the pair. Up to eight pairs are supported; duplicate names or capacity limits show an error. Use ⋯ to run, edit, assign default home or delete. **Tap Home for default home; hold for Settings.** Leaving a modified draft asks before discarding it.
 
-The app library has All, Favorites, Recent, Navigation, Music/video and Other sidebar filters with name search. Column and row counts adapt to the screen. Use the bottom arrows for more pages. Hold an app or tap ⋯ for its options.
+The app library has All, Favorites, Recent, Navigation, Music/video and Other sidebar filters with name search. Column and row counts adapt to the screen. Scroll the grid vertically; search and pane selection stay in place. Hold an app or tap ⋯ for its options.
 
 ## 5. Language
 
@@ -116,7 +116,7 @@ If your navigation app supplies an ongoing guidance notification, DriveDeck can 
 
 ## 7. Updates
 
-Use **Settings → Updates → Updates** to check, download, and install. Stable offers 1.1.0; enable **Receive preview versions** for 1.1.1-rc2. Versions before RC7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
+Use **Settings → Updates → Updates** to check, download, and install. Both stable and preview channels offer stable 1.1.1. Versions before RC7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
 
 A download continues after leaving its screen while the app process remains alive. Incomplete downloads are discarded after process termination and must be restarted. Completed files are verified again and restored after a restart. The updater checks size, SHA-256, package, version, Android compatibility, and signature. Reinstalls, downgrades, and files signed with another key are rejected.
 

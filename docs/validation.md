@@ -2,6 +2,37 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.1.1 정식 / Stable
+
+기존 서명을 유지한 비디버그 APK, versionCode **51**, 20,829,752 bytes입니다. / Non-debuggable APK, versionCode **51**, retaining the existing signing identity.
+
+SHA-256: `0994cb3cd2194495f5d65c1cfa53123a508310e598a5e577415180130145fd24`.
+
+**홈 한 번 누르기 → 기본 홈, 길게 누르기 → 설정**으로 변경했습니다. 기본 홈이 없으면 현재 앱의 분할 화면으로 돌아갑니다. 조합 목록은 설정 → 앱 → 앱 조합에서 엽니다. / **Tap Home for default home; hold Home for Settings.** Without a default, Home returns to the current split. Pairs remain available in Settings → Apps → App combinations.
+
+이 APK의 단위 검사 **58개**, 기능·시스템 상태를 함께 확인한 통합 검사 **3조건**이 통과했습니다. Release Lint는 오류 0개·기존 경고 47개입니다. 아래 rc2의 100조건은 이전 APK의 기록이며 이번 APK에서 전부 반복한 수치가 아닙니다. / This APK passed **58 unit tests and 3 integration conditions** with assertion and system-health checks. Release Lint: 0 errors, 47 existing warnings. The rc2 100-condition record below belongs to the earlier APK and was not repeated in full for this change.
+
+| 이번 APK 검사 / Current APK checks | 결과 / Result |
+|---|---|
+| 한국어 1676×680@255 실제 짧은 터치·900ms 길게 누르기, 기본 홈·기본값 없음·설정에서 조합 접근 / Korean physical tap and hold, default/no-default Home, pair access through Settings | 통과 / Passed |
+| 편집 중 두 홈 동작의 미저장 내용 확인 / Unsaved pair protection for both Home gestures | 통과 / Passed |
+| 영어 800×480@160 홈 동작 / English Home gestures on a small display | 기능 통과, 시작 지연으로 전체 판정 실패 / Assertions passed; startup health failed |
+| 1600×900@160 실제 Android 설정·시계 앱, 설정 화면 이동·스톱워치 시작/정지 / Actual Android Settings and Clock interaction | 통과 / Passed |
+
+**제외한 실패 3건을 보존했습니다.** 첫 홈 검사에서 기능은 통과했지만 버튼 입력 전 첫 화면의 `RippleDrawable.drawContent` 표본에서 **6,006ms** 응답 지연이 기록됐습니다. 영어 작은 화면 검사도 기능은 통과했지만 `HardwareRenderer.nSetStopped`에서 **6,024ms** 시작 지연을 기록했습니다. 재검사 통과가 근본 해결을 뜻하지 않습니다. 두 앱 검사를 1676×680@255에서 실행했을 때는 Android 설정의 두 열 화면에서 중앙 스와이프가 왼쪽 분류 목록을 스크롤하지 못해 Display 항목 찾기가 실패했습니다. 이 실행은 통과 수에 넣지 않았고, 기존 검사 기준인 1600×900@160 결과를 별도로 기록했습니다.
+
+**Three unsuccessful runs are retained and excluded.** The first Home run passed assertions but recorded a **6,006ms** initial-render watchdog gap, sampled at `RippleDrawable.drawContent` before the Home interaction. The small English run also passed assertions but recorded a **6,024ms** startup gap at `HardwareRenderer.nSetStopped`. A passing recheck does not prove root-cause resolution. At 1676×680@255, the two-app test could not expose Settings' Display category because its center swipe missed the left category list in the two-column UI. That run is excluded; the established 1600×900@160 interaction check is recorded separately.
+
+재링크 자료는 실제 배포 APK 내용과 대조했고 재구성도 통과했습니다. 기존 rc2의 강제 포커스 전환 직후 키 순서 문제·입력기 오류·시작 지연은 이번 변경으로 해결하지 않았습니다. 실차·제조사·모든 입력기를 검증한 결과는 아닙니다. / Relink materials were compared with the release APK and successfully reconstructed. The previously documented forced-focus key-ordering, IME and startup issues remain unresolved by this change. Coverage is not exhaustive for vehicles, OEM firmware or input methods.
+
+### 공개 업데이트 경로 / Published update path
+
+정식·시험 채널 모두 정식 **1.1.1 (51)**을 제공하며 GitHub의 최신 정식 배포도 v1.1.1입니다. 공개 다운로드의 크기·SHA-256과 APK·재링크 자산의 GitHub digest를 확인했습니다. / Both stable and preview channels serve stable **1.1.1 (51)**; GitHub latest stable is v1.1.1. Public download size/SHA-256 and APK/relink asset digests were verified.
+
+기존 **rc2 (50)**를 설치한 소유 에뮬레이터에서 **시험 채널의 앱 내 업데이트**로 51을 다운로드·검증하고 Android 실제 업데이트 버튼으로 설치했습니다. 다운로드·설치창 통합 검사 **2개**와 설치 완료·동일 APK 해시·설정 XML 보존을 확인했습니다. 이 2개 검사는 업데이트 전 rc2에서 실행되므로 위의 새 APK 3조건과 따로 집계합니다. / On the owned emulator running **rc2 (50)**, the app's **preview-channel updater** downloaded and verified 51, then the real Android Update button installed it. **Two updater checks** passed; installed APK hash and complete launcher-settings XML matched. These checks run on the old rc2 before installation and are counted separately from the three new-APK conditions above.
+
+배포 직후 시험 채널 CDN이 잠시 이전 50을 반환하여 첫 업데이트 검사 2개는 실패했습니다. 원본을 보존했고 채널 주소에서 51이 확인된 뒤 별도 실행으로 검증했습니다. / Immediately after publication, the preview CDN briefly served version 50, causing two initial updater checks to fail. Those records are retained; verification was repeated separately after the endpoint served 51.
+
 ## 1.1.1-rc2 시험 버전 / Preview
 
 기존 서명을 유지한 비디버그 APK, versionCode 50입니다. / Non-debuggable APK, versionCode 50, retaining the existing signing identity.
