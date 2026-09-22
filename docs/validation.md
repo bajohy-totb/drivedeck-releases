@@ -2,6 +2,40 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.0.1 정식 연결·업데이트 튜닝 / Stable connection and update tuning
+
+초기 연결 응답을 화면 스레드 밖에서 기다리고, 종료한 앱의 대기 중인 연결을 취소합니다. 수동 재시도는 이전 예약을 취소하며 자동 재시도 간격은 최대 30초입니다. 업데이트 확인 실패는 성공으로 기록하지 않고, 5분 뒤 다음 시작·복귀 시 다시 확인할 수 있습니다. 정상 확인은 6시간 간격이며 수동 확인은 즉시 가능합니다. 시각·날짜·온도·미디어 문구가 같으면 반복해서 설정하지 않습니다. 아래 RC의 물리 키보드 포커스, Back 제한, 분할 크기 복구도 포함합니다.
+
+기존 서명의 비디버그 release APK, versionCode 47입니다. SHA-256: `32292e9eda3e5d00a8aebeec1dfeca1c604c8f31f97132d7c165ad77be609b78` (20,678,200 bytes). **단위 검사 42개와 동일한 최종 APK의 통합 검사 22개가 통과했습니다.** Release Lint는 오류 0개, 경고 43개입니다. 통합 검사는 기능 확인과 Android ANR·충돌·6,000ms 감시 기준을 모두 통과해야 성공으로 집계합니다.
+
+| 최종 APK 검사 / Exact-APK checks | 개수 / Count | 결과 / Result |
+|---|---:|---|
+| 느린 연결 중 화면 응답, 재시도 예약 교체, 오프라인 업데이트 재확인, 진행 중·대기 중 연결 종료 / Slow handshake responsiveness, retry timer replacement, offline update retry, closing during active and queued handshakes | 5 | 기능·시스템 상태 통과 / Functional and system-health pass |
+| 자체 연결: Back 30회 연타·지연 Back 만료, 생성 중 배율 변경·원격 크기 복구, 설정 복귀·입력 대체 경로·음소거 뒤 타이핑, 연결 프로세스 재시작, Settings/Clock 좌우 실행, release 설정 / Built-in connection: Back burst and expiry, creation and remote geometry recovery, keyboard focus and mute, process reconnect, two installed apps, release configuration | 10 | 통과 / Pass |
+| Root 실행 어댑터: 연결 프로세스 재시작과 설정 복귀 후 타이핑 / Root launch adapter: reconnect and typing after settings | 2 | 통과 / Pass |
+| 공식 Shizuku: 재연결, 지연 Back 만료, 입력 대체 경로 / Official Shizuku: reconnect, Back expiry and keyboard fallback | 3 | 통과 / Pass |
+| 공개 1.0.0 및 1.0.1-rc5에서 실제 덮어쓰기 설치, 앱·분할 비율·배율·테마·즐겨찾기·바 위치·입력 설정 유지와 앱 터치 / Install over published 1.0.0 and 1.0.1-rc5, preserve settings and interact with the embedded app | 2 | 통과 / Pass |
+
+공개 rc5에 새 회귀 검사를 실행하여 느린 연결의 화면 스레드 차단, 오래된 재시도 예약, 실패한 업데이트 확인의 성공 기록을 재현했습니다. 첫 정식 후보에서는 종료 후 대기 연결이 실행되는 경우를 추가로 재현하여 보완했습니다. 해당 실패 기록은 보존하며 통과 수에 포함하지 않습니다. 첫 후보의 기존 기능 검사 17개도 위 최종 APK 22개와 별도로 보관합니다.
+
+두 번째 후보에서는 대체 입력 경로의 음량 내리기 후 다음 글자가 막혔습니다. 입력 기록에는 앱에 포커스가 돌아온 상태에서 display 0 대상 키 놓기 이벤트와 이후 글자가 대기 중이었습니다. 음량 키를 누르는 도중에는 포커스를 옮기지 않고 정상적인 키 놓기 뒤에 복구하도록 수정했습니다. 최종 검사는 자체 연결과 Shizuku에서 음량·음소거 8회 연속 조작 직후 타이핑을 포함하며, 단일 음량 명령이 5초 이상 걸려도 실패합니다. 수정 전 실패를 재시도 성공으로 덮어쓰지 않았습니다.
+
+세 번째 후보의 Shizuku 검사에서는 포커스 복구 시간 초과와 글자 순서 변경을 함께 관찰했습니다. 같은 키 놓기에 일반 복구를 먼저 예약한 뒤 대체 입력 복구를 기다리는 중복 경로를 없앴습니다. 최종 후보에서는 두 연결 방식 모두 강화한 검사를 통과했으며, 입력·포커스 응답 대기 한도 500ms는 늘리지 않았습니다.
+
+LGPL 자료의 앱 클래스 105개(생성 리소스 포함 139개)와 런타임 파일 30개가 최종 빌드 입력과 바이트 단위로 일치합니다. 이 자료만으로 재구성·서명·설치한 별도 APK도 자체 연결 프로세스 종료 후 재연결 검사 1개를 기능·시스템 상태 모두 통과했습니다. 배포 APK를 다시 설치하고 해시가 일치하는지 확인했습니다. 재구성 검사는 원본 22개와 별도입니다. 자료는 `DriveDeck-1.0.1-relink.zip`입니다.
+
+전용 Android 13 에뮬레이터, 1600×900, density 160에서 확인했습니다. 자체 연결은 무선 디버깅·UID 2000·Shizuku 중지 상태, Shizuku는 공식 서버, Root는 AOSP 실행 어댑터입니다. 키보드는 Linux uinput 가상 USB/블루투스 장치입니다. 업그레이드는 ADB의 실제 패키지 덮어쓰기 설치이며 차량 설치 창이나 Magisk 승인 과정을 검증한 것은 아닙니다. 실제 차량·물리 키보드·한국어 입력기·다른 OEM·장시간 주행은 확인하지 않았습니다. `ro.adb.secure=0`인 AOSP 이미지여서 차량별 인증 정책도 별도 확인이 필요합니다. 아래 rc5의 144개 배치·13단계 배율 검사는 해당 RC의 기록이며 이번 최종 APK에서 다시 실행한 수치가 아닙니다. 이전에 관찰한 간헐적 시작 렌더링 지연이 모두 해결됐다고 주장하지 않습니다. 정식·실험 채널 모두 최종 1.0.1을 제공합니다.
+
+This non-debuggable versionCode 47 final release waits for bridge handshakes off the UI thread, cancels queued work after closing, replaces old retry timers and caps backoff at 30 seconds. Failed update checks become eligible again after five minutes on the next start/resume; successful checks keep their six-hour interval. Unchanged clock/date/temperature/media text is no longer reapplied. RC keyboard, Back and pane recovery fixes are included.
+
+All 42 unit tests and 22 checks on the exact final APK passed. Release Lint reports 0 errors and 43 warnings. System health is checked independently of assertions: Android ANRs, crashes and unexpected 6,000ms watchdog stalls fail the run. Published rc5 reproduced three new scheduling/update regressions; the first final candidate reproduced a queued handshake running after closure. Failed evidence is retained and excluded. The earlier candidate's 17 passing regression checks are also separate from the final 22.
+
+The second candidate failed fallback typing after volume-down: a display-0 key release and later text remained pending while focus was already back on the app display. The final candidate restores focus only after a normal release. Built-in connection and Shizuku checks include eight consecutive targeted volume/mute commands, each immediately followed by typing; any individual command taking five seconds also fails. The failed candidate and its evidence remain separate.
+
+The third candidate's Shizuku check observed a focus-restoration timeout and reordered text. The final candidate removes the duplicate ordinary restoration queued before the bounded fallback restoration for the same key release. Both connection paths passed the stronger check; the 500ms input/focus response wait was not increased.
+
+All LGPL relink object inputs match the final build. A reconstructed APK separately passed one built-in bridge process reconnect check; the original APK was then restored and hash-verified. Tests cover Android 13 at 1600×900, native wireless debugging with Shizuku stopped, official Shizuku, an AOSP root adapter, virtual USB/Bluetooth keyboards, and ADB package upgrades from the two published versions. Actual vehicles, physical keyboards, Korean IMEs, other OEMs, Magisk approval and vehicle installer UI remain untested. AOSP uses `ro.adb.secure=0`. The 144 layouts and 13 scale steps below are historical rc5 results, not a rerun on this final APK. Previously observed intermittent startup renderer stalls remain unverified. Both update channels now offer final 1.0.1.
+
 ## 1.0.1-rc5 뒤로가기·구역 크기 복구 / Back and pane geometry recovery
 
 사이드바 뒤로가기의 중복 요청·지연 입력을 제한하고, 앱 생성 중 바뀐 구역 크기와 배율을 실행 전에 적용합니다. 실행 중 실제 디스플레이 크기가 현재 구역과 다르면 주기적으로 다시 맞춥니다. 렌더링 크기는 실제 구역 픽셀에 맞추며, 글자 배율 기본값 160dpi와 저장한 배율은 유지합니다.

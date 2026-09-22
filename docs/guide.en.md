@@ -4,9 +4,9 @@
 
 ## 1. Getting started
 
-The stable 1.0.0 release requires Android 13 or newer with root access. Install the APK, open DriveDeck, and allow the root connection. Select an installed app for navigation and another for App 1. The same app cannot be assigned to both panes.
+Stable 1.0.1 supports Android 13 or newer with built-in wireless debugging, Root or Shizuku. Install the APK and configure the connection supported by your device. Select an installed app for navigation and another for App 1. The same app cannot be assigned to both panes.
 
-### Built-in connection preview (1.0.1-rc5)
+### Built-in connection (1.0.1)
 
 Connect directly through Android wireless debugging. This is the default for a new installation; upgrades retain the existing connection method.
 
@@ -22,9 +22,9 @@ Pairing stays on this device and is excluded from layout backups. Wireless debug
 
 For an incorrect code, dismiss Android's failure dialog, open a new code screen and retry. If discovery fails, manual code and pairing-port entry is available while keeping the system code screen open. The pairing port is the number after the colon on that screen.
 
-See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.0.1-rc5).
+See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.0.1).
 
-### Physical keyboards (1.0.1-rc5)
+### Physical keyboards (1.0.1)
 
 Connect a USB or Bluetooth keyboard, then tap a **text field in App 1**. Navigation touches preserve App 1 as the typing destination. Input works in App 1 fullscreen and split layouts. Settings and the app picker receive input while open; closing them returns input to App 1.
 
@@ -32,9 +32,9 @@ Connect a USB or Bluetooth keyboard, then tap a **text field in App 1**. Navigat
 
 Text, cursor keys, deletion, Home/End and modifiers such as Ctrl and Shift are routed to App 1. Actual shortcuts and language switching depend on the app, Android keyboard settings and IME. See the [validation record](validation.md) for hardware and vehicle coverage.
 
-### Shizuku preview (1.0.1-rc1)
+### Shizuku connection (1.0.1)
 
-Unrooted Android 13+ devices can select Shizuku in 1.0.1-rc1.
+Unrooted Android 13+ devices can select Shizuku in 1.0.1.
 
 1. Install [official Shizuku](https://shizuku.rikka.app/download/) 13 or newer, pair using wireless debugging, and start it.
 2. In DriveDeck, select **Settings → Device → Connection method → Shizuku**.
@@ -65,7 +65,7 @@ Use App 1 for typing and the keyboard. You can pan and zoom the navigation pane 
 
 Tap the divider for ratio choices, or hold and drag it sideways. A guide previews the split; releasing applies it. Navigation can occupy 30–70% of the split area.
 
-Version 1.0.1-rc5 discards expired Back taps instead of delivering a delayed burst. Layout changes during app creation and later geometry mismatches are corrected to the current pane dimensions. Increase **App and keyboard scale** for larger text and controls; density scaling is separate from the pane’s physical pixel dimensions.
+Version 1.0.1 discards expired Back taps instead of delivering a delayed burst. Layout changes during app creation and later geometry mismatches are corrected to the current pane dimensions. Increase **App and keyboard scale** for larger text and controls; density scaling is separate from the pane’s physical pixel dimensions.
 
 ## 3. Favorites and app options
 
@@ -106,11 +106,11 @@ If your navigation app supplies an ongoing guidance notification, DriveDeck can 
 
 ## 7. Updates
 
-Use **Settings → Device → Updates** to check, download, and install. Turn **Receive preview versions** off for stable 1.0.0, or on for Shizuku preview 1.0.1-rc1. RC7 already includes this menu; earlier versions need one manual APK installation first. Switching back to stable after installing a preview does not automatically downgrade the app.
+Use **Settings → Device → Updates** to check, download, and install. Both channels receive this final 1.0.1 release. **Receive preview versions** selects whether to receive future RC builds too. Versions before RC7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
 
 A download continues after leaving its screen while the app process remains alive. Incomplete downloads are discarded after process termination and must be restarted. Completed files are verified again and restored after a restart. The updater checks size, SHA-256, package, version, Android compatibility, and signature. Reinstalls, downgrades, and files signed with another key are rejected.
 
-Changing channels discards the saved file from the previous channel. Automatic checks run on launcher start/resume, at least six hours after the previous check. Downloading and confirming installation remain manual.
+Changing channels discards the saved file from the previous channel. Automatic checks run on launcher start/resume, at least six hours after success or five minutes after failure. Manual checks remain immediately available. Downloading and confirming installation remain manual.
 
 ## 8. Backup, diagnostics, and recovery
 
@@ -124,12 +124,16 @@ After repeated startup failures or a detected previous crash, **Safe mode** offe
 
 | Symptom | What to check |
 |---|---|
-| Lost connection / empty panes | Depending on the selected connection method, check root authorization or that Shizuku is running and DriveDeck is authorized, then reconnect. Manufacturer compatibility and previously reported issues remain under investigation. |
+| Lost connection / empty panes | Check wireless debugging and pairing, Root approval, or Shizuku startup and authorization for your selected method. See [validation](validation.md) for manufacturer coverage. |
 | Black screen or app closes | Try Open separately. The app may restrict external displays or protected content. |
 | No keyboard | Use App 1 and check that an Android keyboard is installed and enabled. |
 | No media controls | Check notification access and an active playback session in the music app. |
-| No update available | Select Check for updates and check the installed version and channel. Shizuku support is on preview; the same or an older version is not offered as an update. |
+| No update available | Select Check for updates and check the installed version and channel. The same or an older version is not offered as an update. |
 | Installation blocked | Check install permission for DriveDeck, storage, Android version, and matching signatures. |
 | Freeze when muting in the vehicle | This has not been confirmed resolved. See [validation and limitations](validation.md). |
 
 Every app, vehicle, and manufacturer combination has not been verified. See the [screenshot gallery](screenshots.md) and [release history](https://github.com/bajohy-totb/drivedeck-releases/releases).
+
+### Connection and update-check improvements in 1.0.1
+
+The UI remains responsive while waiting for the bridge handshake. Manual retries replace old timers, and automatic reconnection backoff is capped at 30 seconds. Automatic update checks become eligible on a later start/resume six hours after success or five minutes after failure. Manual checks remain immediately available.

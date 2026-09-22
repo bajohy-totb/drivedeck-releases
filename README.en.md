@@ -6,11 +6,11 @@
 
 DriveDeck is an Android launcher for in-car devices. It runs your installed navigation app and another app in separate panes, with quick layout controls, favorites, a saved Home combination, and day/night themes.
 
-[**Download 1.0.0 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.0.0/DriveDeck-1.0.0.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete user guide](docs/guide.en.md)
+[**Download 1.0.1 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.0.1/DriveDeck-1.0.1.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete user guide](docs/guide.en.md)
 
-**Built-in connection preview:** [1.0.1-rc5 APK](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.0.1-rc5/DriveDeck-1.0.1-rc5.apk) connects directly through **wireless debugging without installing Shizuku** and improves physical keyboard input in App 1. The sidebar and favorites bar accept touch without taking keyboard focus. It also improves repeated Back handling and automatic pane sizing recovery. Pair once by entering Android's six-digit code in the DriveDeck notification. Root and Shizuku remain available. Requires Android 13+; the user's phone and vehicle remain unverified. [Setup instructions](docs/guide.en.md#built-in-connection-preview-101-rc5)
+**Stable 1.0.1:** Built-in wireless debugging, Root and Shizuku are supported. This release improves connection waiting and retries, and includes physical-keyboard focus protection, repeated Back handling and automatic pane sizing recovery. [First connection](docs/guide.en.md#built-in-connection-101)
 
-> **1.0.0 is the official GitHub release.** This release APK disables debugging and can update existing RC installations. Resolution of reported vehicle mute freezes, lost connections, and repeated standalone-launch delays has not been confirmed in a vehicle. Read the [validation scope and known limitations](docs/validation.md).
+> **Stable 1.0.1 on GitHub.** Install the non-debuggable release APK over 1.0.0 or a 1.0.1 RC. See the [validation record](docs/validation.md) for actual-vehicle coverage and known limitations.
 
 ![DriveDeck's English settings over the two-app workspace in a real Android emulator](images/en-settings.png)
 
@@ -47,7 +47,7 @@ Open **Settings → Device → Language / 언어** and choose Follow device sett
 
 ## Installation and updates
 
-1. Use an **Android 13 or newer device**. Stable 1.0.0 uses root; preview 1.0.1-rc5 supports built-in wireless debugging, Root and Shizuku. Compatibility depends on the manufacturer's display and input implementation.
+1. Use **Android 13 or newer**. Select built-in wireless debugging, Root or Shizuku for your device. Compatibility depends on the manufacturer’s display and input implementation.
 2. Install the APK over your existing DriveDeck. You do not need to uninstall the app or clear its settings to update.
 3. Pair the built-in connection or configure Root or Shizuku as described above. Optionally set DriveDeck as the default launcher in Settings.
 4. Open **Settings → Device → Updates**, then check for updates. Stable versions are available with **Receive preview versions** turned off. In-app updates are available from RC7 onward.
@@ -55,7 +55,7 @@ Open **Settings → Device → Language / 언어** and choose Follow device sett
 
 ![English update screen](images/en-updates.png)
 
-Automatic checks run when the launcher starts or resumes, skipping checks within six hours of the last one. Downloads and Android installation confirmation remain manual. The stable channel stays on 1.0.0. Enable **Receive preview versions** for 1.0.1-rc5. Park before installing.
+Automatic checks run when the launcher starts or resumes: six hours after success, or five minutes after failure. **Check for updates** remains immediately available. Downloads and Android installation confirmation remain manual. Both stable and preview channels receive this final 1.0.1 release. Park before installing.
 
 ## Learn more
 

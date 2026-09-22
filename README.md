@@ -6,11 +6,11 @@
 
 DriveDeck은 Android 차량용 기기에서 내비게이션과 다른 앱을 나란히 사용하는 런처입니다. 실제 설치된 앱을 두 구역에 띄우고, 화면 전환·즐겨찾기·홈 조합·주야간 테마를 한곳에서 조작합니다.
 
-[**1.0.0 APK 다운로드**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.0.0/DriveDeck-1.0.0.apk) · [배포 기록](https://github.com/bajohy-totb/drivedeck-releases/releases) · [전체 사용 설명서](docs/guide.ko.md)
+[**1.0.1 APK 다운로드**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.0.1/DriveDeck-1.0.1.apk) · [배포 기록](https://github.com/bajohy-totb/drivedeck-releases/releases) · [전체 사용 설명서](docs/guide.ko.md)
 
-**자체 연결 시험 버전:** [1.0.1-rc5 APK](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.0.1-rc5/DriveDeck-1.0.1-rc5.apk)는 **Shizuku 설치 없이 무선 디버깅으로 직접 연결**하며 앱 1의 물리 키보드 입력을 개선합니다. 사이드바·즐겨찾기 바는 키보드 포커스를 받지 않고 터치로 조작합니다. 뒤로가기 연타 처리와 분할 크기 자동 복구도 보완했습니다. 처음 한 번 Android의 6자리 코드를 DriveDeck 알림에 입력하세요. 루트·Shizuku 연결도 선택할 수 있습니다. Android 13 이상이며, 사용자 폰·차량 호환성은 확인 전입니다. [설정 방법](docs/guide.ko.md#자체-연결-시험-버전-101-rc5)
+**1.0.1 정식:** 자체 무선 디버깅·루트·Shizuku 연결을 지원합니다. 연결 대기와 재시도를 개선하고, 물리 키보드 포커스 보호·뒤로가기 연타 처리·분할 크기 자동 복구를 포함합니다. [처음 연결하기](docs/guide.ko.md#자체-연결-101)
 
-> **1.0.0 GitHub 정식 배포.** 디버깅을 끈 배포용 APK이며 기존 RC 버전 위에 설치할 수 있습니다. 차량에서 보고된 음소거 멈춤·연결 끊김과 반복 단독 실행 지연의 실차 해결 여부는 아직 확인되지 않았습니다. [확인한 범위와 알려진 제한](docs/validation.md)을 함께 확인하세요.
+> **1.0.1 GitHub 정식 배포.** 기존 1.0.0과 1.0.1 RC 위에 설치할 수 있는 배포용 APK입니다. 실제 차량 호환성과 알려진 제한은 [검증 기록](docs/validation.md)을 확인하세요.
 
 ![실제 Android 에뮬레이터에서 Organic Maps와 시계 앱을 함께 표시한 DriveDeck](images/ko-workspace.png)
 
@@ -47,7 +47,7 @@ DriveDeck은 Android 차량용 기기에서 내비게이션과 다른 앱을 나
 
 ## 설치와 업데이트
 
-1. **Android 13 이상**이 필요합니다. 정식 1.0.0은 루트 연결을 사용하고, 시험판 1.0.1-rc5는 자체 무선 디버깅·루트·Shizuku 연결을 지원합니다. 제조사별 화면·입력 구현에 따라 호환성이 다를 수 있습니다.
+1. **Android 13 이상**이 필요합니다. 자체 무선 디버깅·루트·Shizuku 중 기기에 맞는 연결을 선택합니다. 제조사별 화면·입력 구현에 따라 호환성이 다를 수 있습니다.
 2. APK를 받아 기존 DriveDeck 위에 설치합니다. 업데이트하려고 앱이나 설정을 먼저 지울 필요는 없습니다.
 3. 위 안내에 따라 자체 연결을 페어링하거나 루트·Shizuku를 설정합니다. 기본 런처 지정은 설정에서 선택할 수 있습니다.
 4. **설정 → 기기 → 업데이트**에서 새 버전을 확인합니다. 정식 버전은 **시험 버전 받기**를 꺼도 받을 수 있습니다. RC7부터 앱 내 업데이트를 지원합니다.
@@ -55,7 +55,7 @@ DriveDeck은 Android 차량용 기기에서 내비게이션과 다른 앱을 나
 
 ![한국어 업데이트 화면](images/ko-updates.png)
 
-자동 확인은 런처 실행·복귀 시 동작하며 마지막 확인 후 6시간 이내에는 건너뜁니다. 다운로드와 Android 설치 확인은 직접 진행합니다. 정식 채널은 1.0.0을 유지합니다. **시험 버전도 받기**를 켜면 1.0.1-rc5를 받을 수 있습니다. 주차한 뒤 설치해 주세요.
+자동 확인은 런처 실행·복귀 시 동작합니다. 정상 확인 후에는 6시간, 인터넷 등의 문제로 실패한 뒤에는 5분이 지나야 다시 자동 확인합니다. **새 버전 확인**은 직접 바로 실행할 수 있습니다. 다운로드와 Android 설치 확인은 직접 진행합니다. 정식·시험 채널 모두 이번 1.0.1 정식을 받습니다. 주차한 뒤 설치해 주세요.
 
 ## 더 알아보기
 
