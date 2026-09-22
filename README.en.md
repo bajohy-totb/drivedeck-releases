@@ -18,6 +18,8 @@ The launcher holds its starting screen orientation while running. Split directio
 
 ## Features
 
+The table and screenshots below describe stable 1.1.0. **[Preview 1.1.1-rc2](docs/preview.en.md)** adds per-app 120–640dpi, a scrolling app grid and an editor for apps, order and split ratio. Tap Home pairs to open the list; hold it to run default home. Enable **Receive preview versions** in the updater to get it.
+
 | Feature | What it does |
 |---|---|
 | More space for apps | Full-height content without a global top bar. Optional compact app-name headers. |
@@ -50,7 +52,7 @@ Open **Settings → Controls → Language / 언어** to choose Follow device set
 3. Open **Settings → Updates → Updates** to check and download.
 4. Tap Install update and confirm in Android. If asked, allow installations from DriveDeck, return and tap Install update again.
 
-Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Both stable and preview channels offer this final 1.1.0 release. Park before installing.
+Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Stable offers 1.1.0; preview offers 1.1.1-rc2. Park before installing.
 
 ## Learn more
 

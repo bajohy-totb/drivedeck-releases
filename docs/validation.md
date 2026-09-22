@@ -2,6 +2,77 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.1.1-rc2 시험 버전 / Preview
+
+기존 서명을 유지한 비디버그 APK, versionCode 50입니다. / Non-debuggable APK, versionCode 50, retaining the existing signing identity.
+
+SHA-256: `93be86ae8893fa7d5d3050170a4e3cf6595fbd0945e6f96b8dc9c87a4874782b` (20,829,752 bytes).
+
+**단위 검사 58개와 최종 APK 통합 검사 100조건이 통과했습니다.** 화면·연결 방식별 반복을 포함하며 서로 다른 검사 메서드는 82개입니다. 기능·시스템 상태를 모두 통과하고 실제 검사 항목이 있는 실행만 집계합니다. Release Lint 오류 0개, 경고 47개입니다.
+
+**58 unit tests and 100 exact-APK integration conditions passed**, covering 82 distinct methods with display/backend variants. Only nonempty runs passing both assertions and system health count. Release Lint: 0 errors, 47 warnings, retained without suppression.
+
+| 검사 범위 / Coverage | 통과 조건 / Passed conditions |
+|---|---:|
+| 영문 앱 서랍·앱별 크기 화면 / English app library and per-app density | 2 |
+| 고해상도 영문 크기 설정 화면 / High-resolution English density capture | 1 |
+| 오디오·배치·300초 혼합 검사 / Audio, layouts and 300-second mixed soak | 4 |
+| 차량 비율 조합 편집·화면 / Car-shaped pair editor and interface | 8 |
+| 2400×1080@240 앱별 DPI / Per-app density | 5 |
+| 음소거·미디어·느린 오디오 응답 / Mute, media and delayed audio service | 4 |
+| 전체 화면·커서·선택·사이드바 / Fullscreen, cursor, selection and sidebar keyboard | 5 |
+| 앱 동작·백업·연결 / App actions, backup and connections | 14 |
+| 480×900 편집·배치·언어 / Portrait editor, layout and language | 4 |
+| 뒤로가기 연타·영역 복구 / Repeated Back and pane recovery | 5 |
+| Root 실행 어댑터·권한 거부 / Root launch adapter and denial | 3 |
+| 공식 Shizuku·가상 Bluetooth 키보드 / Official Shizuku and virtual Bluetooth keyboard | 4 |
+| 800×480 편집·영어·키보드 / Small landscape editor, English and keyboard | 4 |
+| 300초 앱 교체·배치 전환 / 300-second app replacement and layout soak | 1 |
+| 업데이트 검증·취소·설치창 / Update validation, cancellation and installer | 9 |
+| 입력기 자동 재시작 뒤 화면 재검사 / Interface recheck after Android restarted its IME | 9 |
+| 800×480, 글자 130%·키보드·저장 / Small screen, 130% text, keyboard and Save | 1 |
+| 자체 연결·메뉴·음소거·선택·배치 / Built-in menus, audio, selection and layout | 4 |
+| Shizuku 메뉴 복귀·음소거 직후 입력 / Shizuku menu return and typing after audio | 2 |
+| 복구 횟수·종료·길게 누르기·절전 / Recovery budget, teardown, held gesture and sleep | 6 |
+| 공개 업데이트 설치 후 실제 두 앱 / Real apps after the published update | 1 |
+| 저장된 페어링·현재 포트·오류·취소 / Saved pairing, current port, errors and cancellation | 3 |
+| 실제 설정·시계 앱 터치 / Actual Settings and Clock touch interaction | 1 |
+
+음악 재생 중 혼합 검사는 `305 seconds; cycles=76`, 키 이벤트 1,404개를 기록했습니다. 별도 앱 교체 검사는 309초 동안 배치 전환 58회·앱 교체 15회를 수행했습니다. / The active-playback mixed soak recorded `305 seconds; cycles=76` and 1,404 key events. A separate 309-second soak performed 58 layout cycles and 15 app replacements.
+
+공개 rc1 앱에서 rc2를 직접 내려받아 Android 설치창으로 업그레이드하고 설치된 versionCode 50·APK 해시·기존 설정 표식을 확인했습니다. / The public rc1 app downloaded rc2 and upgraded through Android’s installer; installed versionCode 50, APK hash and preserved settings marker were verified.
+
+업데이트 뒤 첫 일반 실행에서도 기존 사용자 설정 7개와 검사 표식이 유지됨을 확인했습니다. 25초 관찰 구간에 새 앱 충돌·감시 지연 파일은 없었습니다. / The first normal launch after updating retained 7 existing user preference keys and the test marker; no new app crash/watchdog file appeared in the 25-second observation.
+
+
+시계의 정지 화면에서 숫자가 사라져 보이던 장면은 별도로 확인했습니다. DriveDeck 밖의 동일한 정지 스톱워치에서도 숫자가 숨었다가 `25:06.60`으로 다시 보였으며, Android 시계의 [의도된 깜박임](https://android.googlesource.com/platform/packages/apps/DeskClock/+/refs/heads/android13-release/src/com/android/deskclock/stopwatch/StopwatchFragment.kt)과 일치합니다. 이 장면을 DriveDeck 그리기 결함으로 집계하지 않으며 아래의 별도 렌더러 지연은 그대로 남깁니다. / A standalone paused Clock capture alternated between hidden digits and `25:06.60`, matching stock Clock's deliberate blinking. That frame is not classified as a DriveDeck rendering defect; the separate renderer delays below remain unresolved.
+
+### 확인한 주요 동작 / Main checks
+
+- 실행 중인 두 앱을 바꾸지 않고 조합을 편집·저장·취소합니다. 기본 홈, 중복 이름, 8개 한도, 언어 변경과 백업 복원을 확인합니다. / Edit, save and cancel pairs without changing running apps; default home, duplicate names, capacity, language changes and backup restore are checked.
+- 작은 화면·세로 화면·큰 글자·화면 키보드에서도 입력란과 저장 버튼을 조작합니다. 앱 서랍의 검색·대상·스크롤을 유지합니다. / Name and Save remain usable on small/portrait displays, enlarged text and the soft keyboard; the app library retains search, target and scrolling.
+- 음소거 뒤 즉시 타이핑, 설정 복귀, 실제 앱 강제 종료 복구, 뒤로가기 연타, 길게 누르기와 반복 절전을 확인합니다. 정상 전환이 앱 오류 재시도 횟수를 소모하지 않아야 합니다. / Immediate typing after audio, Settings returns, actual force-stop recovery, repeated Back, held gestures and sleep are checked. Normal transitions must preserve the app-failure retry budget.
+- 업데이트 파일 크기·해시·패키지·버전·서명을 검사하고, 설치 준비 취소 후 설치창이 열리지 않는지 확인합니다. / Updates validate size, hash, package, version and signing identity; cancelling preparation must suppress a queued installer.
+
+### 미해결 문제와 보존한 실패 / Unresolved issues and retained failures
+
+최종 APK의 미통과 기록 7묶음은 성공 수에서 제외했습니다. 이전 후보의 실패도 보존했습니다. / The 7 unsuccessful records for this exact APK are excluded from successful coverage. Earlier-candidate failures also remain preserved.
+
+- **물리 키보드 순서 — 미해결:** 기본 화면으로 입력 대상을 강제 전환한 직후 빠르게 입력하면 첫 글자가 뒤늦게 도착할 수 있습니다. 자체 연결과 Shizuku 모두 이 검사가 실패했습니다(예: `heldnext` → `heldexnt`). 단독 키 해제의 포커스 가로채기 방지는 통과했지만 그 뒤 입력 순서는 미해결입니다. 입력할 앱의 입력란을 다시 눌러 사용해 주세요. / **Physical-keyboard ordering — unresolved:** after input is explicitly forced to the default display, rapid typing may put the first forwarded letter behind later native keys. This test failed on both built-in ADB and Shizuku (for example, `heldnext` → `heldexnt`). The orphan-release guard passes, but the subsequent typing assertion fails. Tap the intended text field again before continuing.
+- **시작 응답 — 미해결:** 첫 복구 검사에서 기능은 통과했으나 6,213ms 감시 지연이 발생했습니다. 표본 스택은 입력기 Binder 호출이었고, 5,027ms 첫 프레임도 기록됐습니다. 화면 검사에서는 `HardwareRenderer.nSetStopped`의 6,188ms 시작 지연도 기록됐습니다. 반복 재시작 검사 역시 기능은 통과했지만 첫 화면에서 `HardwareRenderer.nSyncAndDrawFrame`의 6,432ms 지연을 기록해 통과에서 제외했습니다. 글자 130%의 작은 화면 편집 검사에서도 기능은 통과했으나 시작 지연 6,087ms로 제외했습니다. 전체 지연의 원인은 단정하지 않으며 후속 검사는 별도로 집계합니다. / **Startup response — unresolved:** the first recovery-budget run passed assertions but recorded a 6,213ms watchdog gap, sampled in input-method Binder alongside a 5,027ms initial frame. The interface suite recorded a 6,188ms startup gap at `HardwareRenderer.nSetStopped`. The repeated-restart method also passed assertions but recorded a 6,432ms initial-render gap at `HardwareRenderer.nSyncAndDrawFrame`; it is excluded. The 130%-text small-screen draft/navigation case also passed assertions but is excluded for a 6,087ms startup gap. These observations do not establish the complete cause; follow-up runs count separately.
+- **최종 APK에서도 입력기 ANR:** 화면 동작 9개는 통과했지만 LatinIME가 자판·이모지 행을 만드는 중 서비스 ANR이 발생했습니다. Android가 입력기를 자동 종료·재시작했습니다. 직접 재부팅·입력기 초기화·메모리 변경 없이 같은 APK로 재검사했으며 원래 실패는 성공 수에서 제외합니다. / **IME ANR on the final APK:** all nine interface assertions passed, but LatinIME hit a service ANR while constructing keyboard/emoji rows. Android killed and restarted the IME automatically. The same APK was rechecked without manual reboot, IME reset or memory changes; the original failure is excluded from successful coverage.
+- **빈 검사 요청:** 잘못된 클래스명으로 요청한 길게 누르기 검사는 0개를 실행했습니다. 통과에서 제외했으며 검사 도구는 이제 빈 결과를 실패로 처리합니다. 올바른 검사에서 실제 DOWN·포커스 복귀·UP·클릭 결과를 확인합니다. / **Empty invocation:** a held-touch request used the wrong class and executed zero cases. It is excluded; the runner now rejects empty results. The correct test checks actual DOWN, focus restoration, UP and resulting click.
+- **이전 후보의 입력기·그리기 문제:** LatinIME 서비스 ANR, 제거된 디스플레이에 창을 붙이던 입력기 충돌, 투명 입력창의 터치 가림과 시작·복구 중 렌더러 지연을 보존했습니다. 메뉴 복귀 글자 누락과 볼륨 입력 정지는 입력 창 인계·키 해제 소유권 수정 후 원래 검사로 재확인했습니다. 후속 통과가 모든 플랫폼 문제의 근본 해결을 뜻하지는 않습니다. / **Earlier IME/rendering failures:** retained evidence includes LatinIME service ANRs, an IME crash attaching to a removed display, transparent-window touch interception and startup/recovery rendering stalls. Original menu-letter loss and stalled-volume cases were retested after handoff and release-ownership changes. Passing rechecks do not establish resolution of every platform issue.
+- **연결 검색:** 저장된 페어링과 현재 무선 디버깅 포트로 복구하며 잘못된 번호·취소도 확인했습니다. 모든 기기의 자동 검색을 고쳤다는 뜻은 아닙니다. / **Discovery:** saved pairing with the current wireless-debugging port, invalid ports and cancellation are checked. Automatic discovery is not claimed universally fixed.
+
+### 검증 경계 / Scope
+
+소유한 Android 13 `DriveDeck_Test_API33 / emulator-5580`에서 확인했습니다. 자체 연결은 실제 무선 디버깅의 셸 UID 2000, Shizuku는 공식 서버입니다. Root는 AOSP 실행 어댑터로 실제 Magisk 승인 검사가 아닙니다. 가상 USB/Bluetooth 키보드는 Linux 입력 장치 경로를 확인하며 물리 무선 통신을 검증하지 않습니다. 에뮬레이터의 `ro.adb.secure=0` 조건은 실제 폰과 다릅니다.
+
+Checks use the owned Android 13 emulator. Built-in connection uses actual wireless-debugging shell UID 2000; Shizuku uses its official server. Root uses an AOSP launch adapter, not real Magisk approval. Virtual USB/Bluetooth keyboards exercise Linux input devices, not physical radio transport. The emulator’s `ro.adb.secure=0` differs from actual phones.
+
+**실차 핸들 버튼·한국어 입력기·시동 전원 차단·다른 OEM/Android·장시간 주행은 미확인입니다. 실행 중 화면 방향은 고정합니다.** / **Actual vehicle controls, Korean IMEs, ignition interruption, other OEM/Android versions and prolonged driving remain unverified. Runtime orientation is locked.**
+
 ## 1.1.0 정식 새 디자인 / Stable interface redesign
 
 기존 서명을 유지한 비디버그 APK, versionCode 48입니다. SHA-256: `fa7b831a428df33b930c78b4dfbca27e4f99252a95962caf593e8c668f3e5fde` (20,751,928 bytes). **단위 검사 42개와 동일한 최종 APK의 통합 검사 31개가 통과했습니다.** Release Lint 오류 0개, 경고 43개입니다. 기능 확인뿐 아니라 새 Android ANR·충돌과 6,000ms 감시 기준도 통과한 경우만 집계합니다.

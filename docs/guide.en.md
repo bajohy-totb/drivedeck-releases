@@ -2,6 +2,8 @@
 
 [Home](../README.en.md) · [한국어](guide.ko.md) · **English**
 
+Screenshots and basic controls in this guide describe **stable 1.1.0**. See the [1.1.1-rc2 preview guide](preview.en.md) for per-app scaling, the scrolling library and pair editing. In the preview, tap Home pairs to open the list and hold it to run default home.
+
 ## 1. Getting started
 
 Stable 1.1.0 supports Android 13 or newer with built-in wireless debugging, Root or Shizuku. Install the APK and configure the connection supported by your device. Select an installed app for navigation and another for the secondary pane. The same app cannot be assigned to both panes.
@@ -114,7 +116,7 @@ If your navigation app supplies an ongoing guidance notification, DriveDeck can 
 
 ## 7. Updates
 
-Use **Settings → Updates → Updates** to check, download, and install. Both channels receive this final 1.1.0 release. **Receive preview versions** selects whether to receive future RC builds too. Versions before RC7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
+Use **Settings → Updates → Updates** to check, download, and install. Stable offers 1.1.0; enable **Receive preview versions** for 1.1.1-rc2. Versions before RC7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
 
 A download continues after leaving its screen while the app process remains alive. Incomplete downloads are discarded after process termination and must be restarted. Completed files are verified again and restored after a restart. The updater checks size, SHA-256, package, version, Android compatibility, and signature. Reinstalls, downgrades, and files signed with another key are rejected.
 
