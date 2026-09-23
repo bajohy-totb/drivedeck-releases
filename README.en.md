@@ -8,9 +8,9 @@ DriveDeck is an Android launcher for in-car devices. Display two installed apps 
 
 The launcher holds its starting screen orientation while running. Split direction and control-bar position remain adjustable in Settings.
 
-[**Download 1.1.4 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.1.4/DriveDeck-1.1.4.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete guide](docs/guide.en.md)
+[**Download 1.1.5 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.1.5/DriveDeck-1.1.5.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete guide](docs/guide.en.md)
 
-**Stable 1.1.4:** Netflix now defaults to protected video compatibility using a bounded window on the physical display. Actual Netflix playback on a vehicle has not been verified. You can turn it off in app options; this mode uses the device display scale. Added download progress and percentage indicators. Refined update details, expandable release notes and responsive pair editing. Tap Home to return to default home; hold Home to open Settings. Includes per-app 120–640dpi, a scrolling app library and editable app combinations. Install over the existing app to retain settings. Requires Android 13 or newer and built-in wireless debugging, Root, or Shizuku.
+**Stable 1.1.5:** Improved window-creation waiting and framework-managed window handling, with visible failure codes. Resolution of the reported vehicle failure is not yet confirmed. Netflix now defaults to protected video compatibility using a bounded window on the physical display. Actual Netflix playback on a vehicle has not been verified. You can turn it off in app options; this mode uses the device display scale. Added download progress and percentage indicators. Refined update details, expandable release notes and responsive pair editing. Tap Home to return to default home; hold Home to open Settings. Includes per-app 120–640dpi, a scrolling app library and editable app combinations. Install over the existing app to retain settings. Requires Android 13 or newer and built-in wireless debugging, Root, or Shizuku.
 
 ![DriveDeck 1.1.0 with two installed apps](images/en-workspace.png)
 
@@ -18,7 +18,7 @@ The launcher holds its starting screen orientation while running. Split directio
 
 ## Features
 
-The features below describe stable 1.1.4. See the [scaling, library and pair guide](docs/preview.en.md). Images on this page were captured in 1.1.0; use the Home gestures described above.
+The features below describe stable 1.1.5. See the [scaling, library and pair guide](docs/preview.en.md). Images on this page were captured in 1.1.0; use the Home gestures described above.
 
 | Feature | What it does |
 |---|---|
@@ -52,7 +52,7 @@ Open **Settings → Controls → Language / 언어** to choose Follow device set
 3. Open **Settings → Updates → Updates** to check and download.
 4. Tap Install update and confirm in Android. If asked, allow installations from DriveDeck, return and tap Install update again.
 
-Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Both stable and preview channels offer stable 1.1.4. Park before installing.
+Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Both stable and preview channels offer stable 1.1.5. Park before installing.
 
 ## Learn more
 

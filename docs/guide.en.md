@@ -2,11 +2,11 @@
 
 [Home](../README.en.md) · [한국어](guide.ko.md) · **English**
 
-This guide describes **stable 1.1.4**. **Tap Home for default home; hold Home for Settings.** See also [per-app scaling, scrolling library and pair editing](preview.en.md). Existing screenshots below were captured in 1.1.0 or the older version indicated.
+This guide describes **stable 1.1.5**. **Tap Home for default home; hold Home for Settings.** See also [per-app scaling, scrolling library and pair editing](preview.en.md). Existing screenshots below were captured in 1.1.0 or the older version indicated.
 
 ## 1. Getting started
 
-Stable 1.1.4 supports Android 13 or newer with built-in wireless debugging, Root or Shizuku. Install the APK and configure the connection supported by your device. Select an installed app for navigation and another for the secondary pane. The same app cannot be assigned to both panes.
+Stable 1.1.5 supports Android 13 or newer with built-in wireless debugging, Root or Shizuku. Install the APK and configure the connection supported by your device. Select an installed app for navigation and another for the secondary pane. The same app cannot be assigned to both panes.
 
 ### Built-in connection (1.0.1)
 
@@ -24,7 +24,7 @@ Pairing stays on this device and is excluded from layout backups. Wireless debug
 
 For an incorrect code, dismiss Android's failure dialog, open a new code screen and retry. If discovery fails, manual code and pairing-port entry is available while keeping the system code screen open. The pairing port is the number after the colon on that screen.
 
-See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.1.4).
+See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.1.5).
 
 ### Physical keyboards (1.0.1)
 
@@ -86,11 +86,11 @@ Hold an icon in the app chooser or favorites popup.
 
 ### Protected video compatibility
 
-To address audio with black Netflix video in a split pane, 1.1.4 opens Netflix in a bounded window on the physical display. It does not remove secure-window/DRM flags or copy protected video. Long-press an app and toggle **Protected video compatibility**. This mode uses the device display scale; per-app DPI is not applied.
+To address audio with black Netflix video in a split pane, 1.1.5 opens Netflix in a bounded window on the physical display. It does not remove secure-window/DRM flags or copy protected video. Long-press an app and toggle **Protected video compatibility**. This mode uses the device display scale; per-app DPI is not applied.
 
 Pane resizing, fullscreen transitions and hiding/restoring around settings and the app library were tested. Actual Netflix account playback and vehicle DRM output have not been verified; manufacturer multi-window support varies. See the [validation scope](validation.md).
 
-## 4. Make the layout yours (1.1.4)
+## 4. Make the layout yours (1.1.5)
 
 ![English settings](../images/en-settings.png)
 
@@ -122,7 +122,7 @@ If your navigation app supplies an ongoing guidance notification, DriveDeck can 
 
 ## 7. Updates
 
-Use **Settings → Updates → Updates** to check, download, and install. Both stable and preview channels offer stable 1.1.4. Versions before RC7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
+Use **Settings → Updates → Updates** to check, download, and install. Both stable and preview channels offer stable 1.1.5. Versions before RC7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
 
 A download continues after leaving its screen while the app process remains alive. Incomplete downloads are discarded after process termination and must be restarted. Completed files are verified again and restored after a restart. The updater checks size, SHA-256, package, version, Android compatibility, and signature. Reinstalls, downgrades, and files signed with another key are rejected.
 
@@ -153,3 +153,19 @@ Every app, vehicle, and manufacturer combination has not been verified. See the 
 ### Connection and update-check improvements in 1.0.1
 
 The UI remains responsive while waiting for the bridge handshake. Manual retries replace old timers, and automatic reconnection backoff is capped at 30 seconds. Automatic update checks become eligible on a later start/resume six hours after success or five minutes after failure. Manual checks remain immediately available.
+
+### Protected playback error codes
+
+Tap **Retry** if the window fails to open. If it fails again, share only the short code below the message. The app also records the detailed error in its diagnostics.
+
+| Code | Failed stage |
+|---|---|
+| PW01 | App launch eligibility or screen bounds validation |
+| PW02 | Android activity launch request |
+| PW03 | Native split task discovery |
+| PW04 | Window bounds, surface or visibility transaction |
+| PW05 | Actual window geometry verification |
+| PW06 | Window left multi-window mode while running |
+| PW00 | Other connection or window operation error |
+
+These codes identify a stage, not a confirmed root cause. Actual vehicle/Netflix playback remains unverified in 1.1.5.

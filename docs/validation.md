@@ -2,6 +2,23 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.1.5 정식 / Stable
+
+versionCode **55**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+SHA-256: `5ae65150a081cd5bffe65b68011626731373bde70a84420fbd81eb7a87e714cb`.
+
+보호 영상 창 생성 확인에 최대 1.2초 대기를 추가하고, Android의 명시적인 비관리 창 표면 오류에만 프레임워크 경로를 사용합니다. 권한 오류를 무시하거나 일반 창의 표면 경계 제한을 제거하지 않습니다. 실패 단계 코드와 최초 오류를 보존하고 창 모드 이탈 후 반복 재시도를 막습니다.
+
+단위 검사 60개 통과, Lint 오류 0·경고 52. Android 13의 자체 보안 화면으로 창 영역·숨김/복원·뒤로가기·잘못된 영역의 PW01 전달을 검증했습니다. 일반 ShellTaskOrganizer 경로를 사용한 시험이며, 제조사 비관리 창 경로의 실제 기기 검증은 아직 없습니다. 해당 오류만 대체 경로를 허용하는 조건은 단위 검사했습니다.
+
+**남은 제한:** 차량의 1.1.4 창 열기 실패 원인은 아직 확정하지 못했습니다. 1.1.5의 차량 적용 및 넷플릭스 실재생도 미검증입니다. 첫 통합 실행에서 시험 앱의 진단 파일을 쓰는 순간 빈 내용을 읽는 문제가 있어 시험 파일 저장을 원자적으로 수정했습니다. 별도의 화면 전환 실행은 기능 검사를 통과했으나 시험 앱에서 포커스 창 대기 ANR이 한 번 발생해 건강성 검사를 실패로 보존했습니다. 이후 통과가 그 간헐 오류의 해결을 의미하지는 않습니다. 기존 앱 초기 화면 지연도 해결했다고 주장하지 않습니다.
+
+Added up to 1.2 seconds for native-task discovery and a narrowly scoped fallback for Android's explicit unorganized-surface rejection. Permission failures and bounds checks remain enforced. Failure-stage codes preserve the original error; a failed window-mode change stays stopped until retry.
+
+60 unit tests passed; lint: 0 errors, 52 warnings. An Android 13 own secure fixture checks geometry, hide/restore, Back and PW01 transport for invalid bounds. Platform tests use the ordinary ShellTaskOrganizer path. The OEM unorganized-window path has not been exercised on a physical device; its exact rejection classifier is unit-tested.
+
+**Limitations:** The reported vehicle failure's root cause, 1.1.5 vehicle behavior and real Netflix playback remain unverified. The first contract run exposed a partial diagnostic-file read in the test fixture; fixture writes are now atomic. A separate UI run passed assertions but recorded one fixture no-focused-window input ANR and failed the health gate; that evidence is retained. Later passes do not prove this intermittent issue fixed. Existing startup stalls are not claimed resolved.
+
 ## 1.1.4 정식 / Stable
 
 versionCode **54**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
