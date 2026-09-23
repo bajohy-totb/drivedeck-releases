@@ -2,11 +2,11 @@
     "schemaVersion":  1,
     "packageName":  "com.totb.drivedeck",
     "channel":  "preview",
-    "versionCode":  55,
-    "versionName":  "1.1.5",
+    "versionCode":  56,
+    "versionName":  "1.1.6",
     "minSdk":  33,
     "size":  20866616,
-    "sha256":  "5ae65150a081cd5bffe65b68011626731373bde70a84420fbd81eb7a87e714cb",
-    "apkUrl":  "https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.1.5/DriveDeck-1.1.5.apk",
-    "notes":  "# DriveDeck 1.1.5\r\n\r\n- 보호 영상 창이 늦게 만들어질 때 기다리도록 보완했습니다.\r\n- Android가 창 표면을 직접 관리하는 기기의 명시적인 오류에 대응하는 경로를 추가했습니다. 일반 창의 화면·터치 경계 제한은 유지합니다.\r\n- 실패 시 PW 오류 코드를 표시하고 실제 원인을 기록합니다. 정리 중 발생한 오류가 처음 원인을 덮어쓰지 않도록 수정했습니다.\r\n- 창 모드가 바뀌어 실패했을 때 재시도가 반복되는 문제를 수정했습니다.\r\n\r\n차량에서 보고된 창 열기 실패의 정확한 원인은 아직 확인되지 않았습니다. 이번 변경의 차량 적용 및 실제 넷플릭스 재생은 미검증입니다. 호환 모드를 끄는 것이 분할 영상 문제의 해결책이라는 안내는 제거했습니다.\r\n\r\n## English\r\n\r\n- Allow time for a protected playback task to appear after launch.\r\n- Handle Android\u0027s explicit rejection when the framework manages the task surface itself, while preserving bounds and touch confinement for organized windows.\r\n- Display PW failure codes and retain the original error even if cleanup fails.\r\n- Keep a failed window-mode transition stopped until an explicit retry.\r\n\r\nThe exact cause of the reported vehicle launch failure remains unconfirmed. Vehicle behavior and actual Netflix playback are not yet verified. Removed the suggestion that disabling compatibility would resolve protected playback inside a split pane.\r\n"
+    "sha256":  "0155b1a019a8e2222a1eb342b1b218f270607a41319df64912b0445c6b688f38",
+    "apkUrl":  "https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.1.6/DriveDeck-1.1.6.apk",
+    "notes":  "# DriveDeck 1.1.6\r\n\r\n- 삼성 Android 17 진단에서 보호 영상 창의 PW04 원인을 확인했습니다. `setBoundsChangeTransaction(WindowContainerToken, Rect)` 함수가 없어 실행에 실패했습니다.\r\n- 해당 함수가 없는 경우 같은 Android 창 변경 정보에 위치·잘림 영역과 대응 플래그를 넣는 호환 경로를 추가했습니다. 위치·잘림 정보를 생략하지 않습니다.\r\n- 기존 함수가 있는 환경은 기존 경로를 유지하며, 권한 거부를 무시하지 않습니다. 대응 데이터 구조까지 없는 기기에서는 명확히 실패하도록 유지합니다.\r\n\r\n자체 보안 화면을 이용해 누락된 함수 경로를 검사했습니다. 사용자 기기의 실제 넷플릭스 재생은 아직 미검증입니다. 이전 검사에서 관찰된 간헐 입력 대기와 시작 지연을 해결했다고 주장하지 않습니다.\r\n\r\n## English\r\n\r\n- Identified the reported Samsung Android 17 PW04 error: missing `setBoundsChangeTransaction(WindowContainerToken, Rect)`.\r\n- Added a fallback that writes the same bounds/crop payload and its named flag into Android\u0027s window transaction when the convenience method is absent. Surface bounds are not skipped.\r\n- Retained the existing path where available. Permission failures are propagated; unsupported payload layouts still fail explicitly.\r\n\r\nThe missing-method path was checked with an own secure fixture. Actual Netflix playback on the user\u0027s device remains unverified. Previously observed intermittent input waits and startup stalls are not claimed fixed.\r\n"
 }
