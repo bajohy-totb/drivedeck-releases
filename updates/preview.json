@@ -1,12 +1,12 @@
 {
-  "schemaVersion": 1,
-  "packageName": "com.totb.drivedeck",
-  "channel": "preview",
-  "versionCode": 51,
-  "versionName": "1.1.1",
-  "minSdk": 33,
-  "size": 20829752,
-  "sha256": "0994cb3cd2194495f5d65c1cfa53123a508310e598a5e577415180130145fd24",
-  "apkUrl": "https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.1.1/DriveDeck-1.1.1.apk",
-  "notes": "# DriveDeck 1.1.1\n\n## 한국어\n\n- **홈 버튼 한 번 터치 → 기본 홈. 길게 누르기 → 설정.** 기본 홈 조합이 없으면 현재 앱의 분할 화면으로 돌아갑니다.\n- 홈 버튼 표시를 ‘홈’으로 바꿨습니다. 저장한 조합은 **설정 → 앱 → 앱 조합**에서 만들고 편집·실행합니다.\n- 조합 편집 중 홈을 누르거나 길게 눌러 이동할 때 저장하지 않은 내용을 버릴지 확인합니다.\n- 정식 1.1.0 사용자에게 앱별 120~640dpi, 스크롤 앱 서랍, 앱·배치·비율을 직접 고르는 홈 조합 편집과 rc2의 입력·연결 복구 개선을 제공합니다.\n\n**설정 → 업데이트 → 업데이트**에서 확인·다운로드·설치하세요. 시험 버전을 받던 사용자에게도 같은 1.1.1을 제공합니다. 기존 서명과 설정을 유지하며 Android 설치 확인은 직접 눌러야 합니다.\n\n알려진 제한: 입력 대상이 기본 화면으로 강제 전환된 직후 빠른 물리 키 입력의 순서 문제, rc2에서 확인한 LatinIME 오류는 이번 홈 버튼 변경으로 해결된 문제가 아닙니다. 이번 APK의 에뮬레이터 검사에서도 약 6초의 시작 지연이 기록됐습니다. 실차·모든 제조사·모든 입력기의 동작을 보장하지 않습니다. [검증 기록](https://github.com/bajohy-totb/drivedeck-releases/blob/main/docs/validation.md).\n\n## English\n\n- **Tap Home once to return to default home. Hold Home to open Settings.** Without a default pair, Home returns the selected apps to split view.\n- The button is now labeled Home. Create, edit and launch saved pairs through **Settings → Apps → App combinations**.\n- Leaving an edited pair through either Home gesture asks before discarding unsaved changes.\n- Users upgrading from stable 1.1.0 also receive per-app 120–640dpi, a scrolling app library, editable app/layout/ratio pairs, and rc2's input and connection-recovery improvements.\n\nCheck, download and install through **Settings → Updates → Updates**. Preview subscribers receive the same 1.1.1 release. The existing signature and settings are retained; Android installation still requires confirmation.\n\nKnown limits remain: rapid physical-key ordering immediately after forced default-display focus, and the LatinIME failures observed in rc2 emulator testing. This APK also recorded roughly six-second startup gaps in emulator checks. The Home change does not resolve these issues or establish compatibility with every vehicle, manufacturer or IME. See the [validation record](https://github.com/bajohy-totb/drivedeck-releases/blob/main/docs/validation.md).\n"
+    "schemaVersion":  1,
+    "packageName":  "com.totb.drivedeck",
+    "channel":  "preview",
+    "versionCode":  52,
+    "versionName":  "1.1.2",
+    "minSdk":  33,
+    "size":  20829752,
+    "sha256":  "a8629a14f169f0e95f183de96677e59e15377ccbedb2f54fc22cb1c098890441",
+    "apkUrl":  "https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.1.2/DriveDeck-1.1.2.apk",
+    "notes":  "# DriveDeck 1.1.2\r\n\r\n- 업데이트 화면에서 설치 버전 → 새 버전과 다운로드 용량을 확인하고, 변경 내역 위에서 다운로드·설치를 실행할 수 있습니다.\r\n- 긴 변경 내역은 주요 항목 3개와 전체 보기로 나눠 읽을 수 있습니다.\r\n- 설정의 중복 완료 버튼을 없애고 상단 닫기로 통일했습니다.\r\n- 조합 편집에 앱 아이콘을 추가하고, 넓은 화면은 미리보기 왼쪽·편집 오른쪽, 작은 화면은 한 열로 배치합니다.\r\n- 검색·분류 앱 선택, 중복 앱 차단, 취소 시 초안 유지, 실행과 분리된 저장 및 고정 저장·취소 버튼을 유지합니다.\r\n\r\n## English\r\n- See installed → available versions and actual download size, with download/install actions above release notes.\r\n- Read three highlights first and expand the full changelog.\r\n- Close settings from the top; the duplicate bottom Done action has been removed.\r\n- Pair editing shows app icons, with a left preview and right controls on wide panels and a single column on compact panels.\r\n- Search/filter selection, duplicate-app protection, draft preservation, save without launch, and fixed Save/Cancel actions are retained.\r\n\r\nAndroid 13 이상 / Android 13 or newer. 기존 설정·즐겨찾기·서명 유지 / Existing settings, favorites and signing identity are preserved.\r\n실제 차량의 펌웨어별 입력·포커스·시작 지연 제한이 모두 해결된 릴리스는 아닙니다. / This release does not claim to resolve all firmware-specific input, focus or startup-delay limitations.\r\n"
 }
