@@ -2,11 +2,11 @@
 
 [Home](../README.en.md) · [한국어](guide.ko.md) · **English**
 
-This guide describes **stable 1.1.1**. **Tap Home for default home; hold Home for Settings.** See also [per-app scaling, scrolling library and pair editing](preview.en.md). Existing screenshots below were captured in 1.1.0 or the older version indicated.
+This guide describes **stable 1.1.2**. **Tap Home for default home; hold Home for Settings.** See also [per-app scaling, scrolling library and pair editing](preview.en.md). Existing screenshots below were captured in 1.1.0 or the older version indicated.
 
 ## 1. Getting started
 
-Stable 1.1.1 supports Android 13 or newer with built-in wireless debugging, Root or Shizuku. Install the APK and configure the connection supported by your device. Select an installed app for navigation and another for the secondary pane. The same app cannot be assigned to both panes.
+Stable 1.1.2 supports Android 13 or newer with built-in wireless debugging, Root or Shizuku. Install the APK and configure the connection supported by your device. Select an installed app for navigation and another for the secondary pane. The same app cannot be assigned to both panes.
 
 ### Built-in connection (1.0.1)
 
@@ -24,7 +24,7 @@ Pairing stays on this device and is excluded from layout backups. Wireless debug
 
 For an incorrect code, dismiss Android's failure dialog, open a new code screen and retry. If discovery fails, manual code and pairing-port entry is available while keeping the system code screen open. The pairing port is the number after the colon on that screen.
 
-See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.1.1).
+See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.1.2).
 
 ### Physical keyboards (1.0.1)
 
@@ -84,7 +84,7 @@ Hold an icon in the app chooser or favorites popup.
 
 **Settings → Connection → Help for the app** also provides Change app, Reopen, Reconnect display, Open separately, Save/Copy diagnostics, and Clear this pane. Clearing a pane removes its selection, not the installed app. Some video or protected-content apps can show black screens or close in a pane; try opening them separately.
 
-## 4. Make the layout yours (1.1.1)
+## 4. Make the layout yours (1.1.2)
 
 ![English settings](../images/en-settings.png)
 
@@ -116,7 +116,7 @@ If your navigation app supplies an ongoing guidance notification, DriveDeck can 
 
 ## 7. Updates
 
-Use **Settings → Updates → Updates** to check, download, and install. Both stable and preview channels offer stable 1.1.1. Versions before RC7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
+Use **Settings → Updates → Updates** to check, download, and install. Both stable and preview channels offer stable 1.1.2. Versions before RC7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
 
 A download continues after leaving its screen while the app process remains alive. Incomplete downloads are discarded after process termination and must be restarted. Completed files are verified again and restored after a restart. The updater checks size, SHA-256, package, version, Android compatibility, and signature. Reinstalls, downgrades, and files signed with another key are rejected.
 
