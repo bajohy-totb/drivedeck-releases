@@ -2,11 +2,11 @@
     "schemaVersion":  1,
     "packageName":  "com.totb.drivedeck",
     "channel":  "preview",
-    "versionCode":  52,
-    "versionName":  "1.1.2",
+    "versionCode":  53,
+    "versionName":  "1.1.3",
     "minSdk":  33,
-    "size":  20829752,
-    "sha256":  "a8629a14f169f0e95f183de96677e59e15377ccbedb2f54fc22cb1c098890441",
-    "apkUrl":  "https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.1.2/DriveDeck-1.1.2.apk",
-    "notes":  "# DriveDeck 1.1.2\r\n\r\n- 업데이트 화면에서 설치 버전 → 새 버전과 다운로드 용량을 확인하고, 변경 내역 위에서 다운로드·설치를 실행할 수 있습니다.\r\n- 긴 변경 내역은 주요 항목 3개와 전체 보기로 나눠 읽을 수 있습니다.\r\n- 설정의 중복 완료 버튼을 없애고 상단 닫기로 통일했습니다.\r\n- 조합 편집에 앱 아이콘을 추가하고, 넓은 화면은 미리보기 왼쪽·편집 오른쪽, 작은 화면은 한 열로 배치합니다.\r\n- 검색·분류 앱 선택, 중복 앱 차단, 취소 시 초안 유지, 실행과 분리된 저장 및 고정 저장·취소 버튼을 유지합니다.\r\n\r\n## English\r\n- See installed → available versions and actual download size, with download/install actions above release notes.\r\n- Read three highlights first and expand the full changelog.\r\n- Close settings from the top; the duplicate bottom Done action has been removed.\r\n- Pair editing shows app icons, with a left preview and right controls on wide panels and a single column on compact panels.\r\n- Search/filter selection, duplicate-app protection, draft preservation, save without launch, and fixed Save/Cancel actions are retained.\r\n\r\nAndroid 13 이상 / Android 13 or newer. 기존 설정·즐겨찾기·서명 유지 / Existing settings, favorites and signing identity are preserved.\r\n실제 차량의 펌웨어별 입력·포커스·시작 지연 제한이 모두 해결된 릴리스는 아닙니다. / This release does not claim to resolve all firmware-specific input, focus or startup-delay limitations.\r\n"
+    "size":  20846136,
+    "sha256":  "1724ea5b205a79bcf54042f0a17a7e9654eefea86d0c5b136cd5046e590b108a",
+    "apkUrl":  "https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.1.3/DriveDeck-1.1.3.apk",
+    "notes":  "# DriveDeck 1.1.3\r\n\r\n- 업데이트 다운로드에 진행 막대와 퍼센트 표시를 추가했습니다.\r\n- 새 버전 확인·파일 검증 중에는 움직이는 대기 막대를 표시하고, 설치 준비가 끝나면 100%로 표시합니다.\r\n- 취소·오류·대기 상태에서는 이전 진행률이 남지 않도록 숨깁니다.\r\n\r\n1.1.3을 설치한 뒤 여는 업데이트 화면부터 적용됩니다. 이전 버전으로 이번 업데이트를 받는 동안에는 기존 화면이 표시됩니다. 기존 설정과 서명을 유지하며, 1.1.2에 공개한 연결 시작·종료 지연 등 제한은 그대로입니다.\r\n\r\n## English\r\n- Added a download progress bar with a percentage.\r\n- Checking/verifying uses an indeterminate indicator; a verified, ready-to-install file shows 100%.\r\n- Cancellation, errors and idle states hide stale progress.\r\n\r\nThe new screen is available after installing 1.1.3. Downloading this release from an older app still uses that older screen. Existing settings and signing identity are preserved; the previously documented connection/startup limitations remain.\r\n"
 }
