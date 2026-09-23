@@ -1,8 +1,8 @@
-# DriveDeck 1.1.2 scaling, library and pairs
+# DriveDeck 1.1.3 scaling, library and pairs
 
 [Overview](../README.en.md) · [한국어](preview.ko.md) · [Basic guide](guide.en.md)
 
-**Stable 1.1.2** includes per-app scaling, a scrolling library and editable home pairs. **Tap Home for default home; hold Home for Settings.** Both update channels offer the same 1.1.2 release. Install over your existing app to retain settings. Screenshots below were captured in 1.1.1-rc2.
+**Stable 1.1.3** includes per-app scaling, a scrolling library and editable home pairs. **Tap Home for default home; hold Home for Settings.** Both update channels offer the same 1.1.3 release. Install over your existing app to retain settings. Screenshots below were captured in 1.1.1-rc2.
 
 ## Update from the app
 

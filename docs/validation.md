@@ -2,6 +2,19 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.1.3 정식 / Stable
+
+versionCode **53**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+SHA-256: `1724ea5b205a79bcf54042f0a17a7e9654eefea86d0c5b136cd5046e590b108a`.
+
+다운로드 진행 막대와 퍼센트를 추가했습니다. 0·37·50·100%, 확인/검증 중 대기 표시, 검증 완료 100%, 취소·오류 시 숨김을 Android에서 확인했습니다. 1600×900 및 800×480 화면에서 업데이트 UI를 검사했습니다. 단위 **58개**, 통합 **3조건** 통과, Lint 오류 0·경고 47입니다.
+
+Added download progress and percentage. Android presentation checks cover 0/37/50/100%, indeterminate checking/verifying, verified-ready 100%, and hidden progress on cancellation/errors. Update UI was checked at 1600×900 and 800×480. **58 unit tests and 3 integration conditions** passed; Lint: 0 errors, 47 warnings. Progress states were supplied by the test harness; this count does not imply a new end-to-end network or vehicle test.
+
+1.1.3 설치 후의 업데이트 화면부터 적용됩니다. 이전 버전에서 1.1.3을 받는 동안은 이전 UI를 사용합니다. 아래 1.1.2의 연결 시작·종료 지연과 기기별 제한은 그대로이며 이번에 해결했다고 주장하지 않습니다.
+
+The new UI applies after installing 1.1.3. An older app downloading this release still uses its old UI. The connection/startup and device limitations documented below remain; they are not claimed fixed.
+
 ## 1.1.2 정식 / Stable
 
 versionCode **52**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
