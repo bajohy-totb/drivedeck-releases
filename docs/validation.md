@@ -2,6 +2,23 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.1.6 정식 / Stable
+
+versionCode **56**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+SHA-256: `0155b1a019a8e2222a1eb342b1b218f270607a41319df64912b0445c6b688f38`.
+
+사용자가 보낸 삼성 Android 17·Shizuku 진단에서 PW04의 원인을 `setBoundsChangeTransaction(WindowContainerToken, Rect)` 누락으로 확인했습니다. 해당 함수가 없을 때만 같은 창 변경 객체의 표면 영역과 이름으로 조회한 플래그를 설정합니다. 해당 데이터 구조도 없으면 오류를 전파하며 잘림·권한 검사를 생략하지 않습니다.
+
+단위 검사 60개 통과, Lint 오류 0·경고 53입니다. 최종 APK에 대해 Android 13의 실제 창 서버에서 **Rect 함수를 제공하지 않는 시험 어댑터**를 사용하여 대체 경로를 실행했습니다. 실제 보안 화면의 폭·위치·잘림 영역과 FLAG_SECURE 유지, 이후 일반 크기 변경·숨김/복원·뒤로가기·창 정리를 확인했습니다. 시험 어댑터는 시험 APK에만 있으며, 배포 APK에 기기 상태를 강제로 바꾸는 시험 진입점은 없습니다.
+
+**검증 한계:** 삼성 Android 17 실기기에 직접 접근한 검사는 아닙니다. 사용자 기기의 실제 넷플릭스 DRM 재생 결과는 아직 미검증입니다. 이전 버전의 검증에서 관찰된 간헐 포커스 대기 ANR과 초기 화면 지연은 이번 수정 범위가 아니며 해결했다고 주장하지 않습니다.
+
+The user's Samsung Android 17/Shizuku report identifies PW04 as the missing Rect overload of `setBoundsChangeTransaction`. Only when that method is absent, the fallback writes the equivalent surface-bounds payload and its named flag. Missing payload fields still cause an explicit failure; cropping and permission checks are not bypassed.
+
+60 unit tests passed; lint: 0 errors, 53 warnings. The final APK's fallback was exercised against Android 13's real window server through a test-only adapter that omits the Rect method. Checks cover real secure-surface width, position, containment and FLAG_SECURE, followed by normal resize, hide/restore, Back and owned-window cleanup. The adapter is packaged only in the test APK.
+
+**Limits:** This does not constitute a physical Samsung Android 17 test or verified Netflix DRM playback. Previously observed intermittent no-focused-window ANRs and initial-render stalls are outside this fix and are not claimed resolved.
+
 ## 1.1.5 정식 / Stable
 
 versionCode **55**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
