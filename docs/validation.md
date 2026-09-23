@@ -2,6 +2,23 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.1.4 정식 / Stable
+
+versionCode **54**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+SHA-256: `0fdebadd2e4a5c3a2f528ee50efb421d34d58c73e710d3ebbeb39fa7d548cfd4`.
+
+넷플릭스용 보호 영상 호환 모드를 추가했습니다. 실제 디스플레이 0의 앱 창을 분할 영역에 배치하며, 화면과 터치 영역을 함께 제한합니다. DRM·보안 플래그를 해제하거나 영상을 복사하지 않습니다. 앱 옵션에서 끌 수 있으며 이 모드는 기기 기본 배율을 사용합니다.
+
+최종 APK의 **단위 58개, 통합 10조건**이 통과했습니다. 1600×900 및 800×480에서 자체 보안 화면의 실제 영역·FLAG_SECURE 유지, 분할/전체 화면 전환, 설정/서랍 숨김·복원, 사이드바의 실제 터치와 뒤로가기, 일반 가상 화면 앱으로 교체를 확인했습니다. 별도 브리지 검사는 경계값·만료된 뒤로가기·소유한 창 정리, 설정 검사는 호환 모드 백업 및 잘못된 값 거부를 확인합니다. Lint 오류 0·경고 52입니다. Android 13 전용 에뮬레이터와 동일 서명 시험 어댑터로 실행한 shell UID 2000 브리지를 사용했습니다. 이 수치는 실제 차량·넷플릭스 DRM 재생 또는 실제 Shizuku 연결 시험을 뜻하지 않습니다.
+
+**남은 제한:** 앞선 전체 검사 중 앱 초기 화면의 `HardwareRenderer.nSetStopped`에서 **6.042초 정지**가 재현되었습니다. 브리지 연결 및 네이티브 창 호출 전에 발생했고 해당 실행의 건강성 검사는 실패로 보존했습니다. 기존 시작 지연은 해결했다고 주장하지 않습니다. 이후 창 제어 계약 검사는 런처 Activity 없이 브리지 자체를 따로 검사했습니다. 모든 실행이 통과한 것은 아닙니다. 실제 넷플릭스 계정·차량 재생은 아직 미검증이며 제조사 다중 창 구현에 따라 결과가 다를 수 있습니다.
+
+Added protected video compatibility for Netflix, using a bounded window on physical display 0. Both pixels and touch are constrained to the pane; secure-window/DRM flags remain intact. The mode can be disabled in app options and uses device display scale.
+
+**58 unit tests and 10 integration conditions** passed on the final APK. Checks at 1600×900 and 800×480 cover the own secure fixture's physical bounds and FLAG_SECURE, split/fullscreen transitions, settings/library hiding and restoration, actual sidebar touch/Back, and replacement with an ordinary virtual-display app. Separate bridge tests cover invalid bounds, expired Back and owned-window cleanup; settings tests cover compatibility backup and malformed values. Lint: 0 errors, 52 warnings. Tests use Android 13 on the owned emulator and a same-signed test adapter running the shell UID 2000 bridge. This is not a claim of real-vehicle Netflix DRM playback or a real Shizuku connection test.
+
+**Remaining limitation:** An earlier complete run reproduced a **6.042-second** initial `HardwareRenderer.nSetStopped` stall before the bridge connected or native windows were called. Its health gate remains failed in the retained evidence. The existing startup delay is not claimed fixed. The later bridge contract test exercises the bridge independently without a launcher Activity; not every run passed. Actual Netflix account/vehicle playback remains unverified, and manufacturer multi-window implementations may differ.
+
 ## 1.1.3 정식 / Stable
 
 versionCode **53**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
