@@ -2,6 +2,26 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.1.2 정식 / Stable
+
+versionCode **52**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+SHA-256: `a8629a14f169f0e95f183de96677e59e15377ccbedb2f54fc22cb1c098890441`.
+
+단위 **58개**, 최종 APK의 기능·시스템 상태 통합 검사 **9조건** 통과. Lint 오류 0·경고 47, 한·영 문구 509쌍을 확인했습니다. / **58 unit tests and 9 integration conditions** passed. Release Lint: 0 errors, 47 warnings; 509 Korean/English resource pairs validated.
+
+- 업데이트 버전·용량, 작업 버튼 우선 배치, 변경 내역 펼침·접기 및 진행률 갱신 시 펼침 유지.
+- 정식 APK 비디버그 및 테스트 연결 진입 차단.
+- 1600×900에서 미리보기/편집 나란히 배치, 선택·저장과 실행 분리, 드래그·취소 보존, 앱 재검색 시 검색어·초안 유지.
+- 800×480에서 한 열 배치, 키보드 위 저장 버튼으로 실제 저장. 480×900에서 한 열 배치와 저장 버튼 접근.
+
+Checks cover update presentation/expansion, release build restrictions, wide pair editing and save isolation, dragging/cancellation, search preservation, compact keyboard-safe saving and portrait layout. Pair UI checks used the final signed APK with a same-signed test-only connection adapter on an isolated Android 13 emulator; they do not establish a production native-ADB startup fix. No vehicle testing was performed.
+
+**제한:** 최종 APK의 자체 연결 검사에서는 UI 단언이 통과했지만, Android 렌더러 시작 또는 Activity 종료 호출에서 약 6초 watchdog 지연이 기록되어 전체 실패로 보존했습니다. 앞선 후보에서도 약 7.6초 지연이 있었습니다. 기존 1.1.1에 기록된 유형이며 해결했다고 주장하지 않습니다. 작은 화면의 초기 배치 검사는 애니메이션 종료를 기다린 뒤 다시 검사했으며 원래 실패 기록도 보존했습니다. 잘못된 테스트 연결 인자·존재하지 않는 필터 실행은 통과 수에 포함하지 않았습니다.
+
+**Limitations:** Native-ADB runs of the final APK passed UI assertions but recorded roughly six-second Android renderer/startup or Activity-pause watchdog stalls, so those runs remain failures. An earlier candidate also recorded a 7.6-second stall. Similar limitations existed in 1.1.1 and are not claimed fixed. The compact geometry check was repeated after waiting for the opening animation; the original failure is retained. Invalid test-launch arguments and a nonexistent method filter are excluded from passing counts.
+
+기존 키보드 순서·입력기·제조사 펌웨어 관련 제한은 아래 기록을 따릅니다. / Earlier keyboard ordering, IME and firmware limitations below still apply.
+
 ## 1.1.1 정식 / Stable
 
 기존 서명을 유지한 비디버그 APK, versionCode **51**, 20,829,752 bytes입니다. / Non-debuggable APK, versionCode **51**, retaining the existing signing identity.
