@@ -1,12 +1,12 @@
-# DriveDeck 1.2.0 app size, app list and pairs
+# DriveDeck 1.2.1 app size, app list and pairs
 
 [Overview](../README.en.md) · [한국어](preview.ko.md) · [Basic guide](guide.en.md)
 
-**Stable 1.2.0** includes a size for each app, a scrolling app list and editable pairs. The preview channel offers the same 1.2.0 as the stable channel. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
+**Stable 1.2.1** includes a size for each app, a scrolling app list and editable pairs. The preview channel offers the same 1.2.1 as the stable channel. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
 
 ## Update from the app
 
-Open **Settings → Updates → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel; at present both channels offer 1.2.0.
+Open **Settings → Updates → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel; at present both channels offer 1.2.1.
 
 Each update check uses a fresh request URL to reduce stale CDN metadata immediately after publication. Only newer version codes are offered; changing channels does not downgrade the app. Cancelling installation preparation also suppresses an installer callback that has already been queued.
 
@@ -60,6 +60,6 @@ If discovery still fails, enter the number after the colon in Android Wireless d
 
 Backups include named pairs, the default home's apps, direction, order and ratio, the Home button choice, and per-app sizes. Older backups remain supported. Invalid formats and ranges reject the whole import before changing settings. Installed apps, connection permissions, Android language settings and the apps and widgets placed on the home screen are not included.
 
-A physical-keyboard ordering issue was found in the 1.1.1 validation: when Android or another app forces input back to the default display immediately before rapid typing, the first forwarded letter may arrive out of order. That forced-focus test failed with both the built-in connection and Shizuku and was excluded from the pass count. It has not been confirmed fixed in 1.2.0. Tap the intended app's text field again before continuing.
+A physical-keyboard ordering issue was found in the 1.1.1 validation: when Android or another app forces input back to the default display immediately before rapid typing, the first forwarded letter may arrive out of order. That forced-focus test failed with both the built-in connection and Shizuku and was excluded from the pass count. It has not been confirmed fixed in 1.2.1. Tap the intended app's text field again before continuing.
 
 Stable publication does not establish exhaustive validation of vehicle controls, Bluetooth hardware, ignition power or manufacturer firmware. Not yet checked on the real 엠스틱4 and Galaxy Z Fold8. The 1.1.1 validation also reproduced an emulator LatinIME service ANR, an IME crash while attaching to a removed display, invisible keyboard-window touch interception and renderer delays during startup and connection recovery. The preceding 1.1.1-rc2 APK also reproduced a LatinIME ANR and roughly 6.1–6.4-second startup delays. Those failures remain recorded; later passing rechecks do not establish root-cause resolution. Orientation stays locked while running. See [validation scope](validation.md) for successful and failed coverage.

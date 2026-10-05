@@ -2,11 +2,11 @@
 
 [Overview](../README.en.md) · [한국어](guide.ko.md) · **English**
 
-This guide describes **stable 1.2.0**. **Home opens the home screen; hold Home for Settings.** If you set a default home, a tap on Home goes there instead. See also [app size, app list and pair editing](preview.en.md).
+This guide describes **stable 1.2.1**. **Home opens the home screen; hold Home for Settings.** If you set a default home, a tap on Home goes there instead. See also [app size, app list and pair editing](preview.en.md).
 
 ## 1. Getting started
 
-DriveDeck 1.2.0 supports Android 13 or newer with built-in wireless debugging, Root or Shizuku. Install the APK and configure the connection your device supports. Then choose a navigation app and a secondary app, with **Choose app** in an empty pane or **Apps** on the control bar. The same app cannot be assigned to both panes.
+DriveDeck 1.2.1 supports Android 13 or newer with built-in wireless debugging, Root or Shizuku. Install the APK and configure the connection your device supports. Then choose a navigation app and a secondary app, with **Choose app** in an empty pane or **Apps** on the control bar. The same app cannot be assigned to both panes.
 
 ### Built-in connection
 
@@ -24,7 +24,7 @@ Pairing stays on this device and is excluded from settings backups. Wireless deb
 
 For an incorrect code, dismiss Android's failure dialog, open a new code screen and retry. If discovery fails, enter the code and the pairing port under **Manual code entry · If discovery fails** while keeping the system code screen open. The pairing port is the number after the colon on that screen.
 
-See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.2.0).
+See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.2.1).
 
 ### Root connection
 
@@ -178,7 +178,7 @@ If your navigation app supplies an ongoing guidance notification, DriveDeck can 
 
 ## 9. Updates
 
-Use **Settings → Updates → Updates**, then **Check for updates → Download update → Install update**. Both stable and preview channels offer stable 1.2.0. The preview channel is switched on with **Receive preview versions** on the update screen. Versions older than 1.0.0-rc7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
+Use **Settings → Updates → Updates**, then **Check for updates → Download update → Install update**. Both stable and preview channels offer stable 1.2.1. The preview channel is switched on with **Receive preview versions** on the update screen. Versions older than 1.0.0-rc7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
 
 A download shows a progress bar and percentage, and continues after leaving its screen while the app process remains alive. Incomplete downloads are discarded after process termination and must be restarted. Completed files are verified again and restored after a restart. The updater checks size, SHA-256, package, version, Android compatibility, and signature. Reinstalls, downgrades, and files signed with another key are rejected.
 
@@ -229,4 +229,4 @@ Tap **Reopen app** if the window fails to open. If it fails again, share only th
 | PW07 | Freeform window touch region extends past its pane and would block the launcher, so playback is stopped |
 | PW00 | Other connection or window operation error |
 
-These codes identify a stage, not a confirmed root cause. Actual vehicle/Netflix playback remains unverified in 1.2.0.
+These codes identify a stage, not a confirmed root cause. Actual vehicle/Netflix playback remains unverified in 1.2.1.

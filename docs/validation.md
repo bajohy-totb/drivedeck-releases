@@ -2,6 +2,19 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.2.1 정식 / Stable
+
+versionCode **64**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+SHA-256: `988c59260ca2c5230ee8d70040b95597041567b25fc1674c0a2ef86a41948652`. 재링크 자료 / Relink materials: `DriveDeck-1.2.1-relink.zip` SHA-256 `37466f83ea65506c52f0ad62dcc4ad209dcf530cdc60c76cf9eefebcea7c68e6`.
+
+1.2.0에서 바뀐 것은 세 가지입니다: 구역이 앱이 사라졌다고 판단하기 전에 0.7초 뒤 한 번 더 확인하고, 시작 중인 앱은 다 뜬 뒤에 닫으며(최대 4초 기다림), Android가 시작을 늦게 처리하면 45초까지 기다립니다. 릴리스 빌드에서 단위 검사 140개가 통과했고 Lint는 오류 0·경고 103입니다.
+
+Android 13 검사 에뮬레이터에서 세 화면 크기(1600×900, 엠스틱4의 1676×680, 갤럭시 Z 폴드8 안쪽 화면의 2448×1848)로 확인했습니다. 단위 검사 140개가 통과했고, 같은 소스의 디버그 빌드로 통합 검사 91묶음(379개 케이스)을 모두 한 번 실행해 87묶음이 통과했습니다. 통과하지 못한 넷: 앱을 연달아 바꾸는 검사 하나에서 위 두 번째 문제가 한 번 더 나왔습니다(앞 앱의 프로세스가 막 종료되는 순간과 겹친 경우로, 이 경로는 아직 남아 있습니다). 실제 지도 앱에서 구역을 바꾼 뒤 첫 탭에 한글 키보드가 열리지 않은 경우가 한 번 있었습니다. 물리 키보드 검사 하나는 1.1.7부터 불안정한 검사입니다. 기록 검사는 검사 기기에 남아 있던 1.1.6의 기록 줄 때문에 실패했습니다(제품 문제가 아닙니다). 배포 APK는 공개된 1.1.6과 1.2.0 위에 덮어 설치해 설정이 그대로인 것을 확인했고, 23묶음을 실행해 21묶음이 통과했습니다(나머지 묶음은 게시 뒤에 실행합니다). 통과하지 못한 둘은 왼쪽 키보드 묶음(1600×900과 1676×680)으로, 두 구역을 번갈아 누르는 케이스에서 아래의 알려진 한계가 기준(다섯 번 중 두 번)보다 자주 나왔습니다. 그 케이스만 1.2.0과 1.2.1 배포 APK로 번갈아 6회씩 실행했을 때는 두 버전 모두 6회 다 통과했습니다. 알려진 한계: 한 구역에 키보드가 떠 있는 채로 다른 구역의 입력란을 누르면 가끔 키보드만 뜨고 글자가 들어가지 않거나 키보드가 뜨지 않습니다. 입력란을 한 번 더 누르면 됩니다. 실제 엠스틱4와 갤럭시 Z 폴드8, 실제 내비·영상 앱으로는 아직 확인하지 못했습니다.
+
+Three things changed since 1.2.0: a pane looks again after 0.7 s before it calls its app gone; an app that is still starting is closed only once it is up (waiting at most 4 s); and when Android is slow to perform a start the launcher waits up to 45 s. Unit tests on the release build: 140 passed; lint: 0 errors, 103 warnings.
+
+Checked on the Android 13 test emulator at three screen sizes (1600x900; 1676x680 as on the 엠스틱4; 2448x1848 as on the Galaxy Z Fold8 inner screen). 140 unit tests passed; on a debug build of the same sources all 91 integration test groups (379 cases) were run once and 87 passed. The four that did not: in one test that replaces apps in quick succession the second issue above happened once more (it coincided with the previous app's process ending; this path remains). With a real map app, the first tap after changing panes once did not open the Korean keyboard. One physical keyboard test has been unstable since 1.1.7. The log test failed on a log line that 1.1.6 had left on the test device (not a product issue). The release APK kept the settings when installed over the published 1.1.6 and 1.2.0, and 21 of the 23 groups run on it passed (the remaining groups run after the publication). The two that did not are the left keyboard group at 1600x900 and 1676x680: in the case that taps the two panes in turn, the known limit below showed more often than the test allows (two in five). That case alone, run six times each on the release APKs of 1.2.0 and 1.2.1 in turn, passed every time on both. Known limit: tapping a text field in one pane while the keyboard is up in the other sometimes brings the keyboard without typing, or no keyboard; tap the field once more. Not yet checked on the real 엠스틱4 or Galaxy Z Fold8, or with real navigation and video apps.
+
 ## 1.2.0 정식 / Stable
 
 versionCode **63**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.

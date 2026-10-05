@@ -8,9 +8,9 @@ DriveDeck is an Android launcher for in-car devices. It shows two installed apps
 
 The launcher holds its starting screen orientation while running. Split direction and control-bar position remain adjustable in Settings.
 
-[**Download 1.2.0 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.2.0/DriveDeck-1.2.0.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete guide](docs/guide.en.md)
+[**Download 1.2.1 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.2.1/DriveDeck-1.2.1.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete guide](docs/guide.en.md)
 
-**Stable 1.2.0:** The Home button keeps the navigation app and opens a home screen in the other pane. The home screen holds app icons and Android widgets such as a clock, weather or music. Tapping a text field in either app opens the keyboard in that app at once, including the map's search box. Every screen was rebuilt on one design: all control-bar buttons have labels, and Settings is a list of rows in six categories. The Split ratio panel has a Swap positions button that swaps the two apps without restarting them. If you had set a default home, Home still opens it; change this under Settings → Apps & pairs → Home button. Actual Netflix playback in protected video compatibility mode has not been verified. Install over the existing app to keep your settings. Requires Android 13 or newer and built-in wireless debugging, Root, or Shizuku. Not yet checked on the real 엠스틱4 and Galaxy Z Fold8.
+**Stable 1.2.1:** fixes the rare restart of the other pane's app after a tap on its widget on the home screen, and makes an app that fails to open after quick replacements rarer. **Since 1.2.0:** The Home button keeps the navigation app and opens a home screen in the other pane. The home screen holds app icons and Android widgets such as a clock, weather or music. Tapping a text field in either app opens the keyboard in that app at once, including the map's search box. Every screen was rebuilt on one design: all control-bar buttons have labels, and Settings is a list of rows in six categories. The Split ratio panel has a Swap positions button that swaps the two apps without restarting them. If you had set a default home, Home still opens it; change this under Settings → Apps & pairs → Home button. Actual Netflix playback in protected video compatibility mode has not been verified. Install over the existing app to keep your settings. Requires Android 13 or newer and built-in wireless debugging, Root, or Shizuku. Not yet checked on the real 엠스틱4 and Galaxy Z Fold8.
 
 ![DriveDeck showing a map app and another app side by side](images/en-workspace.png)
 
@@ -18,7 +18,7 @@ The launcher holds its starting screen orientation while running. Split directio
 
 ## Features
 
-The features below describe stable 1.2.0. See also the [app size, app list and pair guide](docs/preview.en.md).
+The features below describe stable 1.2.1. See also the [app size, app list and pair guide](docs/preview.en.md).
 
 | Feature | What it does |
 |---|---|
@@ -62,7 +62,7 @@ Open **Settings → General → Language / 언어** to choose Follow device sett
 3. Open **Settings → Updates → Updates** to check and download.
 4. Tap Install update and confirm in Android. If asked, allow installations from DriveDeck, return and tap Install update again.
 
-Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Both stable and preview channels offer stable 1.2.0. Park before installing.
+Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Both stable and preview channels offer stable 1.2.1. Park before installing.
 
 ## Learn more
 
@@ -70,4 +70,4 @@ Automatic checks run on startup/resume, six hours after success or five minutes 
 - [Korean and English screenshot gallery](docs/screenshots.md)
 - [Validation record and vehicle limitations](docs/validation.md)
 
-This repository distributes installation files, update metadata and documentation. It does not contain application source or signing keys. Corresponding LGPL library source and replacement/relink materials are supplied in the same release's `DriveDeck-1.2.0-relink.zip` asset.
+This repository distributes installation files, update metadata and documentation. It does not contain application source or signing keys. Corresponding LGPL library source and replacement/relink materials are supplied in the same release's `DriveDeck-1.2.1-relink.zip` asset.
