@@ -2,6 +2,82 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.2.0 정식 / Stable
+
+versionCode **63**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+SHA-256: `091f051fce754fc5921278269945ad5d0a9e029656d2ca42c7aee7b7936713df`. 재링크 자료 / Relink materials: `DriveDeck-1.2.0-relink.zip` SHA-256 `34c582d19aab2badbe0f7e34957be59c348db420ef922b1856c2c870363b2f8d`.
+
+릴리스 빌드에서 단위 검사 UNIT개가 통과했고 Lint는 오류 0·경고 103입니다.
+
+**검사 환경:** Android 13 검사 에뮬레이터를 세 화면 크기(1600×900, 엠스틱4의 1676×680·255dpi, 갤럭시 Z 폴드8 안쪽 화면의 2448×1848·455dpi)로 바꿔 가며 실행했습니다. 실제 엠스틱4와 갤럭시 Z 폴드8, 실제 내비·영상 앱으로는 확인하지 못했습니다.
+
+**통합 검사 (같은 소스의 디버그 빌드):** 통합 검사 91묶음(377개 케이스)을 최종 소스로 모두 한 번 실행해 88묶음이 통과했습니다(증거 `artifacts/verification/x100-rc6b`, 결과표 `x100-results.tsv`). 통과하지 못한 세 묶음 가운데 하나는 같은 앱의 두 화면을 0.3초 간격으로 연달아 바꾸는 검사입니다. 시작 도중에 종료된 앱을 Android가 34초 뒤에야 다시 띄워, 그 구역에 실행 실패가 표시됩니다(같은 종류의 검사가 1.2.0-rc4에서도 실패한 적이 있으며 다음 버전에서 다룹니다). 또 하나는 홈 화면 검사(1676×680, 7개 케이스 중 1개)입니다. 다른 구역에서 실행 중인 앱의 위젯을 눌렀을 때 그 앱이 자기 구역에 돌아오기는 했지만, 런처가 그 0.2초 사이에 앱이 사라졌다고 판단해 10여 초 뒤 그 앱을 다시 시작했습니다. 같은 케이스는 이 실행을 포함해 13번 중 1번 이렇게 됐고, 다음 버전에서 고칩니다. 나머지 하나(2448×1848에서의 조합 편집 9개 케이스)는 7개가 통과한 뒤 검사 도구가 런처를 다시 띄우는 단계에서 멈춰 중단했고, 따로 다시 실행해 9개가 모두 통과했습니다. 같은 현상이 직전 빌드의 실행에서도 한 번 나왔습니다(두 번 모두 시작 0.3초 뒤에 종료되고 약 34초 뒤에 다시 시작). 같은 종류의 검사가 1.2.0-rc4의 반복 실행에서는 10회 중 2회 실패했습니다.
+
+**배포 APK로 실행:** 배포 APK로는 문서용 화면을 한국어와 영어로 한 번씩 찍었습니다(각 12장). 배포 APK의 33묶음 검사는 게시 뒤에 실행합니다.
+
+**덮어 설치와 앱 안 업데이트:** 공개된 1.1.6과 1.2.0-rc5 위에 배포 APK를 덮어 설치해 설정이 그대로인 것을 확인했습니다. 앱 안 업데이트(정식·시험 채널)는 게시 뒤에 확인합니다.
+
+**홈 화면:** 홈 버튼으로 보조 구역에 홈 화면을 열고(내비 구역은 그대로), 앱을 추가·이동·제거하고, 시험용 위젯을 기기 연결의 허용으로 추가해 내용이 보이고 누르면 그 앱이 같은 구역에 열리며 크기 조절과 런처 재시작 뒤 유지, 제거까지 확인했습니다. 다른 구역에서 실행 중인 앱의 위젯을 누르면 그 앱은 자기 구역에 남습니다(Android가 옮긴 작업을 되돌립니다). 배경 없이 흰 글자만 그리는 시험용 위젯은 주간 테마에서 어두운 카드 위에 놓이고(화면에서 읽은 색으로 확인), 야간 테마에서도 카드가 유지됩니다. 세 화면 크기에서 각각 7개 케이스입니다.
+
+**키보드:** 내비 앱의 검색창과 보조 앱의 입력란을 한 번씩 번갈아 눌러 키보드가 그 구역에 열리고 입력이 그 앱에 들어가는 것, 지도를 끄는 동안 옆 앱의 키보드와 입력 대상이 그대로인 것, 지도만 보이는 배치, 지도를 숨겼을 때 입력이 보조 앱으로 넘어가는 것, 메뉴와 크기 변경 뒤 입력 대상이 유지되는 것을 세 화면 크기에서 각각 7개 케이스로 확인했습니다.
+
+**시스템 바:** 앱 목록과 설정을 여섯 번씩 열고 닫는 동안, 런처 화면이 Android에서 받은 상태 표시줄·하단 바 표시 여부를 프레임마다 읽습니다. 수정 전 빌드에서는 3회 실행에서 278프레임 중 104, 279프레임 중 139, 275프레임 중 119프레임에 바가 표시 상태였고, 수정 후에는 0프레임입니다(수정 뒤 3회: 327·272·271프레임 모두 0, 최종 실행에서는 두 화면 크기에서 통과).
+
+**검증 한계와 알려진 문제:** 한 구역에 키보드가 떠 있는 채로 다른 구역의 입력란을 누르면, Android가 키보드를 옮기는 순간 키보드 높이를 화면 전체로 잘못 알리는 일이 있습니다(검사 에뮬레이터의 AOSP 키보드에서 그런 탭 약 10번 중 1번). 키보드에 맞춰 화면을 줄이는 앱은 그때 입력란의 포커스를 잃어, 키보드는 떠 있는데 글자가 들어가지 않습니다. 입력란을 한 번 더 누르면 됩니다. 키보드가 떠 있지 않을 때 누르는 경우에는 나타나지 않았습니다. 삼성 키보드나 Gboard에서의 동작은 확인하지 못했습니다. 문서용 화면을 찍는 11회 실행 중 3회, 지도 앱(Organic Maps)이 처음 뜰 때 5초 넘게 응답하지 않아 Android가 닫았고 런처가 다시 실행했습니다. 검사 호스트의 메모리가 부족한 상태였고, 그 실행의 사진은 쓰지 않았습니다. `PhysicalKeyboardIntegrationTest#layoutRecoveryDoesNotCancelUserTap`은 1.1.7부터 불안정한 검사로, 직전 빌드의 실행에서 한 번 실패했고 최종 실행에서는 통과했습니다.
+
+Unit tests on the release build: 140 passed; lint: 0 errors, 103 warnings.
+
+**Environment:** the Android 13 test emulator at three screen sizes (1600×900; 1676×680 at 255 dpi as on the 엠스틱4; 2448×1848 at 455 dpi as on the Galaxy Z Fold8 inner screen). Not checked on the real 엠스틱4 or Galaxy Z Fold8, nor with real navigation or video apps.
+
+**Integration checks (debug build of the same sources):** All 91 integration test groups (377 cases) were run once on the final sources and 88 passed (evidence `artifacts/verification/x100-rc6b`, table `x100-results.tsv`). Of the three groups that did not pass, one replaces two screens of the same app 0.3 seconds apart. Android starts an app that was ended while it was starting only 34 seconds later, and the pane reports a failed start (a test of the same kind also failed at times on 1.2.0-rc4; the next version deals with it). Another is the home screen group at 1676x680 (1 of its 7 cases): after a tap on a widget of the app running in the other pane, that app did come back to its own pane, but the launcher had judged it gone in the 0.2 seconds between and started it again some ten seconds later. This happened in 1 of 13 runs of that case, this run included; the next version fixes it. The third (the pair editor's 9 cases at 2448x1848) stopped after 7 passing cases where the test tool starts the launcher again; it was ended and run again separately, and all 9 passed. The same happened once in the run on the build before (both times ended 0.3 s after its start and started again about 34 s later). A test of the same kind failed in 2 of 10 repeated runs of 1.2.0-rc4.
+
+**On the release APK:** On the release APK the documentation screens were captured once in Korean and once in English (12 pictures each). The 33-group run on the release APK follows the publication.
+
+**Install over an older version and in-app update:** Installing the release APK over the published 1.1.6 and 1.2.0-rc5 kept the settings. The in-app update on both channels is checked after the publication.
+
+**Home screen:** Home opens the home screen in the secondary pane while the navigation pane stays as it is; apps are added, moved and removed; a test widget is added through the device connection's grant, shows its content, opens its app in the same pane when tapped, is resized, survives a launcher restart and is removed. A widget of the app running in the other pane leaves that app in its own pane (the task Android moved is taken back). A test widget that draws only white text on no background stands on a dark card in the day theme (checked from the colours on screen) and keeps it at night. Seven cases at each of the three sizes.
+
+**Keyboard:** alternating single taps on the navigation app's search box and the secondary app's text field open the keyboard in that pane and the text reaches that app; dragging the map leaves the other app's keyboard and typing target alone; the map-only layout; hiding the map hands typing to the secondary app; menus and resizes keep the typing target. Seven cases at each of the three sizes.
+
+**System bars:** while the app list and Settings are opened and closed six times each, every frame reads from the launcher's own window whether Android reports the status bar or the navigation bar as shown. Before the fix the bars were shown in 104 of 278, 139 of 279 and 119 of 275 frames (three runs); after it, in none (three runs after the fix: 0 of 327, 272 and 271 frames; the final run passed at two screen sizes).
+
+**Limits and known issues:** when the keyboard is up in one pane and a text field in the other pane is tapped, Android sometimes reports the keyboard as tall as the whole display for a moment while it moves it (about 1 in 10 such taps with the AOSP keyboard on the test emulator). An app that resizes for the keyboard then drops the field's focus: the keyboard is up but nothing is typed. Tapping the field once more fixes it. It did not happen when no keyboard was open. Not checked with Samsung Keyboard or Gboard. In 3 of 11 runs that captured the documentation screens the map app (Organic Maps) did not respond for more than 5 seconds at its first start; Android closed it and the launcher started it again. The test host was short of memory, and the pictures of those runs were not used. `PhysicalKeyboardIntegrationTest#layoutRecoveryDoesNotCancelUserTap`, unstable since 1.1.7, failed once in the run on the build before and passed in the final run.
+
+## 1.1.7 미배포 / Not released
+
+1.1.7은 배포하지 않았고 그 변경은 1.2.0에 들어 있습니다. 아래는 당시 1.1.7 빌드로 확인한 기록입니다. / 1.1.7 was not released; its changes are part of 1.2.0. The record below is what was checked on that build.
+
+versionCode **57**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+SHA-256: `62d410569bef7727f493aecf916d46ab632a2c2e729de29fe012bbad3687ff81`. 재링크 자료 / Relink materials: `DriveDeck-1.1.7-relink.zip` SHA-256 `47fa670fd65c847d0121246fdbf4b46e8f1550000a36726ad4244dd242d22e92` (original.apk = 위 APK / the APK above).
+
+릴리스 빌드에서 단위 검사 76개가 통과했고 Lint는 오류 0·경고 63입니다.
+
+**보호 영상 창 (릴리스 APK로 실행):** Android 13 검사 에뮬레이터에서 자유 창을 켜고 SystemUI를 재시작한 환경(WM Shell FreeformTaskListener 등록 확인)으로 보호 영상 통합 검사 2건을 3회 실행해 모두 통과했습니다. 창은 선택 영역 `1071,6-1594,894` 안에서 상태바와 작업 표시줄을 피한 `1071,24-1594,840`에 놓였고, 사이드바 뒤로 가기 탭은 런처가 받았습니다. 세 번 모두 6,000ms 감시 기준의 멈춤은 없었습니다.
+
+SystemUI 재시작 없이 자유 창만 켠 환경에서는 재생 창의 터치 영역이 화면 전체(`[-15999,-8999][16000,9000]`)로 퍼집니다. 릴리스 APK로 3회 실행해 모두 PW07로 창을 닫았고 남은 재생 창은 없었습니다. 1회는 창 생성 단계에서, 2회는 창이 늦게 표시된 뒤 상태 확인에서 감지했으며, 이 2회에는 가로채인 탭부터 PW07까지 3.5초와 4.0초 동안 런처가 막혔습니다. 이전 1.1.7 후보의 실패 3회는 이 재시작 누락 환경에서 기록되었고, 그중 두 후보(`2a092bf4…`, `76057201…`)는 렌더러 멈춤 7,067ms와 6,617ms를 기록했습니다.
+
+**다른 통합 검사 (같은 소스의 디버그 빌드):** 검사용 실행 진입점은 릴리스 APK에서 막혀 있으므로 나머지는 디버그 빌드로 실행했습니다. 조합 편집 9건, 디자인 9건, 업데이트 화면 1건, 하드웨어 오디오 2건, 설정 백업 6건이 통과했습니다. 복구 6건은 수정 후 빌드에서 5회 중 4회 통과했고, 1회는 시작 직후 키보드 포커스를 지도 앱이 가져가 실패했습니다. 수정 전 빌드는 3회 모두 단언을 통과했으나 1회는 시스템 상태 검사에서 실패했습니다.
+
+물리 키보드 10건 중 8건은 두 빌드의 모든 실행에서 통과했습니다. `anOrphanReleaseDoesNotStealTheAudioWindowsDisplay`는 수정 전(2회)과 수정 후(3회) 모든 실행에서 같은 단계에서 실패합니다. `layoutRecoveryDoesNotCancelUserTap`은 두 빌드 모두 불안정합니다. 전체 실행에서는 수정 후 3회 중 2회, 수정 전 2회 중 2회 통과했고, 단독 실행에서는 수정 후 13회 중 2회, 수정 전 13회 중 5회 통과했습니다. 실패는 모두 "Button did not receive DOWN"이며 두 빌드의 차이는 통계적으로 확인되지 않았습니다(Fisher 정확 검정 p=0.38).
+
+기본 런처 지정 1건, 작업 공간 배치 2건, 전체 화면 3건은 수정 전 소스로 같은 조건에서 실행해도 같은 단계에서 실패합니다. 현재 화면에 없는 이름(예: "앱 1 뒤로")을 찾는 오래된 검사입니다.
+
+**검증 한계:** 삼성 Android 17 실기기의 실제 넷플릭스 재생은 미검증입니다. 시스템 바 회피와 PW07 판정(`dumpsys input` 해석)은 Android 13에서만 확인했습니다. 긴 렌더러 멈춤은 해결했다고 주장하지 않습니다.
+
+The release build passed 76 unit tests; lint: 0 errors, 63 warnings.
+
+**Protected playback (release APK):** On the Android 13 test emulator with freeform enabled and SystemUI restarted (WM Shell FreeformTaskListener registered), both protected-playback integration cases passed in 3 of 3 runs. The window was placed at `1071,24-1594,840` inside the pane `1071,6-1594,894`, clear of the status bar and taskbar, and the sidebar Back tap reached the launcher. No run hit the 6,000 ms watchdog.
+
+With freeform enabled but SystemUI not restarted, the playback window's touch region covers the whole screen (`[-15999,-8999][16000,9000]`). In 3 of 3 release-APK runs the window was closed with PW07 and no playback window remained. One run caught it at creation; two caught it in health polling after the window became visible late, with the launcher blocked for 3.5 s and 4.0 s from the captured tap to PW07. The three earlier 1.1.7 candidate failures were recorded in that unrestarted environment; two of those candidates (`2a092bf4…`, `76057201…`) recorded renderer stalls of 7,067 ms and 6,617 ms.
+
+**Other integration checks (debug build of the same sources):** the test launch entry is blocked in the release APK, so these ran on a debug build. Pair editor 9, design 9, update screen 1, hardware audio 2 and settings backup 6 cases passed. Recovery (6 cases) passed in 4 of 5 runs on the fixed build; one run failed because the map app took keyboard focus at startup. The pre-fix build passed all assertions in 3 runs, with one system-health failure.
+
+8 of 10 physical keyboard cases passed in every run on both builds. `anOrphanReleaseDoesNotStealTheAudioWindowsDisplay` fails at the same step in every run before (2) and after (3) the fixes. `layoutRecoveryDoesNotCancelUserTap` is unstable on both builds: in full-class runs it passed 2 of 3 after and 2 of 2 before; run alone it passed 2 of 13 after and 5 of 13 before. Every failure is "Button did not receive DOWN"; the difference is not statistically established (Fisher exact p=0.38).
+
+Default-launcher 1, workspace layout 2 and fullscreen 3 cases fail at the same step on the pre-fix sources under the same conditions. They look for labels that are no longer on screen (e.g. "앱 1 뒤로").
+
+**Limits:** Actual Netflix playback on the Samsung Android 17 device remains unverified. System-bar avoidance and the PW07 check (parsing `dumpsys input`) were verified only on Android 13. The long renderer stall is not claimed fixed.
+
 ## 1.1.6 정식 / Stable
 
 versionCode **56**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.

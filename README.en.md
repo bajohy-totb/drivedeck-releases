@@ -4,46 +4,56 @@
 
 [한국어](README.md) · **English**
 
-DriveDeck is an Android launcher for in-car devices. Display two installed apps side by side or stacked vertically, then expand either app from the control bar.
+DriveDeck is an Android launcher for in-car devices. It shows two installed apps side by side or stacked, and either app can be expanded from the control bar.
 
 The launcher holds its starting screen orientation while running. Split direction and control-bar position remain adjustable in Settings.
 
-[**Download 1.1.6 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.1.6/DriveDeck-1.1.6.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete guide](docs/guide.en.md)
+[**Download 1.2.0 APK**](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.2.0/DriveDeck-1.2.0.apk) · [Releases](https://github.com/bajohy-totb/drivedeck-releases/releases) · [Complete guide](docs/guide.en.md)
 
-**Stable 1.1.6:** Added a fallback for the missing window-control method identified in a Samsung Android 17 PW04 report. Actual Netflix playback on that device remains unverified. Netflix now defaults to protected video compatibility using a bounded window on the physical display. Actual Netflix playback on a vehicle has not been verified. You can turn it off in app options; this mode uses the device display scale. Added download progress and percentage indicators. Refined update details, expandable release notes and responsive pair editing. Tap Home to return to default home; hold Home to open Settings. Includes per-app 120–640dpi, a scrolling app library and editable app combinations. Install over the existing app to retain settings. Requires Android 13 or newer and built-in wireless debugging, Root, or Shizuku.
+**Stable 1.2.0:** The Home button keeps the navigation app and opens a home screen in the other pane. The home screen holds app icons and Android widgets such as a clock, weather or music. Tapping a text field in either app opens the keyboard in that app at once, including the map's search box. Every screen was rebuilt on one design: all control-bar buttons have labels, and Settings is a list of rows in six categories. The Split ratio panel has a Swap positions button that swaps the two apps without restarting them. If you had set a default home, Home still opens it; change this under Settings → Apps & pairs → Home button. Actual Netflix playback in protected video compatibility mode has not been verified. Install over the existing app to keep your settings. Requires Android 13 or newer and built-in wireless debugging, Root, or Shizuku. Not yet checked on the real 엠스틱4 and Galaxy Z Fold8.
 
-![DriveDeck 1.1.0 with two installed apps](images/en-workspace.png)
+![DriveDeck showing a map app and another app side by side](images/en-workspace.png)
 
-*Actual Android 13 emulator capture. Organic Maps and Android Clock are separate apps, not bundled with DriveDeck. This is not an in-vehicle or driving-test image. [Validation scope and limitations](docs/validation.md)*
+*Actual Android 13 emulator capture. The map app and the app beside it are separate apps, not bundled with DriveDeck. This is not an in-vehicle or driving-test image. [Validation scope and limitations](docs/validation.md)*
 
 ## Features
 
-The features below describe stable 1.1.6. See the [scaling, library and pair guide](docs/preview.en.md). Images on this page were captured in 1.1.0; use the Home gestures described above.
+The features below describe stable 1.2.0. See also the [app size, app list and pair guide](docs/preview.en.md).
 
 | Feature | What it does |
 |---|---|
-| More space for apps | Full-height content without a global top bar. Optional compact app-name headers. |
-| Flexible arrangement | Automatic, horizontal or vertical splits; reverse pane order; left, right or bottom controls. |
-| Expand either app | Buttons show actual app names, with a separate return-to-split button. |
-| Drag the divider | Preview a ratio while dragging, then release to apply it. Range: 30–70%. Tap for ratio choices. |
-| App library | Category filters, search, a responsive grid and vertical scrolling. |
-| App options | Long press or tap ⋯ for favorites, standalone launch, pane assignment, app info or uninstall. |
-| Quick favorites | The star opens up to three shortcuts and the full list. Choose automatic classification or the selected pane as the destination. |
-| Saved combinations | Edit up to eight pairs in Settings → Apps → App combinations. Tap Home for default home; hold for Settings. |
-| Settings | Display, Controls, Apps, Connection and Updates sections. Choose a drawer, centered dialog or bottom sheet. |
-| Input and recovery | Physical-keyboard routing to the secondary app, non-focusable control bars, connection retry and pane geometry recovery. |
+| Home screen and widgets | Home opens the home screen in the secondary pane. Tap + to add a widget or an app; hold an item to move or remove it. An app chosen from All apps opens in that pane. |
+| Keyboard in either app | The keyboard opens in the app whose text field you tap. The pane tapped last takes the typing; dragging or pinching the other pane does not change that. |
+| More space for apps | Full-height content without a global top bar. Optional compact app title bars. |
+| Flexible arrangement | Auto, side-by-side or stacked splits; swap pane positions; left, right or bottom control bar. |
+| Expand either app | The control-bar buttons named after each app expand it; Split shows both again. |
+| Divider and split ratio | Drag the divider to preview a ratio in 5% steps and release to apply it. Range: 30–70%. Tap it for the Split ratio panel, where Swap positions swaps the two apps. |
+| App list | Category filters, search, a grid that fits the screen and vertical scrolling. |
+| App options | Hold an app for favorites, open in a pane, Open separately, App size (DPI), Protected video compatibility, App info or Uninstall app. |
+| Quick favorites | The star opens up to three shortcuts and View all. Choose automatic classification or the selected pane as the destination. |
+| Saved pairs | Edit up to eight pairs in Settings → Apps & pairs → App pairs. One pair can be the default home. |
+| Settings | Display, Control bar, Apps & pairs, Connection, General and Updates. Menus open on the right, in the center or at the bottom. Holding Home also opens Settings. |
+| Input and recovery | Physical-keyboard typing, control bars that never take keyboard focus, connection retry, pane size recovery and redrawing a map left at its old size. |
 | Korean and English | Follow the device or select DriveDeck's language. |
-| Updates and backup | Stable/preview downloads with Android installation confirmation. Back up layouts, favorites and saved combinations. |
+| Updates and backup | Stable/preview downloads with Android installation confirmation. Back up layouts, favorites and saved pairs. |
 
-![Sidebar app library](images/en-apps.png)
+![App list with category filters and search](images/en-apps.png)
 
-**Removing a favorite does not uninstall an app.** Uninstall opens Android's confirmation. Manage system apps through App info. Open separately launches the app outside DriveDeck's split layout.
+**Removing a favorite or removing an app from home does not uninstall it.** Uninstall opens Android's confirmation. Manage built-in apps through App info. Open separately launches the app outside DriveDeck's split layout.
+
+## Home screen
+
+![Home screen with app icons and widgets in the pane beside the map](images/en-home.png)
+
+*Actual Android 13 emulator capture. The map and the widgets come from separately installed apps, not from DriveDeck. This is not an in-vehicle or driving-test image.*
+
+Tap **+** to add a widget or an app. Hold an item and drag it to move it, or drop it on the bar at the top to remove it. Hold and release without moving for its options; a widget can be resized in steps of width and height. After opening an app, press Home again to return to the home screen. Details are in the [Home screen section of the guide](docs/guide.en.md#3-home-screen).
 
 ## Settings and language
 
-![New settings layout](images/en-settings.png)
+![Settings with six categories](images/en-settings.png)
 
-Open **Settings → Controls → Language / 언어** to choose Follow device settings, 한국어 or English. App selections and layout are retained, and the choice stays in sync with Android's per-app language setting. Other apps' maps, song titles and notification text are not translated.
+Open **Settings → General → Language / 언어** to choose Follow device settings, 한국어 or English. App selections and layout are retained, and the choice stays in sync with Android's per-app language setting. Other apps' maps, song titles and notification text are not translated.
 
 ## Installation and updates
 
@@ -52,7 +62,7 @@ Open **Settings → Controls → Language / 언어** to choose Follow device set
 3. Open **Settings → Updates → Updates** to check and download.
 4. Tap Install update and confirm in Android. If asked, allow installations from DriveDeck, return and tap Install update again.
 
-Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Both stable and preview channels offer stable 1.1.6. Park before installing.
+Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Both stable and preview channels offer stable 1.2.0. Park before installing.
 
 ## Learn more
 
@@ -60,4 +70,4 @@ Automatic checks run on startup/resume, six hours after success or five minutes 
 - [Korean and English screenshot gallery](docs/screenshots.md)
 - [Validation record and vehicle limitations](docs/validation.md)
 
-This repository distributes installation files, update metadata and documentation. It does not contain application source or signing keys. Corresponding LGPL library source and replacement/relink materials are supplied in the same release's `relink.zip` asset.
+This repository distributes installation files, update metadata and documentation. It does not contain application source or signing keys. Corresponding LGPL library source and replacement/relink materials are supplied in the same release's `DriveDeck-1.2.0-relink.zip` asset.
