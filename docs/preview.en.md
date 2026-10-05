@@ -2,7 +2,7 @@
 
 [Overview](../README.en.md) · [한국어](preview.ko.md) · [Basic guide](guide.en.md)
 
-**Stable 1.2.1** includes a size for each app, a scrolling app list and editable pairs. The preview channel offers the same 1.2.1 as the stable channel. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
+**Stable 1.2.1** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.3.0-rc1 (the rebuilt home screen). Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
 
 ## Update from the app
 
