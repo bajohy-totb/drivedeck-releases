@@ -178,7 +178,7 @@ If your navigation app supplies an ongoing guidance notification, DriveDeck can 
 
 ## 9. Updates
 
-Use **Settings → Updates → Updates**, then **Check for updates → Download update → Install update**. Stable offers 1.2.1; preview offers 1.3.0-rc10 (from this version the app is named M4 Launcher). The home screen section of this guide describes 1.2.1; for the home screen of 1.3.0-rc10 (folders, backgrounds, a pull-up app list) see the release notes. The preview channel is switched on with **Receive preview versions** on the update screen. Versions older than 1.0.0-rc7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
+Use **Settings → Updates → Updates**, then **Check for updates → Download update → Install update**. Stable offers 1.2.1; preview offers 1.3.0-rc12 (from this version the app is named M4 Launcher). The home screen section of this guide describes 1.2.1; for the home screen of 1.3.0-rc12 (folders, backgrounds, a pull-up app list) see the release notes. The preview channel is switched on with **Receive preview versions** on the update screen. Versions older than 1.0.0-rc7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
 
 A download shows a progress bar and percentage, and continues after leaving its screen while the app process remains alive. Incomplete downloads are discarded after process termination and must be restarted. Completed files are verified again and restored after a restart. The updater checks size, SHA-256, package, version, Android compatibility, and signature. Reinstalls, downgrades, and files signed with another key are rejected.
 

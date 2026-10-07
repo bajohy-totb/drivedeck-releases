@@ -62,7 +62,7 @@ Open **Settings → General → Language / 언어** to choose Follow device sett
 3. Open **Settings → Updates → Updates** to check and download.
 4. Tap Install update and confirm in Android. If asked, allow installations from DriveDeck, return and tap Install update again.
 
-Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Stable offers 1.2.1; preview offers 1.3.0-rc10 (the new name M4 Launcher, a new icon and the rebuilt home screen: free placement, pages, a dock, folders, backgrounds and a pull-up app list). Park before installing.
+Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Stable offers 1.2.1; preview offers 1.3.0-rc12 (the new name M4 Launcher, a new icon and the rebuilt home screen: free placement, pages, a dock, folders, backgrounds and a pull-up app list). Park before installing.
 
 ## Learn more
 
