@@ -2,7 +2,7 @@
 
 [Overview](../README.en.md) · [한국어](preview.ko.md) · [Basic guide](guide.en.md)
 
-**Stable 1.2.1** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.3.0-rc12 (the new name M4 Launcher, a new icon and the rebuilt home screen with folders, backgrounds and a pull-up app list). Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
+**Stable 1.2.1** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.3.0-rc13 (the new name M4 Launcher, a new icon and the rebuilt home screen with folders, backgrounds and a pull-up app list). Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
 
 ## Update from the app
 
