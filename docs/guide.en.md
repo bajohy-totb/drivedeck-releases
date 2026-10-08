@@ -203,7 +203,7 @@ If your navigation app supplies an ongoing guidance notification, M4 Launcher ca
 
 ## 9. Updates
 
-Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Updates are a page of Settings, so the categories and the control bar stay in view. Stable offers 1.3.0 and preview offers 1.4.0-rc1. The preview channel is switched on with **Receive preview versions** on that page. Versions older than 1.0.0-rc7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
+Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Updates are a page of Settings, so the categories and the control bar stay in view. Stable offers 1.3.0 and preview offers 1.4.0-rc2. The preview channel is switched on with **Receive preview versions** on that page. Versions older than 1.0.0-rc7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
 
 A download shows a progress bar and percentage, and continues after leaving its screen while the app process remains alive. Incomplete downloads are discarded after process termination and must be restarted. Completed files are verified again and restored after a restart. The updater checks size, SHA-256, package, version, Android compatibility, and signature. Reinstalls, downgrades, and files signed with another key are rejected.
 

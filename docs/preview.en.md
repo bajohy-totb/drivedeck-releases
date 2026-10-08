@@ -2,11 +2,11 @@
 
 [Overview](../README.en.md) · [한국어](preview.ko.md) · [Basic guide](guide.en.md)
 
-**Stable 1.3.0** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.4.0-rc1; what this page describes is the same on both channels. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
+**Stable 1.3.0** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.4.0-rc2; what this page describes is the same on both channels. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
 
 ## Update from the app
 
-Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel, where a version can be tried before it becomes stable; at present stable offers 1.3.0 and preview offers 1.4.0-rc1.
+Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel, where a version can be tried before it becomes stable; at present stable offers 1.3.0 and preview offers 1.4.0-rc2.
 
 Each update check uses a fresh request URL to reduce stale CDN metadata immediately after publication. Only newer version codes are offered; changing channels does not downgrade the app. Cancelling installation preparation also suppresses an installer callback that has already been queued.
 
