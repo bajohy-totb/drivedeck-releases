@@ -2,9 +2,9 @@
 
 [한국어 설명](../README.md) · [English overview](../README.en.md)
 
-실제 Android 13 에뮬레이터에서 촬영한 DriveDeck 화면입니다. 지도·시계 같은 다른 앱과 홈 화면의 위젯은 따로 설치한 앱이 제공하며 자체 언어 설정을 따릅니다. 앱 목록에는 에뮬레이터에 설치한 시험 앱이 함께 보일 수 있습니다. 차량·주행 시험 사진이 아닙니다.
+실제 Android 13 에뮬레이터에서 촬영한 M4 Launcher 화면입니다. 지도·시계 같은 다른 앱과 홈 화면의 위젯은 따로 설치한 앱이 제공하며 자체 언어 설정을 따릅니다. 앱 목록에는 에뮬레이터에 설치한 시험 앱이 함께 보일 수 있습니다. 차량·주행 시험 사진이 아닙니다.
 
-Actual Android 13 emulator captures of DriveDeck. Other apps such as the map and the clock, and the widgets on the home screen, come from separately installed apps and keep their own language settings. The app list may include test apps installed on the emulator. These are not in-vehicle or driving-test photographs.
+Actual Android 13 emulator captures of M4 Launcher. Other apps such as the map and the clock, and the widgets on the home screen, come from separately installed apps and keep their own language settings. The app list may include test apps installed on the emulator. These are not in-vehicle or driving-test photographs.
 
 ## 두 앱 / Two apps
 
