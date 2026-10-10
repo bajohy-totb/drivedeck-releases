@@ -68,7 +68,7 @@ Open **Settings → General → Language / 언어** to choose Follow device sett
 3. Open **Settings → Updates** to check and download.
 4. Tap Install update and confirm in Android. If asked, allow M4 Launcher to install apps, return and tap Install update again.
 
-Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Stable offers 1.3.0 and preview offers 1.4.0-rc4. Park before installing.
+Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Stable offers 1.3.0 and preview offers 1.4.0-rc6. Park before installing.
 
 ## Learn more
 

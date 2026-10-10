@@ -2,6 +2,42 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.4.0-rc6 시험 / Preview
+
+versionCode **84**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+APK SHA-256: `c3bfe8c125f6b42a53d9e38db413380a7a50010a4aa6c4d417022e62a3f2df22`.
+재링크 자료 / Relink materials SHA-256: `31868746b03338a5d0a0fad418bf783a190b0f05af5080520b322804fa6df548`.
+
+3분할의 두 경계 창 모두 현재 값·선택지·설명·앱 이름을 세 앱의 전체 화면 비율과 순서로 표시합니다. 단위 343개, Lint 오류 0개. 네 크기(1676×680@255, 2448×1848@455, 1600×900@160, 800×480@160)에서 한국어·영어와 글꼴 1.0·2.0을 확인했습니다. 폴드·작은 화면의 조합 저장 회귀 검사 각각 10개, 차량의 9개와 선택 변경 재검증 1개가 통과했습니다. 기본 크기의 글꼴 검사는 디버그 APK에서, 선택 변경 재검증은 배포 APK에서 통과했습니다. 화면별로 다른 허용 선택지를 요구해 실패한 두 초기 검사 기록은 보존했고, 수정한 검사와 배포 APK에서 재검증했습니다.
+
+배포 APK는 차량 3개(선택·순서·자리 바꾸기, 두 경계의 글꼴/언어, 실제 경계 드래그), 기본 크기 1개(선택·순서·자리 바꾸기), 정식 1.3.0과 시험 rc5의 설정·홈 배치 유지 업데이트 각각 1개를 통과했습니다. 모두 시스템 건강 검사도 통과했습니다. 재링크 재구성의 누락·추가·내용 차이는 0입니다. [rc6 배포](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.4.0-rc6). 실기기는 아직 확인하지 않았으며 기존 영상·키보드 문제의 수정이나 전체 회귀 검사 완료를 뜻하지 않습니다.
+
+Both three-pane divider dialogs show all three whole-screen shares, choices, descriptions and app names in screen order. 343 unit tests; no Lint errors. Korean/English and font sizes 1.0/2.0 were checked at four sizes (1676×680@255, 2448×1848@455, 1600×900@160, 800×480@160). Pair-saving regressions passed 10 cases each at fold and small sizes, and 9 cases plus the corrected choice recheck at car size. Native-size font checks passed on the debug APK and choice rechecks on the release APK. Two initial test failures requested choices unavailable at their screen sizes; their evidence is retained and corrected cases were rechecked.
+
+The release APK passed three car cases (choices/order/swap, both dividers at both fonts/languages, actual divider dragging), one native-size choice/order/swap case, and one settings/home-layout-preserving upgrade each from stable 1.3.0 and preview rc5. All system-health checks passed. Object-only reconstruction had no missing, extra or differing entries. [rc6 release](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.4.0-rc6). Real devices remain untested; this does not claim fixes to earlier video/keyboard issues or a full regression run.
+
+공개 릴리스·두 자산의 크기/해시·시험 채널 정보·CDN·공개 APK 재다운로드가 일치합니다. 앱 안에서 rc5 → rc6 다운로드·검증·복원과 Android 설치 확인, 설치 후 버전/해시/설정 유지까지 통과했습니다. 정식 채널과 GitHub latest는 1.3.0(78)을 유지합니다.
+
+The public release, asset sizes/hashes, preview manifest, CDN and downloaded public APK matched. The in-app rc5 → rc6 download, verification, restoration, Android installation confirmation and installed version/hash/settings preservation passed. Stable and GitHub latest remain 1.3.0 (78).
+
+## 1.4.0-rc5 시험 / Preview
+
+versionCode **83**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+APK SHA-256: `de4842dd36975e8068b673166b91b8139f0d0f9a737a447c048b44d185f9b8a2`.
+재링크 자료 / Relink materials SHA-256: `73eac80d28288ae358cb9ea54cf5d8666fa05ed3d7654e46482060eb894be167`.
+
+비율 창에서 현재 화면을 조합으로 저장하는 버튼과 조합 목록의 길게 누르기 안내를 추가했습니다. 단위 검사 336개, Lint 오류 0개. 새 비율 창 검사 8개를 네 크기(1676×680@255, 2448×1848@455, 1600×900@160, 800×480@160), 한국어·영어와 글꼴 1.0·2.0에서 확인했습니다. 조합 저장소 7개, 큰 글꼴 순회 1개, 위젯 페이지 이동 재검사 1개, 이전 1.2.1·정식 1.3.0·시험 rc4에서의 설정 유지 업데이트가 통과했습니다.
+
+Adds saving the current view as a pair in the ratio dialog and a hold-to-edit hint in the pair list. 336 unit tests; no Lint errors. The 8 new ratio-dialog cases were checked at four sizes (1676×680@255, 2448×1848@455, 1600×900@160, 800×480@160), in Korean and English at font sizes 1.0 and 2.0. Pair storage (7), the large-font survey (1), the widget page-drag recheck (1) and upgrades retaining settings from 1.2.1, stable 1.3.0 and preview rc4 passed.
+
+큰 글꼴 순회에서 기록하는 기존 홈 화면 글자 잘림은 남아 있습니다. 비율 창의 두 버튼은 별도 검사로 확인했습니다. 게시 후 배포 APK는 조합·화면 배치·차량 3분할 조작을 포함한 9개 묶음 74개 사례와 시스템 건강 검사를 통과했습니다. 3분할 비율 표시 수정 요청을 우선하여 이 묶음 뒤에 중지했고, 나머지 폴드 3분할 조작·차량/폴드 영상·폴드 안내는 rc5에서 다시 실행하지 않았습니다. 실기기 확인은 아직입니다. 기존 알려진 문제는 [rc5 배포 기록](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.4.0-rc5)에 적었습니다.
+
+The survey still records existing clipped home-screen text; the ratio dialog's two buttons have separate checks. After publication, 9 release-APK groups covering pairs, layout and car-size three-pane controls passed all 74 cases and system-health checks. The batch stopped between groups to prioritize the requested three-share display correction. Fold-size three-pane controls, car/fold video and fold guidance were not rerun for rc5. Real devices have not been checked. Existing known issues are listed in the [rc5 release](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.4.0-rc5).
+
+rc5도 게시 뒤 rc4에서 앱 안 다운로드·검증·복원·Android 설치 확인 및 설치 후 버전/해시/설정 유지까지 통과했습니다.
+
+After rc5 publication, the in-app update from rc4 passed download/verification/restoration, Android installation confirmation and installed version/hash/settings preservation.
+
 ## 1.3.0 정식 / Stable
 
 versionCode **78**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
