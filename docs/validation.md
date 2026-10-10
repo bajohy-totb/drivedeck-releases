@@ -2,6 +2,18 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.4.0-rc7 시험 / Preview
+
+versionCode **85**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+APK SHA-256: `4d22602ea2951870c49c1f3bbdcedd05d53cd9d43b5e0f1aec772cb47bd97772`.
+재링크 자료 / Relink materials SHA-256: `3bdd14c384c1fb288dd28bf4c4ae89c1a0dce9122f4f10fd9892e2501e052bda`.
+
+단위 344개, Lint 오류 0개. 전체 흐름 점검에서 기존 rc6 33회, 초기 수정본 63회, 마지막 편집기 수정 후 관련 8회가 모두 사례·시스템 건강 검사를 통과했습니다. 마지막 바이너리로 104개 전체를 반복했다는 뜻은 아닙니다. 차량·폴드·작은 화면의 분할, 저장·편집, 설정, 큰 글꼴, 위젯, 영상 창과 입력 흐름을 확인했습니다. 배포 APK는 차량·기본 크기 UI 7개와 정식 1.3.0·시험 rc6에서의 설정·홈 배치 유지 업데이트 각 1개를 통과했습니다. 공개 rc6에서 앱 자체의 시험 채널 확인·다운로드·Android 설치를 거쳐 rc7로 올라가는 두 검사도 통과했습니다. 재링크 재구성 누락·추가·내용 차이 0. [rc7 배포](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.4.0-rc7).
+
+344 unit tests; no Lint errors. Flow checks passed 33 baseline rc6 cases, 63 initial-correction cases and 8 related cases after the final editor fix, with system-health checks. All 104 were not rerun on the final binary. Coverage spans car, fold and small layouts, pair save/edit, settings, large fonts, widgets, video windows and input. The release APK passed 7 car/native UI cases and one settings/home-preserving upgrade each from stable 1.3.0 and preview rc6. Two live in-app preview-update cases passed from public rc6 through checking, download and Android installation to rc7. Relink reconstruction had zero missing, extra or differing entries. [rc7 release](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.4.0-rc7).
+
+실제 엠스틱4·폴드8, 장시간 온도·실제 내비 광고는 확인하지 않았습니다. 기존 영상·키보드 문제를 모두 고쳤다는 뜻은 아닙니다. 이번 rc7에는 광고 자동 닫기나 새 출력 기능이 포함되지 않습니다. / Real hardware, long-running temperatures and actual navigation ad popups remain unverified. Earlier video/keyboard issues are not all resolved. New ad automation and output features are not included in rc7.
+
 ## 1.4.0-rc6 시험 / Preview
 
 versionCode **84**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.

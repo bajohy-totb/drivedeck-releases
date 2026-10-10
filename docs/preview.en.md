@@ -2,11 +2,11 @@
 
 [Overview](../README.en.md) · [한국어](preview.ko.md) · [Basic guide](guide.en.md)
 
-**Stable 1.3.0** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.4.0-rc6. The basic features are shared by both channels; preview-only features below state their version. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
+**Stable 1.3.0** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.4.0-rc7. The basic features are shared by both channels; preview-only features below state their version. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
 
 ## Update from the app
 
-Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel, where a version can be tried before it becomes stable; at present stable offers 1.3.0 and preview offers 1.4.0-rc6.
+Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel, where a version can be tried before it becomes stable; at present stable offers 1.3.0 and preview offers 1.4.0-rc7.
 
 Each update check uses a fresh request URL to reduce stale CDN metadata immediately after publication. Only newer version codes are offered; changing channels does not downgrade the app. Cancelling installation preparation also suppresses an installer callback that has already been queued.
 
@@ -41,6 +41,8 @@ In a three-pane view, either divider opens a dialog whose current value and choi
 Tap the divider handle, then **Save as pair** in the ratio dialog. The apps, ratio, direction and order are saved under an automatic name, and the dialog stays open. With three panes, the third app and the inner ratio are saved too. The second divider's dialog saves the same whole view.
 
 A pair with the same apps in the same panes takes the current layout and keeps its name and default-home mark. If another pair uses the automatic name, a number is added. Up to 8 pairs can be saved; existing pairs can still be updated at the limit. Run a saved pair from the star popup or the app-pair list in Settings. Hold a pair to edit or delete it.
+
+Since 1.4.0-rc7, drag guides, settings sliders, ranges, pair lists and the editor also show all three shares. List names follow the same screen order, and editor values match the preview after minimum sizes are applied. Add widget and Home screen settings headings also wrap at large fonts.
 
 ## Build a pair
 
