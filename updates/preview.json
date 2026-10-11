@@ -2,11 +2,11 @@
     "schemaVersion":  1,
     "packageName":  "com.totb.drivedeck",
     "channel":  "preview",
-    "versionCode":  85,
-    "versionName":  "1.4.0-rc7",
+    "versionCode":  86,
+    "versionName":  "1.4.0-rc8",
     "minSdk":  33,
-    "size":  21514064,
-    "sha256":  "4d22602ea2951870c49c1f3bbdcedd05d53cd9d43b5e0f1aec772cb47bd97772",
-    "apkUrl":  "https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.4.0-rc7/DriveDeck-1.4.0-rc7.apk",
-    "notes":  "# M4 Launcher 1.4.0-rc7\n\n- **3분할 비율 표시를 전체 흐름에서 맞췄습니다.** 드래그 안내, 설정, 조합 목록과 편집기도 `50 : 25 : 25`처럼 세 앱의 비율을 보여 줍니다. 조절 범위도 세 비율이며, 목록의 앱 이름과 숫자는 화면 순서를 따릅니다. 편집기 숫자도 최소 구역 크기가 적용된 실제 미리보기와 맞춥니다.\n- **한 경계를 바꾸면 다른 경계의 표시도 갱신됩니다.** 설정에서 슬라이더 자체 값이 그대로여도 세 앱의 비율은 새 배치에 맞춰 바뀝니다.\n- **큰 글꼴에서 홈 화면 제목이 잘리던 문제를 고쳤습니다.** ‘위젯 추가’와 ‘홈 화면 설정’의 제목이 줄바꿈되고 머리말 높이도 함께 늘어납니다.\n\nrc5의 ‘조합으로 저장’과 rc6의 세 앱 비율 창을 포함합니다. 정식 채널은 1.3.0입니다.\n\n단위 검사 344개 통과. Android 13 에뮬레이터에서 기존 버전 33개, 초기 수정본 63개, 마지막 편집기 수정 후 관련 검사 8개가 사례 및 시스템 건강 검사를 통과했습니다. 차량·폴드·작은 화면의 분할, 조합, 설정, 큰 글꼴, 홈, 영상 창, 입력을 확인했습니다. 실제 기기의 온도 감소와 내비 광고 동작은 이 검사 범위에 포함되지 않습니다. 실제 엠스틱4와 갤럭시 Z 폴드8에서는 아직 확인하지 못했습니다. 기존 시험판에서 알려진 영상 앱의 늦은 창 표시, 구역을 비운 직후 앱 선택, 보호 영상의 시스템 바, 하드웨어 키보드 관련 문제를 모두 해결한 버전은 아닙니다.\n\n## English\n\n- **Three-pane ratios now agree throughout the app.** Drag guides, settings, the pair list and the editor show all three shares, such as `50 : 25 : 25`. Range endpoints also show three shares, and list names follow their screen order. Editor numbers match the preview after minimum pane sizes are applied.\n- **Changing one divider refreshes the other readout.** Settings update all three shares even when the other slider\u0027s own progress stays the same.\n- **Large-font home headings stay whole.** Add widget and Home screen settings wrap their titles, and the header grows to fit.\n\nIncludes Save as pair from rc5 and three-share dialogs from rc6. Stable remains 1.3.0.\n\n344 unit tests passed. On the Android 13 emulator, 33 baseline cases, 63 initial-correction cases and 8 related cases after the final editor fix passed with system-health checks. Coverage includes car, fold and small layouts, pairs, settings, large fonts, home, video windows and input. Real-device cooling and navigation ad handling are outside this verification. Not yet checked on the real 엠스틱4 or Galaxy Z Fold8. Previously noted issues with slow video windows, selecting an app after emptying a pane, system bars during protected video, and hardware keyboards are not all resolved by this release.\n"
+    "size":  21518160,
+    "sha256":  "33b8f8849e2a54b52d75ce54000e4538b6a14fdbc37bbef0a6acae4655c1f690",
+    "apkUrl":  "https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.4.0-rc8/DriveDeck-1.4.0-rc8.apk",
+    "notes":  "# M4 Launcher 1.4.0-rc8 · 개발자 옵션 긴급 수정\r\n\r\n무선 디버깅 화면에서 개발자 옵션을 먼저 활성화하라는 안내 때문에 진행하지 못하는 루팅 기기를 위한 수정입니다. 기존 rc7 위에 설치하면 설정을 유지합니다.\r\n\r\n- 무선 디버깅 설정 화면과 **설정 → 연결**에 **루트로 개발자 옵션·무선 디버깅 켜기** 버튼을 추가했습니다. Magisk 또는 su에서 M4 Launcher를 허용해 주세요.\r\n- **개발자 옵션 설정 열기** 버튼도 추가했습니다.\r\n- 설정 값을 다시 읽어 성공·개발자 옵션만 켜짐·권한 거절·시간 초과를 구분합니다. 화면을 멈추거나 중복 실행하지 않습니다.\r\n- 루팅 기기는 **설정 → 연결 → 연결 방식 → 루트**를 고르면 무선 페어링 없이 바로 연결할 수도 있습니다.\r\n\r\n처음 무선 연결의 페어링과 Android의 Wi-Fi 허용은 유지합니다. USB 디버깅이나 인증 없는 ADB 포트를 열지 않습니다.\r\n\r\n단위 검사 347개와 린트 통과. Android 13 검사 에뮬레이터에서 차량·폴드 크기 실행 검사 6개와 실제 root 명령의 설정 값 확인을 통과했습니다. 실제 Magisk 차량 기기에서의 실행은 아직 확인하지 못했습니다. 기존 서명을 유지한 versionCode 86 시험판입니다. AB 기능 작업은 보관했으며 이번 긴급 APK에는 포함하지 않습니다.\r\n"
 }
