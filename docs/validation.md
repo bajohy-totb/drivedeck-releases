@@ -696,3 +696,7 @@ The reboot also recorded ANRs in System UI, Bluetooth, media storage, and permis
 Earlier RC7 validation covered actual GitHub downloading, hash/signature checks, saved-file recovery after process restart, Android installation, and settings preservation. A separate RC7 run recorded a roughly 6.8-second screen-stop delay.
 
 Vehicle mute buttons, Bluetooth/reverse-camera transitions, ignition power loss, manufacturer-specific root/input behavior, prolonged standalone launching, and every vehicle/app combination have not all been verified. Previously reported vehicle freezes and lost connections are not confirmed resolved.
+
+## 1.4.0-rc8 개발자 옵션 긴급 수정
+
+기존 rc7에 루트 개발자 옵션·무선 디버깅 켜기와 개발자 설정 바로가기만 추가했다. 단위 검사 347개와 release 린트를 통과했고, 차량·폴드 크기에서 새 실행 검사 3개씩과 시스템 상태를 확인했다. 소유 에뮬레이터의 실제 root 명령으로 설정 값을 확인했다. 공개 rc7에서 rc8로 기존 설정을 유지하는 서명 APK 설치 검사 1개도 통과했다. 실제 Magisk 차량 기기에서의 실행은 아직 확인하지 못했다. AB 추가 기능은 이번 APK에 포함하지 않았다.

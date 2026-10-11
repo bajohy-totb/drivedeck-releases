@@ -2,11 +2,11 @@
 
 [Overview](../README.en.md) · [한국어](preview.ko.md) · [Basic guide](guide.en.md)
 
-**Stable 1.3.0** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.4.0-rc7. The basic features are shared by both channels; preview-only features below state their version. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
+**Stable 1.3.0** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.4.0-rc8. The basic features are shared by both channels; preview-only features below state their version. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
 
 ## Update from the app
 
-Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel, where a version can be tried before it becomes stable; at present stable offers 1.3.0 and preview offers 1.4.0-rc7.
+Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel, where a version can be tried before it becomes stable; at present stable offers 1.3.0 and preview offers 1.4.0-rc8.
 
 Each update check uses a fresh request URL to reduce stale CDN metadata immediately after publication. Only newer version codes are offered; changing channels does not downgrade the app. Cancelling installation preparation also suppresses an installer callback that has already been queued.
 
@@ -77,3 +77,7 @@ A physical-keyboard ordering issue was found in the 1.1.1 validation: when Andro
 Known limit: with a hardware keyboard attached, the on-screen keyboard hidden and Android's own (AOSP) keyboard in use, a pane sometimes takes no touch after a text field in it was tapped. It was seen on the test emulator, has been there since 1.2.0, and has not been checked on a real unit.
 
 Stable publication does not establish exhaustive validation of vehicle controls, Bluetooth hardware, ignition power or manufacturer firmware. Not yet checked on the real 엠스틱4 and Galaxy Z Fold8. The 1.1.1 validation also reproduced an emulator LatinIME service ANR, an IME crash while attaching to a removed display, invisible keyboard-window touch interception and renderer delays during startup and connection recovery. The preceding 1.1.1-rc2 APK also reproduced a LatinIME ANR and roughly 6.1–6.4-second startup delays. Those failures remain recorded; later passing rechecks do not establish root-cause resolution. Orientation stays locked while running. See [validation scope](validation.md) for successful and failed coverage.
+
+## Enable developer options · 1.4.0-rc8
+
+Press **Enable developer options & wireless debugging with root** in wireless setup or **Settings → Connection**, then grant root access. **Open developer options** opens Android settings. Rooted devices can also use the **Root** connection method without wireless pairing.

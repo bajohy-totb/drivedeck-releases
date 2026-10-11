@@ -28,6 +28,8 @@ For an incorrect code, dismiss Android's failure dialog, open a new code screen 
 
 See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.3.0).
 
+**Preview 1.4.0-rc8:** On a rooted device, press **Enable developer options & wireless debugging with root** in this setup screen or **Settings → Connection**, then allow M4 Launcher in Magisk or su. **Open developer options** opens Android settings. If wireless debugging does not stay enabled, check Wi-Fi and Android’s approval.
+
 ### Root connection
 
 On a rooted device, choose **Root (Magisk / su)** under **Settings → Connection → Connection method**. If the root request was refused or left unanswered, tap **Reconnect** to be asked again.
@@ -203,7 +205,7 @@ If your navigation app supplies an ongoing guidance notification, M4 Launcher ca
 
 ## 9. Updates
 
-Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Updates are a page of Settings, so the categories and the control bar stay in view. Stable offers 1.3.0 and preview offers 1.4.0-rc7. The preview channel is switched on with **Receive preview versions** on that page. Versions older than 1.0.0-rc7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
+Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Updates are a page of Settings, so the categories and the control bar stay in view. Stable offers 1.3.0 and preview offers 1.4.0-rc8. The preview channel is switched on with **Receive preview versions** on that page. Versions older than 1.0.0-rc7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
 
 A download shows a progress bar and percentage, and continues after leaving its screen while the app process remains alive. Incomplete downloads are discarded after process termination and must be restarted. Completed files are verified again and restored after a restart. The updater checks size, SHA-256, package, version, Android compatibility, and signature. Reinstalls, downgrades, and files signed with another key are rejected.
 
