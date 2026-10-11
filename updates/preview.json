@@ -2,11 +2,11 @@
     "schemaVersion":  1,
     "packageName":  "com.totb.drivedeck",
     "channel":  "preview",
-    "versionCode":  86,
-    "versionName":  "1.4.0-rc8",
+    "versionCode":  87,
+    "versionName":  "1.4.0-rc9",
     "minSdk":  33,
-    "size":  21518160,
-    "sha256":  "33b8f8849e2a54b52d75ce54000e4538b6a14fdbc37bbef0a6acae4655c1f690",
-    "apkUrl":  "https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.4.0-rc8/DriveDeck-1.4.0-rc8.apk",
-    "notes":  "# M4 Launcher 1.4.0-rc8 · 개발자 옵션 긴급 수정\r\n\r\n무선 디버깅 화면에서 개발자 옵션을 먼저 활성화하라는 안내 때문에 진행하지 못하는 루팅 기기를 위한 수정입니다. 기존 rc7 위에 설치하면 설정을 유지합니다.\r\n\r\n- 무선 디버깅 설정 화면과 **설정 → 연결**에 **루트로 개발자 옵션·무선 디버깅 켜기** 버튼을 추가했습니다. Magisk 또는 su에서 M4 Launcher를 허용해 주세요.\r\n- **개발자 옵션 설정 열기** 버튼도 추가했습니다.\r\n- 설정 값을 다시 읽어 성공·개발자 옵션만 켜짐·권한 거절·시간 초과를 구분합니다. 화면을 멈추거나 중복 실행하지 않습니다.\r\n- 루팅 기기는 **설정 → 연결 → 연결 방식 → 루트**를 고르면 무선 페어링 없이 바로 연결할 수도 있습니다.\r\n\r\n처음 무선 연결의 페어링과 Android의 Wi-Fi 허용은 유지합니다. USB 디버깅이나 인증 없는 ADB 포트를 열지 않습니다.\r\n\r\n단위 검사 347개와 린트 통과. Android 13 검사 에뮬레이터에서 차량·폴드 크기 실행 검사 6개와 실제 root 명령의 설정 값 확인을 통과했습니다. 실제 Magisk 차량 기기에서의 실행은 아직 확인하지 못했습니다. 기존 서명을 유지한 versionCode 86 시험판입니다. AB 기능 작업은 보관했으며 이번 긴급 APK에는 포함하지 않습니다.\r\n"
+    "size":  21522256,
+    "sha256":  "6f0cd76a4ef15ef90abbe76c4e8f214998a0e3f3ccefffbd7bfea0ca73081ae1",
+    "apkUrl":  "https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.4.0-rc9/DriveDeck-1.4.0-rc9.apk",
+    "notes":  "# M4 Launcher 1.4.0-rc9 · 개발자 설정 메뉴 진입 수정\r\n\r\nrc8에서 설정 값을 켰다고 표시해도 엠스틱4의 개발자 설정 메뉴 진입이 막힌다는 보고에 따른 수정입니다.\r\n\r\n- 무선 디버깅 설정 화면과 **설정 → 연결**의 **개발자 설정을 루트로 열기** 버튼은 Android 기본 설정의 개발자 화면을 루트 권한으로 직접 실행합니다.\r\n- 현재 사용자의 개발자 설정 값을 적용하고 설정 앱을 다시 시작한 뒤, 런처가 표시되는 디스플레이에서 개발자 설정 화면을 엽니다.\r\n- 화면 실행이 끝날 때까지 기다리고 개발자 설정 Activity가 전면에 있는지 확인합니다. 설정 값 적용과 메뉴 진입 성공을 구분합니다.\r\n\r\n단위 검사 348개와 린트를 통과했습니다. Android 13 소유 에뮬레이터에서 실제 개발자 설정 메뉴 진입을 확인했습니다. 엠스틱4 실기에서의 진입은 아직 확인하지 못했습니다.\n\r\n기존 서명을 유지한 versionCode 87 시험판입니다. AB 기능 추가 작업은 별도 보관 중입니다.\r\n"
 }
