@@ -2,24 +2,26 @@
 
 [Overview](../README.en.md) · [한국어](preview.ko.md) · [Basic guide](guide.en.md)
 
-## Additional features in preview 1.4.0-rc10
+## Additional features in preview 1.4.0-rc11
 
-[Download preview 1.4.0-rc10 APK](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.4.0-rc10/DriveDeck-1.4.0-rc10.apk)
+[Download preview 1.4.0-rc11 APK](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.4.0-rc11/DriveDeck-1.4.0-rc11.apk)
 
 The preview adds navigation advert dismissal, output selection and CPU readings, layouts, a clock screensaver, night dimming, accent colours, remote-key actions, home clock/music/GPS-speed items, app search/hiding/order and connection diagnostics. Three-app ratios, saving pairs and direct developer-settings entry are retained.
 
-- **Settings → General → Navigation advert dismissal** is off by default. Enable its accessibility service in Android. It handles identifiable advert-close buttons in Kakao Navi, TMAP and Naver Map; a generic close button can be registered. It does not press agreement, confirmation, payment buttons or checkboxes. Actual app versions still require verification.
-- **Settings → General → Performance and CPU** selects SurfaceView direct output or TextureView compatibility output, and CPU temperature/usage and units. Actual thermal and battery savings have not been measured.
-- **Settings → Screen** provides layouts, divider widths, the clock screensaver and night dimming. Hold an app to change its list order. Hold an empty home cell to add clock, music or speed items. Location is requested only after choosing speed, and read only while that item is visible.
-- **Settings → Connection → Open developer settings with root** opens the menu directly on rooted devices where tapping the build number is unavailable. The user confirmed menu entry on Mstick 4 with rc9; this is separate from validation of other hardware features.
+- **Settings → Apps & navigation → Navigation advert dismissal** is off by default. Enable its accessibility service in Android. It handles identifiable advert-close buttons in Kakao Navi, TMAP and Naver Map; a generic close button can be registered. It does not press agreement, confirmation, payment buttons or checkboxes. Actual app versions still require verification.
+- **Settings → Theme & display → Output and CPU** selects SurfaceView direct output or TextureView compatibility output, and CPU temperature/usage and units. Actual thermal and battery savings have not been measured.
+- **Settings → Screen & layout** provides layouts and divider widths. The clock screensaver and night dimming are under **Theme & display**. Hold an app to change its list order. Hold an empty home cell to add clock, music or speed items. Location is requested only after choosing speed, and read only while that item is visible.
+- **Settings → Connection & device → Open developer settings with root** opens the menu directly on rooted devices where tapping the build number is unavailable. The user confirmed menu entry on Mstick 4 with rc9; this is separate from validation of other hardware features.
+
+rc11 settings categories: **Screen & layout / Home screen / Apps & navigation / Controls & buttons / Theme & display / Connection & device / Manage & update**. Advert dismissal is under Apps & navigation; the screensaver and night dimming are under Theme & display; language and backups are under Manage & update.
 
 AB accounts, paid services and server content are not transferred. Vehicle keys, location sensors, protected video and real navigation-app behaviour need hardware verification.
 
-**Stable 1.3.0** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.4.0-rc10. The basic features are shared by both channels; preview-only features below state their version. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
+**Stable 1.3.0** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.4.0-rc11. The basic features are shared by both channels; preview-only features below state their version. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
 
 ## Update from the app
 
-Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel, where a version can be tried before it becomes stable; at present stable offers 1.3.0 and preview offers 1.4.0-rc10.
+Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel, where a version can be tried before it becomes stable; at present stable offers 1.3.0 and preview offers 1.4.0-rc11.
 
 Each update check uses a fresh request URL to reduce stale CDN metadata immediately after publication. Only newer version codes are offered; changing channels does not downgrade the app. Cancelling installation preparation also suppresses an installer callback that has already been queued.
 

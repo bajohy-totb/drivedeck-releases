@@ -2,6 +2,14 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.4.0-rc11 시험 / Preview
+
+versionCode **89**. Settings are grouped into seven task categories, and continuous navigation events no longer postpone advert inspection indefinitely. Existing preference keys and signing identity are retained.
+
+737 unit tests passed; lint 0 errors / 141 warnings. Seven focused settings checks passed at vehicle/small screen sizes, including English menus and moved screensaver/night-dimming controls. Seven further cases passed on the actual signed APK: rc10 upgrade with settings retained, four synthetic-popup cases, settings navigation and actual developer-menu entry. Owned Android 13 emulator only; no claim of all commercial navigation adverts or thermal savings being verified.
+
+APK SHA-256: `7069a1e6dfdfac1cddfeabc8e83d05c291ad451a48632f787b531a64bdd23718`. Relink SHA-256: `ee0bea99416103cc17bad41b4de39b0fef16c7e082799ac3983219a5edcca0f3`.
+
 ## 1.4.0-rc10 시험 / Preview
 
 versionCode **88**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
