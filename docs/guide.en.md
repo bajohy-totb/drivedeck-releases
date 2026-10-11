@@ -2,6 +2,19 @@
 
 [Overview](../README.en.md) · [한국어](guide.ko.md) · **English**
 
+## Additional features in preview 1.4.0-rc10
+
+[Download preview 1.4.0-rc10 APK](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.4.0-rc10/DriveDeck-1.4.0-rc10.apk)
+
+The preview adds navigation advert dismissal, output selection and CPU readings, layouts, a clock screensaver, night dimming, accent colours, remote-key actions, home clock/music/GPS-speed items, app search/hiding/order and connection diagnostics. Three-app ratios, saving pairs and direct developer-settings entry are retained.
+
+- **Settings → General → Navigation advert dismissal** is off by default. Enable its accessibility service in Android. It handles identifiable advert-close buttons in Kakao Navi, TMAP and Naver Map; a generic close button can be registered. It does not press agreement, confirmation, payment buttons or checkboxes. Actual app versions still require verification.
+- **Settings → General → Performance and CPU** selects SurfaceView direct output or TextureView compatibility output, and CPU temperature/usage and units. Actual thermal and battery savings have not been measured.
+- **Settings → Screen** provides layouts, divider widths, the clock screensaver and night dimming. Hold an app to change its list order. Hold an empty home cell to add clock, music or speed items. Location is requested only after choosing speed, and read only while that item is visible.
+- **Settings → Connection → Open developer settings with root** opens the menu directly on rooted devices where tapping the build number is unavailable. The user confirmed menu entry on Mstick 4 with rc9; this is separate from validation of other hardware features.
+
+AB accounts, paid services and server content are not transferred. Vehicle keys, location sensors, protected video and real navigation-app behaviour need hardware verification.
+
 This guide describes **stable 1.3.0**. **Home opens the home screen; hold Home for Settings.** If you set a default home, a tap on Home goes there instead. See also [app size, app list and pair editing](preview.en.md).
 
 ## 1. Getting started
@@ -28,7 +41,7 @@ For an incorrect code, dismiss Android's failure dialog, open a new code screen 
 
 See the [validation scope](validation.md) for actual-device limitations. Library notices, corresponding source and replacement materials are provided in the [same release's relink ZIP](https://github.com/bajohy-totb/drivedeck-releases/releases/tag/v1.3.0).
 
-**Preview 1.4.0-rc9:** On a rooted device, press **Enable developer options & wireless debugging with root** in this setup screen or **Settings → Connection**, then allow M4 Launcher in Magisk or su. **Open developer settings with root** starts the developer settings screen directly and waits to verify that it is in the foreground. Entry on Mstick 4 hardware has not yet been verified. If wireless debugging does not stay enabled, check Wi-Fi and Android’s approval.
+**Preview 1.4.0-rc9:** On a rooted device, press **Enable developer options & wireless debugging with root** in this setup screen or **Settings → Connection**, then allow M4 Launcher in Magisk or su. **Open developer settings with root** starts the developer settings screen directly and waits to verify that it is in the foreground. The user confirmed developer-menu entry on Mstick 4 with rc9. If wireless debugging does not stay enabled, check Wi-Fi and Android’s approval.
 
 ### Root connection
 
@@ -205,7 +218,7 @@ If your navigation app supplies an ongoing guidance notification, M4 Launcher ca
 
 ## 9. Updates
 
-Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Updates are a page of Settings, so the categories and the control bar stay in view. Stable offers 1.3.0 and preview offers 1.4.0-rc9. The preview channel is switched on with **Receive preview versions** on that page. Versions older than 1.0.0-rc7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
+Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Updates are a page of Settings, so the categories and the control bar stay in view. Stable offers 1.3.0 and preview offers 1.4.0-rc10. The preview channel is switched on with **Receive preview versions** on that page. Versions older than 1.0.0-rc7 need one manual APK installation first. Switching channels does not automatically downgrade the app.
 
 A download shows a progress bar and percentage, and continues after leaving its screen while the app process remains alive. Incomplete downloads are discarded after process termination and must be restarted. Completed files are verified again and restored after a restart. The updater checks size, SHA-256, package, version, Android compatibility, and signature. Reinstalls, downgrades, and files signed with another key are rejected.
 

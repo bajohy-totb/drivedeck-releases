@@ -2,6 +2,19 @@
 
 ### Keep your map in view, with another app beside it.
 
+## Additional features in preview 1.4.0-rc10
+
+[Download preview 1.4.0-rc10 APK](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.4.0-rc10/DriveDeck-1.4.0-rc10.apk)
+
+The preview adds navigation advert dismissal, output selection and CPU readings, layouts, a clock screensaver, night dimming, accent colours, remote-key actions, home clock/music/GPS-speed items, app search/hiding/order and connection diagnostics. Three-app ratios, saving pairs and direct developer-settings entry are retained.
+
+- **Settings → General → Navigation advert dismissal** is off by default. Enable its accessibility service in Android. It handles identifiable advert-close buttons in Kakao Navi, TMAP and Naver Map; a generic close button can be registered. It does not press agreement, confirmation, payment buttons or checkboxes. Actual app versions still require verification.
+- **Settings → General → Performance and CPU** selects SurfaceView direct output or TextureView compatibility output, and CPU temperature/usage and units. Actual thermal and battery savings have not been measured.
+- **Settings → Screen** provides layouts, divider widths, the clock screensaver and night dimming. Hold an app to change its list order. Hold an empty home cell to add clock, music or speed items. Location is requested only after choosing speed, and read only while that item is visible.
+- **Settings → Connection → Open developer settings with root** opens the menu directly on rooted devices where tapping the build number is unavailable. The user confirmed menu entry on Mstick 4 with rc9; this is separate from validation of other hardware features.
+
+AB accounts, paid services and server content are not transferred. Vehicle keys, location sensors, protected video and real navigation-app behaviour need hardware verification.
+
 [한국어](README.md) · **English**
 
 M4 Launcher is an Android launcher for in-car devices. It shows two installed apps side by side or stacked, and either app can be expanded from the control bar.
@@ -68,7 +81,7 @@ Open **Settings → General → Language / 언어** to choose Follow device sett
 3. Open **Settings → Updates** to check and download.
 4. Tap Install update and confirm in Android. If asked, allow M4 Launcher to install apps, return and tap Install update again.
 
-Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Stable offers 1.3.0 and preview offers 1.4.0-rc9. Park before installing.
+Automatic checks run on startup/resume, six hours after success or five minutes after failure. Manual checking remains immediately available. Download and installation confirmation are manual. Stable offers 1.3.0 and preview offers 1.4.0-rc10. Park before installing.
 
 ## Learn more
 

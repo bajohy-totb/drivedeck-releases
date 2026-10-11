@@ -2,11 +2,24 @@
 
 [Overview](../README.en.md) · [한국어](preview.ko.md) · [Basic guide](guide.en.md)
 
-**Stable 1.3.0** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.4.0-rc9. The basic features are shared by both channels; preview-only features below state their version. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
+## Additional features in preview 1.4.0-rc10
+
+[Download preview 1.4.0-rc10 APK](https://github.com/bajohy-totb/drivedeck-releases/releases/download/v1.4.0-rc10/DriveDeck-1.4.0-rc10.apk)
+
+The preview adds navigation advert dismissal, output selection and CPU readings, layouts, a clock screensaver, night dimming, accent colours, remote-key actions, home clock/music/GPS-speed items, app search/hiding/order and connection diagnostics. Three-app ratios, saving pairs and direct developer-settings entry are retained.
+
+- **Settings → General → Navigation advert dismissal** is off by default. Enable its accessibility service in Android. It handles identifiable advert-close buttons in Kakao Navi, TMAP and Naver Map; a generic close button can be registered. It does not press agreement, confirmation, payment buttons or checkboxes. Actual app versions still require verification.
+- **Settings → General → Performance and CPU** selects SurfaceView direct output or TextureView compatibility output, and CPU temperature/usage and units. Actual thermal and battery savings have not been measured.
+- **Settings → Screen** provides layouts, divider widths, the clock screensaver and night dimming. Hold an app to change its list order. Hold an empty home cell to add clock, music or speed items. Location is requested only after choosing speed, and read only while that item is visible.
+- **Settings → Connection → Open developer settings with root** opens the menu directly on rooted devices where tapping the build number is unavailable. The user confirmed menu entry on Mstick 4 with rc9; this is separate from validation of other hardware features.
+
+AB accounts, paid services and server content are not transferred. Vehicle keys, location sensors, protected video and real navigation-app behaviour need hardware verification.
+
+**Stable 1.3.0** includes a size for each app, a scrolling app list and editable pairs. The preview channel currently offers 1.4.0-rc10. The basic features are shared by both channels; preview-only features below state their version. Install over your existing app to retain settings. The Home button opens the [home screen](guide.en.md#3-home-screen); hold it for Settings.
 
 ## Update from the app
 
-Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel, where a version can be tried before it becomes stable; at present stable offers 1.3.0 and preview offers 1.4.0-rc9.
+Open **Settings → Updates**, then **Check for updates → Download update → Install update**. Confirm installation in Android. You do not need to find and transfer each APK manually. Installation permission is separate from the built-in, root or Shizuku connection permission. **Receive preview versions** switches to the preview channel, where a version can be tried before it becomes stable; at present stable offers 1.3.0 and preview offers 1.4.0-rc10.
 
 Each update check uses a fresh request URL to reduce stale CDN metadata immediately after publication. Only newer version codes are offered; changing channels does not downgrade the app. Cancelling installation preparation also suppresses an installer callback that has already been queued.
 
@@ -80,4 +93,6 @@ Stable publication does not establish exhaustive validation of vehicle controls,
 
 ## Enable developer options · 1.4.0-rc9
 
-Press **Enable developer options & wireless debugging with root** in wireless setup or **Settings → Connection**, then grant root access. **Open developer settings with root** starts the developer settings screen directly and waits to verify that it is in the foreground. Entry on Mstick 4 hardware has not yet been verified. Rooted devices can also use the **Root** connection method without wireless pairing.
+Press **Enable developer options & wireless debugging with root** in wireless setup or **Settings → Connection**, then grant root access. **Open developer settings with root** starts the developer settings screen directly and waits to verify that it is in the foreground. The user confirmed developer-menu entry on Mstick 4 with rc9. Rooted devices can also use the **Root** connection method without wireless pairing.
+
+[Status of 84 AB features](ab-feature-parity.json) · [CSV](ab-feature-parity.csv). The inventory distinguishes implemented, partial, planned and hardware/service-dependent features; it does not claim complete parity.

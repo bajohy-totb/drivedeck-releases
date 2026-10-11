@@ -1,0 +1,85 @@
+﻿분류,기능,상태,근거와 남은 차이,항목 ID
+화면,좌우·상하 분할,구현됨,PaneGeometry.java,split-two
+화면,같은 방향 3분할,구현됨,PaneGeometry.java,split-three
+화면,큰 구역과 작은 두 구역,구현됨,PaneGeometry.java: independent cut axes; PaneGeometryTest.java: mixed cuts; RatioPanel.java: inner axis,split-mixed
+화면,한 앱 크게 보기,구현됨,PaneLayout.java,single
+화면,배치 고르기,구현됨,"LayoutTemplatesIntegrationTest: 3/3 cases on car and Fold, ab-layout-order-d-1/2; eight presets, insufficient room or a forced axis rotation is rejected; running displays are preserved",templates
+화면,경계 드래그와 세 비율,구현됨,PaneRatios.java; artifacts/verification/audit-20261011/test-summary.json,ratios
+화면,구역 자리 바꾸기,일부 구현,Existing reverse moves apps with their shares. AB app-only swap keeps the physical pane sizes; that separate action is not implemented.,swap
+화면,앱과 크기를 함께 교환,구현됨,"MainActivity.swapPanes: reverses each cut while keeping its app share, so the app and its size move together; previously mislabeled as app-only swap",cross
+화면,앱에서 옆 구역으로 끌어 교환,미구현,,gesture-swap
+화면,앱 선택·비우기·재시작,일부 구현,EmbeddedPane.java,panel-menu
+화면,영상 전체 화면,구현됨,NativePlaybackWindows.java,video-fullscreen
+화면,영상 확대·원래 크기,미구현,,video-zoom
+화면,경계 폭 조절,구현됨,"LayoutTemplatesIntegrationTest: actual 12/16/24/32 dp gaps and validated backup passed on car and Fold, ab-layout-order-d-1/2; pair fitting uses the same gap",dividers
+화면,조합별 DPI,일부 구현,AppDensity.java,preset-dpi
+화면,현재 화면 조합 저장,구현됨,PairSave.java,preset-save
+화면,조합 편집·삭제·기본 홈,구현됨,PairStore.java,preset-edit
+화면,단일 앱 조합,검토 필요,PairProfile.java,preset-single
+조작 바,좌·우·아래 조작 바,구현됨,MainActivity.java,rail-position
+조작 바,운전석 방향,일부 구현,MainActivity.java,driver
+조작 바,자동 숨김·펼치기,미구현,,rail-collapse
+조작 바,펼침 버튼 이동·크기,미구현,,rail-handle
+조작 바,겹치기·화면 밀기,미구현,,rail-transition
+조작 바,조합 정렬,미구현,,rail-alignment
+조작 바,조작 바 투명도·모서리,일부 구현,Shapes.java,rail-opacity
+조작 바,곡 정보·재생 제어,구현됨,MediaControls.java,rail-media
+조작 바,최근 앱,일부 구현,AppLibrary.java RECENT filter; no dedicated sidebar recent-app button,rail-recents
+조작 바,현재 앱·음악 제외 정리,미구현,,rail-cleanup
+조작 바,둥근 화면 가장자리 여백,미구현,,rail-inset
+조작 바,버튼 기능 선택,일부 구현,KeyAction.java: 14 steering/remote actions; the sidebar action itself is not freely configurable,action-button
+조작 바,다른 앱 위 조작 버튼,미구현,,floating-ball
+앱·홈,앱 검색·분류,구현됨,AppLibrary.java,drawer-search
+앱·홈,앱 순서 편집,구현됨,"AppOrderIntegrationTest: 3/3 cases on car, ab-layout-order-d-3; move to either end, reset by name, restart persistence, atomic backup validation; recent filter retains usage order",drawer-reorder
+앱·홈,앱 숨김·복원,구현됨,"AppListIntegrationTest: 10/10 cases and health passed on car, ab-bundle-actions-a-2; includes hidden app preservation in running panes, home and favourites",drawer-hidden
+앱·홈,앱 제거,구현됨,AppActionsPanel.java,drawer-uninstall
+앱·홈,홈·폴더·페이지·도크,구현됨,HomeWorkspace.java,home-grid
+앱·홈,안드로이드 위젯,구현됨,HomeWidgetFrame.java,widgets
+앱·홈,시계·날씨·음악·바로가기 묶음,일부 구현,HomeActivity.java,combo-widget
+앱·홈,위젯 밝기·크기·정렬,일부 구현,WidgetTone.java,widget-theme
+앱·홈,위치·지역별 날씨,미구현,,weather
+앱·홈,위치 사용 설정,구현됨,Merged source compiles; 718 JVM checks pass; corresponding runtime suite still pending; rc10 owned-emulator checks passed; real hardware/app versions still require verification,gps
+앱·홈,중지 후 앨범 이미지 해제,구현됨,MediaControls.java retains text metadata only; no album bitmap is held by the launcher,media-memory
+개인화,낮·밤·자동 테마,구현됨,Ui.java,theme
+개인화,강조색 선택,구현됨,"AccentIntegrationTest: 5/5 cases and system health passed on car size, ab-bundle-display-a-3",accent
+개인화,사진·배경색·아이콘 팩,구현됨,HomePhoto.java,wallpaper
+개인화,런처 글꼴·크기,일부 구현,Type.java,ui-scale
+개인화,15개 언어,일부 구현,AppLanguage.java,languages
+개인화,시계·날짜·12/24시간,일부 구현,RailClock.java,clock
+개인화,조합별 시계 위치,미구현,,clock-position
+개인화,시계 화면보호기,구현됨,"ScreensaverIntegrationTest: 16/16 cases and system health passed on car size, ab-layout-saver-c-1; includes real touch/key input, font scale 2.0, notification guidance holds and Korean media-line height fix; see testCorrections",clock-screen
+개인화,밤 화면 어둡게,구현됨,"NightDimIntegrationTest: 13/13 cases and system health passed on car size, ab-bundle-display-a-2; DirectOutputIntegrationTest also checks a directly drawn surface",night-dim
+개인화,시작 동영상,미구현,,splash
+개인화,CPU 온도·사용률·섭씨/화씨,구현됨,CpuLoadProbe.java; CpuDisplay.java; PerformancePanel.java; 7 JVM checks passed; device checks pending; rc10 owned-emulator checks passed; real hardware/app versions still require verification,cpu-load
+개인화,신호·인터넷 상태,검토 필요,MainActivity.java,network
+성능·시작,복사를 줄이는 직접 출력,구현됨,DirectPaneSurface.java; EmbeddedPane.java; DirectOutputIntegrationTest.java; device checks in progress; rc10 owned-emulator checks passed; real hardware/app versions still require verification,direct-output
+성능·시작,기존 출력으로 복구,구현됨,EmbeddedPane.java,output-fallback
+성능·시작,입력 전달 방식·앱 예외,일부 구현,DisplayEngine.java,touch-mode
+성능·시작,재시작 후 이전 화면,검사 중,Merged source compiles; 718 JVM checks pass; corresponding runtime suite still pending,boot-return
+성능·시작,인터넷 연결 후 앱 실행,미구현,,boot-network
+성능·시작,시작 지연·앱 순차 실행,미구현,,boot-delay
+성능·시작,시작 작업 목록,미구현,,boot-actions
+성능·시작,조합 전환 시 앱 종료 선택,미구현,,previous-apps
+성능·시작,앱 정리 후 런처 재시작,일부 구현,RecoveryScreen.java,full-reset
+성능·시작,기기 상태 검사,구현됨,Merged source compiles; 718 JVM checks pass; corresponding runtime suite still pending; rc10 owned-emulator checks passed; real hardware/app versions still require verification,unit-check
+자동화·오디오,내비 광고 닫기,구현됨,"NavPopupService.java; NavPopupIntegrationTest.java; synthetic 3-app advert dismissal, ordinary dialog refusal and hidden launcher checks passed; registration checks in progress; rc10 owned-emulator checks passed; real hardware/app versions still require verification",ad-dismiss
+자동화·오디오,버튼 동작 등록,일부 구현,NavPopupService.java: one dismiss button identity/context per navigation app; general multi-step automation remains planned,automation-record
+자동화·오디오,좌표·밀기 동작 등록,미구현,,automation-coordinate
+자동화·오디오,앱 실행 시·수동 자동화,미구현,,automation-run
+자동화·오디오,자동화 설정 가져오기·내보내기,일부 구현,SettingsBackup.java includes popup identities; shared cloud automation library remains separate,automation-presets
+자동화·오디오,핸들 버튼으로 내비 음성 검색,일부 구현,HardwareKeyTarget.java,voice-key
+자동화·오디오,와이파이·핫스팟 빠른 전환,미구현,,wifi-hotspot
+자동화·오디오,시작 시 볼륨 선택,미구현,,audio-volume
+자동화·오디오,저음·고음 조절,미구현,,equalizer
+자동화·오디오,길 안내 중 음악 감소,검토 필요,LauncherAudioDispatcher.java,ducking
+자동화·오디오,내비 안내음 끝부분 유지,미구현,,voice-keepalive
+기기·관리,Android 설정 열기,일부 구현,MainActivity.java,system-settings
+기기·관리,제조사 바·터치 버튼 설정,기기 의존,,oem-bar
+기기·관리,제조사 DPI 복원,기기 의존,,oem-density
+기기·관리,제조사 홈 전환·복원,기기 의존,,oem-launcher
+기기·관리,원형 보조 화면,기기 의존,,aux-display
+기기·관리,설정 백업·복원,구현됨,SettingsBackup.java,backup
+기기·관리,정식·미리보기 업데이트,구현됨,UpdateManager.java,update
+기기·관리,사용 설명서·변경 내역,일부 구현,UpdateNotes.java,manual
+기기·관리,기기간 설정 동기화,외부 서비스 의존,,cloud-sync
+기기·관리,AB 계정·결제·기기 이용권,외부 서비스 의존,,commercial-account

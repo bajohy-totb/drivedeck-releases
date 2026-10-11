@@ -1,0 +1,703 @@
+{
+  "schema": 1,
+  "checked": "2026-10-11",
+  "referenceApk": "AB런처 예시/ablauncher_app-release_1.5.3.apk",
+  "referenceSha256": "1feb6a8c206b8b61464c4f69c973f4ab8d9c95e7c457333435f898fac6c5b504",
+  "officialManual": "https://marrusoft.com/manual/kr",
+  "officialGuide": "https://marrusoft.com/guide/kr",
+  "scope": "Independent M4 equivalents. This is a feature inventory, not a claim of full parity. Present entries cite existing code; candidate entries still need runtime validation. AB account, paid services, cloud and OEM firmware require their own integrations. Shared AB presets are not copied.",
+  "features": [
+    {
+      "group": "화면",
+      "id": "split-two",
+      "title": "좌우·상하 분할",
+      "status": "present",
+      "evidence": "PaneGeometry.java"
+    },
+    {
+      "group": "화면",
+      "id": "split-three",
+      "title": "같은 방향 3분할",
+      "status": "present",
+      "evidence": "PaneGeometry.java"
+    },
+    {
+      "group": "화면",
+      "id": "split-mixed",
+      "title": "큰 구역과 작은 두 구역",
+      "status": "present",
+      "evidence": "PaneGeometry.java: independent cut axes; PaneGeometryTest.java: mixed cuts; RatioPanel.java: inner axis"
+    },
+    {
+      "group": "화면",
+      "id": "single",
+      "title": "한 앱 크게 보기",
+      "status": "present",
+      "evidence": "PaneLayout.java"
+    },
+    {
+      "group": "화면",
+      "id": "templates",
+      "title": "배치 고르기",
+      "status": "present",
+      "evidence": "LayoutTemplatesIntegrationTest: 3/3 cases on car and Fold, ab-layout-order-d-1/2; eight presets, insufficient room or a forced axis rotation is rejected; running displays are preserved"
+    },
+    {
+      "group": "화면",
+      "id": "ratios",
+      "title": "경계 드래그와 세 비율",
+      "status": "present",
+      "evidence": "PaneRatios.java; artifacts/verification/audit-20261011/test-summary.json"
+    },
+    {
+      "group": "화면",
+      "id": "swap",
+      "title": "구역 자리 바꾸기",
+      "status": "partial",
+      "evidence": "Existing reverse moves apps with their shares. AB app-only swap keeps the physical pane sizes; that separate action is not implemented."
+    },
+    {
+      "group": "화면",
+      "id": "cross",
+      "title": "앱과 크기를 함께 교환",
+      "status": "present",
+      "evidence": "MainActivity.swapPanes: reverses each cut while keeping its app share, so the app and its size move together; previously mislabeled as app-only swap"
+    },
+    {
+      "group": "화면",
+      "id": "gesture-swap",
+      "title": "앱에서 옆 구역으로 끌어 교환",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "화면",
+      "id": "panel-menu",
+      "title": "앱 선택·비우기·재시작",
+      "status": "partial",
+      "evidence": "EmbeddedPane.java"
+    },
+    {
+      "group": "화면",
+      "id": "video-fullscreen",
+      "title": "영상 전체 화면",
+      "status": "present",
+      "evidence": "NativePlaybackWindows.java"
+    },
+    {
+      "group": "화면",
+      "id": "video-zoom",
+      "title": "영상 확대·원래 크기",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "화면",
+      "id": "dividers",
+      "title": "경계 폭 조절",
+      "status": "present",
+      "evidence": "LayoutTemplatesIntegrationTest: actual 12/16/24/32 dp gaps and validated backup passed on car and Fold, ab-layout-order-d-1/2; pair fitting uses the same gap"
+    },
+    {
+      "group": "화면",
+      "id": "preset-dpi",
+      "title": "조합별 DPI",
+      "status": "partial",
+      "evidence": "AppDensity.java"
+    },
+    {
+      "group": "화면",
+      "id": "preset-save",
+      "title": "현재 화면 조합 저장",
+      "status": "present",
+      "evidence": "PairSave.java"
+    },
+    {
+      "group": "화면",
+      "id": "preset-edit",
+      "title": "조합 편집·삭제·기본 홈",
+      "status": "present",
+      "evidence": "PairStore.java"
+    },
+    {
+      "group": "화면",
+      "id": "preset-single",
+      "title": "단일 앱 조합",
+      "status": "review",
+      "evidence": "PairProfile.java"
+    },
+    {
+      "group": "조작 바",
+      "id": "rail-position",
+      "title": "좌·우·아래 조작 바",
+      "status": "present",
+      "evidence": "MainActivity.java"
+    },
+    {
+      "group": "조작 바",
+      "id": "driver",
+      "title": "운전석 방향",
+      "status": "partial",
+      "evidence": "MainActivity.java"
+    },
+    {
+      "group": "조작 바",
+      "id": "rail-collapse",
+      "title": "자동 숨김·펼치기",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "조작 바",
+      "id": "rail-handle",
+      "title": "펼침 버튼 이동·크기",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "조작 바",
+      "id": "rail-transition",
+      "title": "겹치기·화면 밀기",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "조작 바",
+      "id": "rail-alignment",
+      "title": "조합 정렬",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "조작 바",
+      "id": "rail-opacity",
+      "title": "조작 바 투명도·모서리",
+      "status": "partial",
+      "evidence": "Shapes.java"
+    },
+    {
+      "group": "조작 바",
+      "id": "rail-media",
+      "title": "곡 정보·재생 제어",
+      "status": "present",
+      "evidence": "MediaControls.java"
+    },
+    {
+      "group": "조작 바",
+      "id": "rail-recents",
+      "title": "최근 앱",
+      "status": "partial",
+      "evidence": "AppLibrary.java RECENT filter; no dedicated sidebar recent-app button"
+    },
+    {
+      "group": "조작 바",
+      "id": "rail-cleanup",
+      "title": "현재 앱·음악 제외 정리",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "조작 바",
+      "id": "rail-inset",
+      "title": "둥근 화면 가장자리 여백",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "조작 바",
+      "id": "action-button",
+      "title": "버튼 기능 선택",
+      "status": "partial",
+      "evidence": "KeyAction.java: 14 steering/remote actions; the sidebar action itself is not freely configurable"
+    },
+    {
+      "group": "조작 바",
+      "id": "floating-ball",
+      "title": "다른 앱 위 조작 버튼",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "앱·홈",
+      "id": "drawer-search",
+      "title": "앱 검색·분류",
+      "status": "present",
+      "evidence": "AppLibrary.java"
+    },
+    {
+      "group": "앱·홈",
+      "id": "drawer-reorder",
+      "title": "앱 순서 편집",
+      "status": "present",
+      "evidence": "AppOrderIntegrationTest: 3/3 cases on car, ab-layout-order-d-3; move to either end, reset by name, restart persistence, atomic backup validation; recent filter retains usage order"
+    },
+    {
+      "group": "앱·홈",
+      "id": "drawer-hidden",
+      "title": "앱 숨김·복원",
+      "status": "present",
+      "evidence": "AppListIntegrationTest: 10/10 cases and health passed on car, ab-bundle-actions-a-2; includes hidden app preservation in running panes, home and favourites"
+    },
+    {
+      "group": "앱·홈",
+      "id": "drawer-uninstall",
+      "title": "앱 제거",
+      "status": "present",
+      "evidence": "AppActionsPanel.java"
+    },
+    {
+      "group": "앱·홈",
+      "id": "home-grid",
+      "title": "홈·폴더·페이지·도크",
+      "status": "present",
+      "evidence": "HomeWorkspace.java"
+    },
+    {
+      "group": "앱·홈",
+      "id": "widgets",
+      "title": "안드로이드 위젯",
+      "status": "present",
+      "evidence": "HomeWidgetFrame.java"
+    },
+    {
+      "group": "앱·홈",
+      "id": "combo-widget",
+      "title": "시계·날씨·음악·바로가기 묶음",
+      "status": "partial",
+      "evidence": "HomeActivity.java"
+    },
+    {
+      "group": "앱·홈",
+      "id": "widget-theme",
+      "title": "위젯 밝기·크기·정렬",
+      "status": "partial",
+      "evidence": "WidgetTone.java"
+    },
+    {
+      "group": "앱·홈",
+      "id": "weather",
+      "title": "위치·지역별 날씨",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "앱·홈",
+      "id": "gps",
+      "title": "위치 사용 설정",
+      "status": "present",
+      "evidence": "Merged source compiles; 718 JVM checks pass; corresponding runtime suite still pending; rc10 owned-emulator checks passed; real hardware/app versions still require verification"
+    },
+    {
+      "group": "앱·홈",
+      "id": "media-memory",
+      "title": "중지 후 앨범 이미지 해제",
+      "status": "present",
+      "evidence": "MediaControls.java retains text metadata only; no album bitmap is held by the launcher"
+    },
+    {
+      "group": "개인화",
+      "id": "theme",
+      "title": "낮·밤·자동 테마",
+      "status": "present",
+      "evidence": "Ui.java"
+    },
+    {
+      "group": "개인화",
+      "id": "accent",
+      "title": "강조색 선택",
+      "status": "present",
+      "evidence": "AccentIntegrationTest: 5/5 cases and system health passed on car size, ab-bundle-display-a-3"
+    },
+    {
+      "group": "개인화",
+      "id": "wallpaper",
+      "title": "사진·배경색·아이콘 팩",
+      "status": "present",
+      "evidence": "HomePhoto.java"
+    },
+    {
+      "group": "개인화",
+      "id": "ui-scale",
+      "title": "런처 글꼴·크기",
+      "status": "partial",
+      "evidence": "Type.java"
+    },
+    {
+      "group": "개인화",
+      "id": "languages",
+      "title": "15개 언어",
+      "status": "partial",
+      "evidence": "AppLanguage.java"
+    },
+    {
+      "group": "개인화",
+      "id": "clock",
+      "title": "시계·날짜·12/24시간",
+      "status": "partial",
+      "evidence": "RailClock.java"
+    },
+    {
+      "group": "개인화",
+      "id": "clock-position",
+      "title": "조합별 시계 위치",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "개인화",
+      "id": "clock-screen",
+      "title": "시계 화면보호기",
+      "status": "present",
+      "evidence": "ScreensaverIntegrationTest: 16/16 cases and system health passed on car size, ab-layout-saver-c-1; includes real touch/key input, font scale 2.0, notification guidance holds and Korean media-line height fix; see testCorrections"
+    },
+    {
+      "group": "개인화",
+      "id": "night-dim",
+      "title": "밤 화면 어둡게",
+      "status": "present",
+      "evidence": "NightDimIntegrationTest: 13/13 cases and system health passed on car size, ab-bundle-display-a-2; DirectOutputIntegrationTest also checks a directly drawn surface"
+    },
+    {
+      "group": "개인화",
+      "id": "splash",
+      "title": "시작 동영상",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "개인화",
+      "id": "cpu-load",
+      "title": "CPU 온도·사용률·섭씨/화씨",
+      "status": "present",
+      "evidence": "CpuLoadProbe.java; CpuDisplay.java; PerformancePanel.java; 7 JVM checks passed; device checks pending; rc10 owned-emulator checks passed; real hardware/app versions still require verification"
+    },
+    {
+      "group": "개인화",
+      "id": "network",
+      "title": "신호·인터넷 상태",
+      "status": "review",
+      "evidence": "MainActivity.java"
+    },
+    {
+      "group": "성능·시작",
+      "id": "direct-output",
+      "title": "복사를 줄이는 직접 출력",
+      "status": "present",
+      "evidence": "DirectPaneSurface.java; EmbeddedPane.java; DirectOutputIntegrationTest.java; device checks in progress; rc10 owned-emulator checks passed; real hardware/app versions still require verification"
+    },
+    {
+      "group": "성능·시작",
+      "id": "output-fallback",
+      "title": "기존 출력으로 복구",
+      "status": "present",
+      "evidence": "EmbeddedPane.java"
+    },
+    {
+      "group": "성능·시작",
+      "id": "touch-mode",
+      "title": "입력 전달 방식·앱 예외",
+      "status": "partial",
+      "evidence": "DisplayEngine.java"
+    },
+    {
+      "group": "성능·시작",
+      "id": "boot-return",
+      "title": "재시작 후 이전 화면",
+      "status": "candidate",
+      "evidence": "Merged source compiles; 718 JVM checks pass; corresponding runtime suite still pending"
+    },
+    {
+      "group": "성능·시작",
+      "id": "boot-network",
+      "title": "인터넷 연결 후 앱 실행",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "성능·시작",
+      "id": "boot-delay",
+      "title": "시작 지연·앱 순차 실행",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "성능·시작",
+      "id": "boot-actions",
+      "title": "시작 작업 목록",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "성능·시작",
+      "id": "previous-apps",
+      "title": "조합 전환 시 앱 종료 선택",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "성능·시작",
+      "id": "full-reset",
+      "title": "앱 정리 후 런처 재시작",
+      "status": "partial",
+      "evidence": "RecoveryScreen.java"
+    },
+    {
+      "group": "성능·시작",
+      "id": "unit-check",
+      "title": "기기 상태 검사",
+      "status": "present",
+      "evidence": "Merged source compiles; 718 JVM checks pass; corresponding runtime suite still pending; rc10 owned-emulator checks passed; real hardware/app versions still require verification"
+    },
+    {
+      "group": "자동화·오디오",
+      "id": "ad-dismiss",
+      "title": "내비 광고 닫기",
+      "status": "present",
+      "evidence": "NavPopupService.java; NavPopupIntegrationTest.java; synthetic 3-app advert dismissal, ordinary dialog refusal and hidden launcher checks passed; registration checks in progress; rc10 owned-emulator checks passed; real hardware/app versions still require verification"
+    },
+    {
+      "group": "자동화·오디오",
+      "id": "automation-record",
+      "title": "버튼 동작 등록",
+      "status": "partial",
+      "evidence": "NavPopupService.java: one dismiss button identity/context per navigation app; general multi-step automation remains planned"
+    },
+    {
+      "group": "자동화·오디오",
+      "id": "automation-coordinate",
+      "title": "좌표·밀기 동작 등록",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "자동화·오디오",
+      "id": "automation-run",
+      "title": "앱 실행 시·수동 자동화",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "자동화·오디오",
+      "id": "automation-presets",
+      "title": "자동화 설정 가져오기·내보내기",
+      "status": "partial",
+      "evidence": "SettingsBackup.java includes popup identities; shared cloud automation library remains separate"
+    },
+    {
+      "group": "자동화·오디오",
+      "id": "voice-key",
+      "title": "핸들 버튼으로 내비 음성 검색",
+      "status": "partial",
+      "evidence": "HardwareKeyTarget.java"
+    },
+    {
+      "group": "자동화·오디오",
+      "id": "wifi-hotspot",
+      "title": "와이파이·핫스팟 빠른 전환",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "자동화·오디오",
+      "id": "audio-volume",
+      "title": "시작 시 볼륨 선택",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "자동화·오디오",
+      "id": "equalizer",
+      "title": "저음·고음 조절",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "자동화·오디오",
+      "id": "ducking",
+      "title": "길 안내 중 음악 감소",
+      "status": "review",
+      "evidence": "LauncherAudioDispatcher.java"
+    },
+    {
+      "group": "자동화·오디오",
+      "id": "voice-keepalive",
+      "title": "내비 안내음 끝부분 유지",
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "group": "기기·관리",
+      "id": "system-settings",
+      "title": "Android 설정 열기",
+      "status": "partial",
+      "evidence": "MainActivity.java"
+    },
+    {
+      "group": "기기·관리",
+      "id": "oem-bar",
+      "title": "제조사 바·터치 버튼 설정",
+      "status": "device-specific",
+      "evidence": ""
+    },
+    {
+      "group": "기기·관리",
+      "id": "oem-density",
+      "title": "제조사 DPI 복원",
+      "status": "device-specific",
+      "evidence": ""
+    },
+    {
+      "group": "기기·관리",
+      "id": "oem-launcher",
+      "title": "제조사 홈 전환·복원",
+      "status": "device-specific",
+      "evidence": ""
+    },
+    {
+      "group": "기기·관리",
+      "id": "aux-display",
+      "title": "원형 보조 화면",
+      "status": "device-specific",
+      "evidence": ""
+    },
+    {
+      "group": "기기·관리",
+      "id": "backup",
+      "title": "설정 백업·복원",
+      "status": "present",
+      "evidence": "SettingsBackup.java"
+    },
+    {
+      "group": "기기·관리",
+      "id": "update",
+      "title": "정식·미리보기 업데이트",
+      "status": "present",
+      "evidence": "UpdateManager.java"
+    },
+    {
+      "group": "기기·관리",
+      "id": "manual",
+      "title": "사용 설명서·변경 내역",
+      "status": "partial",
+      "evidence": "UpdateNotes.java"
+    },
+    {
+      "group": "기기·관리",
+      "id": "cloud-sync",
+      "title": "기기간 설정 동기화",
+      "status": "external-service",
+      "evidence": ""
+    },
+    {
+      "group": "기기·관리",
+      "id": "commercial-account",
+      "title": "AB 계정·결제·기기 이용권",
+      "status": "external-service",
+      "evidence": ""
+    }
+  ],
+  "referenceNote": "The supplied APK is version 1.5.3. The live official manual may describe a newer version. Capabilities are independently implemented and the inventory is not a binary-identical clone.",
+  "testCorrections": [
+    {
+      "test": "ScreensaverIntegrationTest.aTouchEndsItAndGoesNoFurther",
+      "baseline": "ab-bundle-display-a-1 and ab-saver-rerun-b-1",
+      "reason": "Observed extra events are DisplayEngine.nudgeFocus DOWN/CANCEL at the same timestamp and the documented focus point, not the dismissing finger. Verify exact nudge pairs, zero UP/MOVE and unchanged click count; the next normal tap must still click."
+    },
+    {
+      "test": "ScreensaverIntegrationTest.itComesAfterTheWaitAndCoversTheBarAndBothPanes",
+      "baseline": "ab-bundle-display-a-1 and ab-saver-rerun-b-3",
+      "reason": "UiAutomation includes NO_HIDE_DESCENDANTS nodes. Temporarily remove FLAG_INCLUDE_NOT_IMPORTANT_VIEWS to test the screen-reader tree, preserve both invisibility/clock-node assertions and restore flags in finally."
+    },
+    {
+      "test": "ScreensaverIntegrationTest.byHand",
+      "baseline": "ab-bundle-display-a-1",
+      "reason": "Wait for panes and connection to settle before asking by hand. A loading/error card intentionally refuses the clock; keep the original show assertion."
+    },
+    {
+      "source": "ScreensaverView.show",
+      "baseline": "ab-bundle-display-a-1: itShowsTheTimeTheDateAndWhatPlays",
+      "reason": "Real bug: clearing hidden Korean track text changes fallback font metrics and shifts the centred block. Retain the invisible line text while paused; keep the original exact height assertion."
+    },
+    {
+      "test": "ButtonActionsIntegrationTest.aButtonRunsItsActionOnceOnItsRelease",
+      "baseline": "ab-bundle-actions-a-1",
+      "reason": "Waiting for the UI between each half stretched the intended 20 ms gap beyond the 400 ms debounce. Dispatch a burst with original physical event timestamps; retain the assertions that the layout changes exactly once."
+    },
+    {
+      "source": "KeyLog.typed",
+      "baseline": "ab-bundle-actions-a-1: theRecordNamesTheKeysThatArrivedAndNeverOneThatTypes",
+      "reason": "Real bug: injected text uses the same event timestamp for multiple DOWN/UP pairs. A matching release separates those presses; keep only counts and timestamps, never a typed key code or character."
+    },
+    {
+      "source": "HomeInstrument",
+      "baseline": "ab-bundle-actions-a-3",
+      "reason": "Real bug: large-font music text measured 108 px in a 105 px box. Fit the own-item text to its actual space; retain measured-bounds assertions."
+    },
+    {
+      "source": "HomeMusic",
+      "baseline": "ab-bundle-actions-a-3",
+      "reason": "Real bug: a previous media-access hint remained after the playback state changed. Refresh the item hint with its state; retain the stale-hint assertion."
+    },
+    {
+      "source": "MainActivity.showPerformance/showNavPopups",
+      "baseline": "AB merged settings review; unpublished rc10 candidates A/B",
+      "reason": "Review mistake corrected before publication: the persisted category ID controls is the General menu (DesignSettings.Page.GENERAL), not a separate Controls category. Restore that existing ID rather than the unrecognised general ID, which falls back to Screen. Retain the preference assertion and also assert the real General navigation item is selected."
+    },
+    {
+      "test": "SelfCheckIntegrationTest.nothingAReportMayNotHoldIsInTheFileOfACheck",
+      "baseline": "ab-resume-connect-b-2",
+      "reason": "The literal ETA fragment 2:32 also matched diagnostic timestamps 22:32:08 and 02:32:28. Match the ETA as a standalone time without adjacent digits or colon; retain all notification, address and distance privacy assertions."
+    },
+    {
+      "test": "SelfCheckIntegrationTest.theCheckSaysWhatItWillDoThenWritesItsBlockIntoTheReport",
+      "baseline": "ab-resume-connect-b-2 and ab-resume-fixes-c-3",
+      "reason": "The report delimiter starts with a newline. Both inline extraction and blockOf included that delimiter newline in the rendered block. Exclude it in both places; retain strict equality with the exact rendered bytes and all screen/report correspondence assertions."
+    },
+    {
+      "test": "HomeInstrumentIntegrationTest.aNoAtAndroidsOwnQuestionLeavesTheSentenceOnTheItemAndNothingIsRead",
+      "baseline": "ab-resume-home-a-1 through ab-resume-ratios-h-1",
+      "reason": "Instrumentation.sendPointerSync targets the launcher UID and cannot tap PermissionController. The first failed answer also left orphan GrantPermissionsActivity instances: subsequent lookups saw only three invisible frame nodes, and before/timeout screenshots showed no dialog until teardown. Clear only the owned emulator PermissionController before this native case and in cleanup; use the real accessibility refusal button, reveal its short-screen position and refresh its nodes. Retain actual Android refusal, both ungranted permissions, zero receiver starts and subsequent launcher-touch assertions. Earlier failures and UI evidence are preserved."
+    },
+    {
+      "source": "LocalAdbPanel.step / PanelShell title",
+      "baseline": "ab-resume-settings-c-1",
+      "reason": "Real bugs at system font scale 2.0: fixed-size step circles clipped their numbers, and the shared one-line panel title ellipsized the English setup title. Size circles from actual line height and allow panel titles to wrap; preserve the complete-text assertions in both languages."
+    },
+    {
+      "source": "PaneInputWindows / WindowDrawState / InputWindowSnapshot / DisplayEngine",
+      "baseline": "ab-resume-video-i-2 and ab-resume-slow-o/p/q/r-1",
+      "reason": "Real bug: after re-showing a player blocked for 7 s, input still listed its old channel as ready while WindowManager reported mViewVisibility=0x8, mHasSurface=false and NO_SURFACE. Automatic focus keys then waited about 5 s. Check the exact focused ActivityRecord against a drawn display-0 WindowManager surface within the same bounded read; reject NO_WINDOW focus entries and unknown automatic-key targets. Retain all original refusal, zero waiting-key, ANR and recovery assertions. Add parser regressions from the saved records; diagnostic dumps exist only in owned-test evidence, never product logs/reports."
+    },
+    {
+      "source": "NativePlaybackWindows.shownTaskId / expected screen task",
+      "baseline": "ab-resume-video-s-1; corrected case ab-resume-slow-t-1",
+      "reason": "Real transition race: the input dump can still name the launcher as the focused application while the shown player has no surface. A drawn launcher window must not authorize a focus key for that player. Bind automatic player focus and Back readiness to its exact shown task ID as well as its drawn surface. The original 7 s stall, refusal and recovery assertions passed unchanged after this fix."
+    },
+    {
+      "source": "Android BLASTBufferQueue initialization observation",
+      "baseline": "ab-resume-final-u-1",
+      "reason": "All 13 functional assertions passed, but the unchanged 6000 ms watchdog recorded a 6291 ms main-thread wait in BLASTBufferQueue.nativeCreate during a concurrent release build. Preserve the failed health result and stack. Repeat without concurrent build work; a successful recheck does not prove the root cause or establish that the Android rendering delay is fixed."
+    },
+    {
+      "test": "NativePlaybackIntegrationTest.aVideoWindowAmongThreePanesIsGivenItsRoomAndGivesItBack",
+      "baseline": "ab-resume-video-v-1",
+      "reason": "The immediate size read caught a transient system-bar inset frame after player focus (545 px instead of 660 px); IME was not shown. Await the same exact full-height car geometry for at most 5 s before the existing equality assertions. Retain all size, stored-share, divider and restoration assertions; failure remains if full height does not return."
+    },
+    {
+      "source": "LocalAdb.Session discovery lease before wireless restore",
+      "baseline": "ab-resume-native-m-1; corrected targeted run ab-resume-adb-recovery-x-1",
+      "reason": "Wireless debugging was switched on but replacement-port discovery returned zero on every retry. Keep a scoped NSD discovery lease alive before restoring wireless debugging and through the connection handoff; release it on success, failure or cancellation. The original real-Android automatic reconnection, setting-on, log and subsequent touch assertions passed unchanged. Pairing and reconnect are rechecked with authenticated TLS, never a substituted root bridge or invented port."
+    },
+    {
+      "test": "NativeAdbIntegrationTest.systemPairingCode",
+      "baseline": "ab-resume-native-y-1",
+      "reason": "Two native setup attempts failed before pairing because the developer-settings row was absent and the setup activity remained in front. Context.startActivity after force-stopping Settings raced activity visibility/resumption. The owned UI driver now launches the actual Android developer page with am start -W --display 0 before finding its real pairing row. Retain genuine system-code pairing, wrong-code rejection, notification and successful TLS/bridge/touch assertions; no system dialog or connection is substituted."
+    }
+  ],
+  "runtimeVerification": {
+    "release": "1.4.0-rc10",
+    "checks": 227,
+    "evidence": "artifacts/verification/1.4.0-rc10/ab-current-checks.json",
+    "scope": "Latest evidence is selected per case and screen size. Older failed runs remain in history. Counts do not mean every case used the final binary. See parity JSON testCorrections for justified test-environment corrections."
+  }
+}

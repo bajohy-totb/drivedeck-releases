@@ -2,6 +2,21 @@
 
 [한국어 소개](../README.md) · [English overview](../README.en.md)
 
+## 1.4.0-rc10 시험 / Preview
+
+versionCode **88**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
+APK SHA-256: `0ba59fa5a6b54b59646fe7eb15b60a4ae1a4753b4ce6aaf292f31255500a4032`. Relink SHA-256: `bc1b1a70f676e71689c2ac8d00e67b025443b1d1b6cb30f41cb7ac431fafd304`.
+
+단위 검사 737개 통과. 린트 오류 0개·경고 141개. 기능·화면 크기별 최신 검사 227개 및 해당 실행의 상태 검사 통과. 이전 실패 기록은 보존합니다. / 737 unit tests passed; lint has zero errors and 141 warnings. 227 latest feature/size checks and their health checks passed. Earlier failures are retained. These counts combine evidence across builds; changed flows were rechecked.
+
+실제 배포 APK의 rc9 업데이트·개발자 메뉴·성능 설정·화면 보호기 7개 검사도 별도로 통과했습니다. / 7 additional checks passed on the signed release APK, covering upgrade from rc9, developer-menu entry, performance settings and the screensaver.
+
+3분할·조합 저장, 새 설정과 홈 항목, 출력·화면 보호기·야간 밝기, 버튼·영상·키보드, 내장 ADB 페어링과 재연결을 검사했습니다. 내비 광고는 별도 합성 앱으로 차량·폴드·작은 화면에서 확인했습니다. 실제 내비 앱의 광고와 실제 발열 감소는 아직 확인하지 않았습니다. / Navigation adverts were tested with synthetic fixture apps on car, fold and small layouts; real navigation-app versions and thermal savings remain unverified.
+
+릴리스 빌드와 동시에 실행한 영상 검사에서 Android BLASTBufferQueue 초기화로 6.3초 응답 지연이 한 번 기록됐습니다. 빌드 없이 재검사한 실행에서는 재현되지 않았지만 원인이 해결됐다고 단정하지 않습니다. / One video run during a concurrent release build recorded a 6.3 s wait in Android BLASTBufferQueue initialization. A separate run without concurrent build work did not reproduce it; its root cause is not established as fixed.
+
+엠스틱4 사용자가 rc9에서 개발자 설정 메뉴 진입 성공을 확인했습니다. 이는 나머지 기능의 실기 검증과 별도입니다. / The user confirmed developer-menu entry on Mstick 4 with rc9; other hardware features still need validation.
+
 ## 1.4.0-rc7 시험 / Preview
 
 versionCode **85**, 비디버그·기존 서명 유지. / Non-debuggable; existing signing identity retained.
